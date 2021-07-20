@@ -1,7 +1,7 @@
 /**
  * 
  */
-package models;
+package application.models;
 
 import java.util.Date;
 

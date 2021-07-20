@@ -1,4 +1,4 @@
-package com.example.models;
+package application.models;
 
 public class Medicacao {
 	private String nome;
