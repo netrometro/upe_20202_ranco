@@ -1,24 +1,23 @@
 package application.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import lombok.Data;
+
+@Data
 public class Medicacao {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id_medicacao;		
 	private String nome;
 	private String posologia;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getPosologia() {
-		return posologia;
-	}
-
-	public void setPosologia(String posologia) {
-		this.posologia = posologia;
-	}
+	
+	@ManyToOne	
+	private Usuario usuario;
 
 	public Medicacao(String nome, String posologia) {
 		super();
