@@ -1,12 +1,19 @@
-/**
- * 
- */
 package application.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class Evento {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id_evento; 
 	private Date data;
 	private String local;
 	private String pessoaEnvolvida;
@@ -23,124 +30,29 @@ public class Evento {
 	private String recomendacao;
 	private String sentimentos;
 	
+	@ManyToOne	
+	private Usuario usuario; 
 	
-	public Date getData() {
-		return data;
-	}
-	
-	public void setData(Date data) {
+	public Evento(Date data, String local, String pessoaEnvolvida, String testemunhas, String expectativa, String descricao, int categoria, 
+			String motivo, String prova, String pontoMelhoria, String solucao, String feedback, boolean status, String recomendacao, String sentimentos){
+		super();
 		this.data = data;
-	}
-	
-	public String getLocal() {
-		return local;
-	}
-	
-	public void setLocal(String local) {
 		this.local = local;
-	}
-	
-	public String getPessoaEnvolvida() {
-		return pessoaEnvolvida;
-	}
-	
-	public void setPessoaEnvolvida(String pessoaEnvolvida) {
 		this.pessoaEnvolvida = pessoaEnvolvida;
-	}
-	
-	public String getTestemunhas() {
-		return testemunhas;
-	}
-	
-	public void setTestemunhas(String testemunhas) {
 		this.testemunhas = testemunhas;
-	}
-	
-	public String getExpectativa() {
-		return expectativa;
-	}
-	
-	public void setExpectativa(String expectativa) {
 		this.expectativa = expectativa;
-	}
-	
-	public String getDescricao() {
-		return descricao;
-	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	
-	public int getCategoria() {
-		return categoria;
-	}
-	
-	public void setCategoria(int categoria) {
-		this.categoria = categoria;
-	}
-	
-	public String getMotivo() {
-		return motivo;
-	}
-	
-	public void setMotivo(String motivo) {
+		this.descricao = descricao; 
+		this.categoria = categoria; 
 		this.motivo = motivo;
-	}
-	
-	public String getProva() {
-		return prova;
-	}
-	
-	public void setProva(String prova) {
 		this.prova = prova;
-	}
-	
-	public String getPontoMelhoria() {
-		return pontoMelhoria;
-	}
-	
-	public void setPontoMelhoria(String pontoMelhoria) {
 		this.pontoMelhoria = pontoMelhoria;
-	}
-	
-	public String getSolucao() {
-		return solucao;
-	}
-	
-	public void setSolucao(String solucao) {
 		this.solucao = solucao;
-	}
-	
-	public String getFeedback() {
-		return feedback;
-	}
-	
-	public void setFeedback(String feedback) {
 		this.feedback = feedback;
-	}
-	
-	public boolean isStatus() {
-		return status;
-	}
-	
-	public void setStatus(boolean status) {
 		this.status = status;
-	}
-	
-	public String getRecomendacao() {
-		return recomendacao;
-	}
-	
-	public void setRecomendacao(String recomendacao) {
 		this.recomendacao = recomendacao;
+		this.sentimentos = sentimentos; 
+		
+		
 	}
-	
-	public String getSentimentos() {
-		return sentimentos;
-	}
-	
-	public void setSentimentos(String sentimentos) {
-		this.sentimentos = sentimentos;
-	} 	
-}
+
+} 
