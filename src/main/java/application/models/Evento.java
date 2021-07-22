@@ -5,10 +5,6 @@ package application.models;
 
 import java.util.Date;
 
-/**
- * @author clara
- * Criação da classe Evento
- */
 public class Evento {
 	
 	private Date data;
