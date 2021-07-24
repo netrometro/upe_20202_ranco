@@ -1,5 +1,6 @@
 package application.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
+@Entity
 public class Evento {
 	
 	@Id
@@ -31,7 +33,7 @@ public class Evento {
 	private String sentimentos;
 	
 	@ManyToOne	
-	private Usuario usuario; 
+	private Paciente usuario; 
 	
 	public Evento(Date data, String local, String pessoaEnvolvida, String testemunhas, String expectativa, String descricao, int categoria, 
 			String motivo, String prova, String pontoMelhoria, String solucao, String feedback, boolean status, String recomendacao, String sentimentos){

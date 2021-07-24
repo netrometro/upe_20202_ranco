@@ -1,5 +1,6 @@
 package application.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,6 +9,7 @@ import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
+@Entity
 public class Medicacao {
 	
 	@Id
@@ -17,7 +19,7 @@ public class Medicacao {
 	private String posologia;
 	
 	@ManyToOne	
-	private Usuario usuario;
+	private Paciente usuario;
 
 	public Medicacao(String nome, String posologia) {
 		super();
