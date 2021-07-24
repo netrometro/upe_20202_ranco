@@ -4,14 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 import lombok.Data;
 
 @Data
-//@Entity
+@MappedSuperclass
 public abstract class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_usuario;
@@ -19,36 +21,15 @@ public abstract class Usuario {
 	private String email;
 	private String senha;
 	private int tipoUsuario;
-	
 
+	protected Usuario() {}
 	
-	
-	/*
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
+	public Usuario(int id_usuario, String nome, String email, String senha, int tipoUsuario) {
+		super();
+		this.id_usuario = id_usuario;
 		this.nome = nome;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-	public int getTipoUsuario() {
-		return tipoUsuario;
-	}
-	public void setTipoUsuario(int tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
-	}*/
-	
-	
-
+	}
 }

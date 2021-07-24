@@ -1,5 +1,6 @@
 package application.models;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,15 +10,15 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Psicologo extends Usuario{
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id_psicologo;
+public class Psicologo extends Usuario {
+
 	private String crp;
+
+	protected Psicologo() {
+	}
 
 	public Psicologo(String crp) {
 		this.crp = crp;
 	}
-	
+
 }

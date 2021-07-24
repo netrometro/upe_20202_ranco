@@ -21,6 +21,8 @@ public class Medicacao {
 	@ManyToOne	
 	private Paciente usuario;
 
+	protected Medicacao() {}
+	
 	public Medicacao(String nome, String posologia) {
 		super();
 		this.nome = nome;
