@@ -29,4 +29,11 @@ public class Medicacao {
 		this.posologia = posologia;
 	}
 
+	public Medicacao(String nome, String posologia, Paciente usuario) {
+		super();
+		this.nome = nome;
+		this.posologia = posologia;
+		this.usuario = usuario;
+	}
+
 }
