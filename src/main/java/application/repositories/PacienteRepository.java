@@ -1,7 +1,7 @@
 /**
  * 
  */
-package application.services;
+package application.repositories;
 
 import java.util.List;
 

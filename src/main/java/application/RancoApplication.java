@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 
 import application.models.Medicacao;
 import application.models.Paciente;
-import application.services.MedicacaoRepository;
+import application.repositories.MedicacaoRepository;
 
 import java.util.Optional;
 

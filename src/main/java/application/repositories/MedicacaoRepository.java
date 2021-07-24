@@ -1,4 +1,4 @@
-package application.services;
+package application.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
