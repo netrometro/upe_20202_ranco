@@ -15,7 +15,7 @@ import application.models.Paciente;
  */
 public interface PacienteRepository extends CrudRepository<Paciente, Long> {
 
-	List<Paciente> findByLastName(String lastName);
+	List<Paciente> findByNome(String nome);
 
 	Paciente findById(long id);
 }
