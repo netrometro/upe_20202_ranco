@@ -14,7 +14,7 @@ import application.models.Psicologo;
  *
  */
 public interface PsicologoRepository extends CrudRepository<Psicologo, Long> {
-	List<Psicologo> findBycrp(String crp);
+	Psicologo findBycrp(String crp);
 
 	Psicologo findById(long id);
 }

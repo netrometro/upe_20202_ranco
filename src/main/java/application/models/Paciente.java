@@ -14,17 +14,20 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 
+import application.models.enums.TipoDeUsuario;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
+@ToString(callSuper = true)
 public class Paciente extends Usuario {
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Evento> eventos;
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Evento> eventos;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Medicacao> medicacoes;
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Medicacao> medicacoes;
 	
 	//private ArrayList<Alarme> alarmes; 
 	
@@ -35,8 +38,8 @@ public class Paciente extends Usuario {
 		
 	}
 	
-	public Paciente(int id_usuario, String nome, String email, String senha, int tipoUsuario) {
-		super(id_usuario, nome, email, senha, tipoUsuario);
+	public Paciente(String nome, String email, String senha, TipoDeUsuario tipoUsuario) {
+		super(nome, email, senha, tipoUsuario);
 	}
 	
 	
