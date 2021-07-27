@@ -44,7 +44,7 @@ public class PsicologoService {
             return ResponseEntity.notFound().build();
         }
         if(!(psicologoP.getNome() == null)) {
-            psicologo.get().setNome(psicologoP.getNome());
+        	psicologo.get().setNome(psicologoP.getNome());
         }
         if(!(psicologoP.getEmail() == null)) {
             psicologo.get().setEmail(psicologoP.getEmail());
@@ -54,6 +54,9 @@ public class PsicologoService {
         }
         if(!(psicologoP.getTipoUsuario() == null)) {
             psicologo.get().setTipoUsuario(psicologoP.getTipoUsuario());
+        }
+        if(!(psicologoP.getCrp() == null)) {
+            psicologo.get().setCrp(psicologoP.getCrp());
         }
 
 		return ResponseEntity.ok(psicologos.save(psicologo.get()));
