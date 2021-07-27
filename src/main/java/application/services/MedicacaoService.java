@@ -57,4 +57,11 @@ public class MedicacaoService {
 		return ResponseEntity.ok(medicacoes.save(medicacao.get()));
 		
 	}
+	
+	public ResponseEntity<Medicacao> delete(long id)
+	{
+		Optional<Medicacao> medicacao = medicacoes.findById(id);
+		medicacoes.delete(medicacao.get());
+		return ResponseEntity.ok(medicacao.get());
+	}
 }
