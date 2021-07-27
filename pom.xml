@@ -7,7 +7,7 @@
 	<artifactId>upe_20202_ranco</artifactId>
 	<version>1.0</version>
 	<name>upe_20202_ranco</name>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
