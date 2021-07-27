@@ -4,18 +4,14 @@
 package application.repositories;
 
 import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import application.models.Paciente;
 
 /**
+ * camada de acesso a dados da entidade paciente
  * @author Dahise
- *
  */
-public interface PacienteRepository extends CrudRepository<Paciente, Long> {
+public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 
 	List<Paciente> findByNome(String nome);
-
-	Paciente findById(long id);
 }
