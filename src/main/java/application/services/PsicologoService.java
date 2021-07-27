@@ -40,7 +40,7 @@ public class PsicologoService {
 	public ResponseEntity<Psicologo> update(long id, Psicologo psicologoP) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);		
         
-        if(psicologo.isEmpty()) {
+        if(!psicologo.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         if(!(psicologoP.getNome() == null)) {
@@ -65,7 +65,7 @@ public class PsicologoService {
 
 	public ResponseEntity<Psicologo> delete(long id) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);
-		if (psicologo.isEmpty()) {
+		if (!psicologo.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		psicologos.delete(psicologo.get());

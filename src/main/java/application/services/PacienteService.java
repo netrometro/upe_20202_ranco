@@ -23,7 +23,7 @@ public class PacienteService {
 	
 	public ResponseEntity<Paciente> findById(Long id_paciente){
 		Optional<Paciente> paciente = pacientes.findById(id_paciente);
-		if(paciente.isEmpty()) {
+		if(!paciente.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		else {
@@ -49,7 +49,7 @@ public class PacienteService {
 	public ResponseEntity<Paciente> update(Long id_paciente, Paciente pacienteParam){
 		Optional<Paciente> paciente = pacientes.findById(id_paciente);
 		
-		if(paciente.isEmpty()) {
+		if(!paciente.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		

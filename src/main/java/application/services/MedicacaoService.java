@@ -27,7 +27,7 @@ public class MedicacaoService {
 
 	public ResponseEntity<Medicacao> findById(Long medicacao_id) {
 		Optional<Medicacao> medicacao = medicacoes.findById(medicacao_id);
-		if (medicacao.isEmpty()) {
+		if (!medicacao.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(medicacao.get());
@@ -35,7 +35,7 @@ public class MedicacaoService {
 	
 	public ResponseEntity<Medicacao> create(long paciente_id, Medicacao medicacao){
 		Optional<Paciente> paciente = pacientes.findById(paciente_id);
-		if(paciente.isEmpty()) {
+		if(!paciente.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		medicacao.setUsuario(paciente.get());
@@ -44,7 +44,7 @@ public class MedicacaoService {
 	
 	public ResponseEntity<Medicacao> update(long id, Medicacao medicacaoParam){
 		Optional<Medicacao> medicacao = medicacoes.findById(id);
-		if(medicacao.isEmpty()) {
+		if(!medicacao.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		if(!(medicacaoParam.getNome() ==null)) {
@@ -61,7 +61,7 @@ public class MedicacaoService {
 	public ResponseEntity<Medicacao> delete(long id)
 	{
 		Optional<Medicacao> medicacao = medicacoes.findById(id);
-		if(medicacao.isEmpty()) {
+		if(!medicacao.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		medicacoes.delete(medicacao.get());
