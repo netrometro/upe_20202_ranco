@@ -67,11 +67,11 @@ public class RancoApplication {
 			List<Paciente> pacientes = repository.findByNome("Danielle");
 			log.info("lista de usuarios com o nome Danielle: " + pacientes.toString());
 
-			Paciente paciente = repository.findById(2);
+			Optional<Paciente> paciente = repository.findById(2L);
 			log.info("busca paciente por ID" + paciente.toString());
 
-			paciente.setNome("Maria");
-			repository.save(paciente);
+			paciente.get().setNome("Maria");
+			repository.save(paciente.get());
 			log.info(repository.findByNome("Maria").toString());
 			
 			repository.deleteById(2L);
