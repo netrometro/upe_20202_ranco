@@ -65,7 +65,7 @@ public class PacienteService {
 		if(!(pacienteParam.getTipoUsuario() == null)) {
 			paciente.get().setTipoUsuario(pacienteParam.getTipoUsuario());
 		}
-		return ResponseEntity.ok(paciente.get());
+		return ResponseEntity.ok(pacientes.save(paciente.get()));
 		
 	}
 	
