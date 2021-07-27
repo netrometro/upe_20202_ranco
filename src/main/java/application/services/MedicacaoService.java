@@ -41,4 +41,20 @@ public class MedicacaoService {
 		medicacao.setUsuario(paciente.get());
 		return ResponseEntity.ok(medicacoes.save(medicacao));
 	}
+	
+	public ResponseEntity<Medicacao> update(long id, Medicacao medicacaoParam){
+		Optional<Medicacao> medicacao = medicacoes.findById(id);
+		if(medicacao.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		if(!(medicacaoParam.getNome() ==null)) {
+			medicacao.get().setNome(medicacaoParam.getNome());
+		}
+		if(!(medicacaoParam.getPosologia() == null)) {
+			medicacao.get().setPosologia(medicacaoParam.getPosologia());
+		}
+
+		return ResponseEntity.ok(medicacoes.save(medicacao.get()));
+		
+	}
 }
