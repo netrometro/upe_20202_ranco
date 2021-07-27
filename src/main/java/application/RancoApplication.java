@@ -36,7 +36,7 @@ public class RancoApplication {
 			repository.save(new Medicacao("Dorflex", "Uma vez a cada 8 horas"));
 			log.info("Medicação inserida no banco de dados");
 
-			Medicacao remedio = repository.findByNome("Dorflex");
+			Optional<Medicacao> remedio = repository.findByNome("Dorflex");
 			log.info("Achei o Dorflex " + remedio.toString());
 
 			Optional<Medicacao> medicacaoO = repository.findById(1l);
@@ -88,15 +88,15 @@ public class RancoApplication {
 					new Psicologo("Leonardo", "DaVincci@gmail.com", "mona", TipoDeUsuario.PACIENTE, "12345-6789"));
 			log.info("Paciente inserido no banco de dados");
 
-			Psicologo psicologo = repository.findBycrp("12345-6789");
+			Optional<Psicologo> psicologo = repository.findBycrp("12345-6789");
 			log.info("lista de usuarios com o crp : " + psicologo.toString());
 
-			Psicologo psicologoID = repository.findById(3);
+			Optional<Psicologo> psicologoID = repository.findById((long) 3);
 			log.info("busca paciente por ID" + psicologoID.toString());
 
-			psicologoID.setNome("Franco");
-			repository.save(psicologoID);
-			log.info(repository.findById(3).toString());
+			psicologoID.get().setNome("Franco");
+			repository.save(psicologoID.get());
+			log.info(repository.findById(3l).toString());
 			
 			repository.deleteById(3L);
 			log.info("psicologo deletado");

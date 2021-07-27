@@ -3,18 +3,14 @@
  */
 package application.repositories;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
 import application.models.Psicologo;
 
-/**
- * @author Dahis
- *
- */
-public interface PsicologoRepository extends CrudRepository<Psicologo, Long> {
-	Psicologo findBycrp(String crp);
 
-	Psicologo findById(long id);
+public interface PsicologoRepository extends CrudRepository<Psicologo, Long> {
+	Optional<Psicologo> findBycrp(String crp);
+	
 }
