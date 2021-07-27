@@ -48,7 +48,7 @@ public class RancoApplication {
 			for (Medicacao medicacao : repository.findAll()) {
 				log.info(medicacao.toString());
 			}
-			repository.deleteById(1l);
+//			repository.deleteById(1l);
 
 			for (Medicacao medicacao : repository.findAll()) {
 				log.info(medicacao.toString());
