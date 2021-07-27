@@ -27,7 +27,7 @@ public class PsicologoService {
 
 	public ResponseEntity<Psicologo> findById(Long id) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);
-		if (psicologo.isEmpty()) {
+		if (!psicologo.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(psicologo.get());
