@@ -27,9 +27,18 @@ public class MedicacaoService {
 
 	public ResponseEntity<Medicacao> findById(Long medicacao_id) {
 		Optional<Medicacao> medicacao = medicacoes.findById(medicacao_id);
-		if (!medicacao.isEmpty()) {
-			ResponseEntity.notFound().build();
+		if (medicacao.isEmpty()) {
+			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(medicacao.get());
 	}	
+	
+	public ResponseEntity<Medicacao> create(long paciente_id, Medicacao medicacao){
+		Optional<Paciente> paciente = pacientes.findById(paciente_id);
+		if(paciente.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		medicacao.setUsuario(paciente.get());
+		return ResponseEntity.ok(medicacoes.save(medicacao));
+	}
 }

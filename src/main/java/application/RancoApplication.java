@@ -74,8 +74,8 @@ public class RancoApplication {
 			repository.save(paciente.get());
 			log.info(repository.findByNome("Maria").toString());
 			
-			repository.deleteById(2L);
-			log.info("paciente deletado");
+//			repository.deleteById(2L);
+//			log.info("paciente deletado");
 
 		};
 
