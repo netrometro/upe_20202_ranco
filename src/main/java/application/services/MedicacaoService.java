@@ -61,6 +61,9 @@ public class MedicacaoService {
 	public ResponseEntity<Medicacao> delete(long id)
 	{
 		Optional<Medicacao> medicacao = medicacoes.findById(id);
+		if(medicacao.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 		medicacoes.delete(medicacao.get());
 		return ResponseEntity.ok(medicacao.get());
 	}
