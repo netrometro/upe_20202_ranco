@@ -14,7 +14,8 @@ import application.repositories.PacienteRepository;
 
 @Service
 public class MedicacaoService {
-
+	// Response entity deve ser tratada pelo controller
+	
 	@Autowired
 	private MedicacaoRepository medicacoes;
 	
@@ -33,13 +34,13 @@ public class MedicacaoService {
 		return ResponseEntity.ok(medicacao.get());
 	}	
 	
-	public ResponseEntity<Medicacao> create(long paciente_id, Medicacao medicacao){
+	public Medicacao create(long paciente_id, Medicacao medicacao){
 		Optional<Paciente> paciente = pacientes.findById(paciente_id);
 		if(!paciente.isPresent()) {
-			return ResponseEntity.notFound().build();
+			throw new RuntimeException(null, null);
 		}
-		medicacao.setUsuario(paciente.get());
-		return ResponseEntity.ok(medicacoes.save(medicacao));
+		medicacao.setUsuario(paciente.get());		
+		return medicacoes.save(medicacao); 
 	}
 	
 	public ResponseEntity<Medicacao> update(long id, Medicacao medicacaoParam){

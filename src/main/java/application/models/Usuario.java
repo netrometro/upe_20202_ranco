@@ -18,7 +18,7 @@ public abstract class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id_usuario;
+	private Long id;
 	private String nome;
 	private String email;
 	private String senha;

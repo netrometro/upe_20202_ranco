@@ -38,7 +38,7 @@ public class MedicacaoController {
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @RequestBody Medicacao medicao){
-		return medicacaoService.create(id, medicao);
+		return ResponseEntity.ok(medicacaoService.create(id, medicao));
 	}
 	
 	@PutMapping("/{id}")

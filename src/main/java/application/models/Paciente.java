@@ -26,8 +26,8 @@ public class Paciente extends Usuario {
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //	private List<Evento> eventos;
 	
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Medicacao> medicacoes;
+	@OneToMany(mappedBy = "usuario")
+	private List<Medicacao> medicacoes;
 	
 	//private ArrayList<Alarme> alarmes; 
 	

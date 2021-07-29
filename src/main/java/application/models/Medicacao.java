@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
@@ -14,11 +15,12 @@ public class Medicacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id_medicacao;		
+	private long id;		
 	private String nome;
 	private String posologia;
 	
-	@ManyToOne	
+	@ManyToOne
+	@JoinColumn(name = "id_usuario")
 	private Paciente usuario;
 
 	protected Medicacao() {}
