@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Data;
 
 @Data
@@ -21,6 +24,7 @@ public class Medicacao {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
+	@JsonBackReference
 	private Paciente usuario;
 
 	protected Medicacao() {}

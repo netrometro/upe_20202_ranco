@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import application.models.enums.TipoDeUsuario;
 import lombok.Data;
 import lombok.ToString;
@@ -26,7 +28,8 @@ public class Paciente extends Usuario {
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //	private List<Evento> eventos;
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+	@JsonManagedReference
 	private List<Medicacao> medicacoes;
 	
 	//private ArrayList<Alarme> alarmes; 
