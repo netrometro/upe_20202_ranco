@@ -28,26 +28,42 @@ public class MedicacaoController {
 	
 	@GetMapping
 	public ResponseEntity<List<Medicacao>> getMedicacoes(){
-		return medicacaoService.findAll();
+		return ResponseEntity.ok(medicacaoService.findAll());
 	}	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Medicacao> getMedicacao(@PathVariable Long id){
-		return medicacaoService.findById(id);
+		Medicacao medicacao = medicacaoService.findById(id);
+		if(medicacao == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medicacao);
 	}
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @RequestBody Medicacao medicao){
-		return ResponseEntity.ok(medicacaoService.create(id, medicao));
+		try {
+			return ResponseEntity.ok(medicacaoService.create(id, medicao));			
+		}catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Medicacao> updateMedicacao(@PathVariable long id, @RequestBody Medicacao medicacao){
-		return medicacaoService.update(id, medicacao);
+		Medicacao medicamento = medicacaoService.update(id, medicacao);
+		if(medicamento == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medicamento);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Medicacao> deleteMedicacao(@PathVariable long id){
-		return medicacaoService.delete(id);
+		Medicacao medicamento = medicacaoService.delete(id);
+		if(medicamento == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(medicamento);
 	}
 }

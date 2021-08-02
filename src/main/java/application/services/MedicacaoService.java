@@ -22,16 +22,16 @@ public class MedicacaoService {
 	@Autowired
 	private PacienteRepository pacientes;
 
-	public ResponseEntity<List<Medicacao>> findAll() {
-		return ResponseEntity.ok(medicacoes.findAll());
+	public List<Medicacao> findAll() {
+		return medicacoes.findAll();
 	}
 
-	public ResponseEntity<Medicacao> findById(Long medicacao_id) {
+	public Medicacao findById(Long medicacao_id) {
 		Optional<Medicacao> medicacao = medicacoes.findById(medicacao_id);
 		if (!medicacao.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
-		return ResponseEntity.ok(medicacao.get());
+		return medicacao.get();
 	}	
 	
 	public Medicacao create(long paciente_id, Medicacao medicacao){
@@ -43,10 +43,10 @@ public class MedicacaoService {
 		return medicacoes.save(medicacao); 
 	}
 	
-	public ResponseEntity<Medicacao> update(long id, Medicacao medicacaoParam){
+	public Medicacao update(long id, Medicacao medicacaoParam){
 		Optional<Medicacao> medicacao = medicacoes.findById(id);
 		if(!medicacao.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
 		if(!(medicacaoParam.getNome() ==null)) {
 			medicacao.get().setNome(medicacaoParam.getNome());
@@ -55,17 +55,17 @@ public class MedicacaoService {
 			medicacao.get().setPosologia(medicacaoParam.getPosologia());
 		}
 
-		return ResponseEntity.ok(medicacoes.save(medicacao.get()));
+		return medicacoes.save(medicacao.get());
 		
 	}
 	
-	public ResponseEntity<Medicacao> delete(long id)
+	public Medicacao delete(long id)
 	{
 		Optional<Medicacao> medicacao = medicacoes.findById(id);
 		if(!medicacao.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
 		medicacoes.delete(medicacao.get());
-		return ResponseEntity.ok(medicacao.get());
+		return medicacao.get();
 	}
 }
