@@ -21,27 +21,27 @@ public class PsicologoService {
 	@Autowired
 	private PacienteRepository pacientes;
 
-	public ResponseEntity<List<Psicologo>> findAll() {
-		return ResponseEntity.ok(psicologos.findAll());
+	public List<Psicologo> findAll() {
+		return psicologos.findAll();
 	}
 
-	public ResponseEntity<Psicologo> findById(Long id) {
+	public Psicologo findById(Long id) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);
 		if (!psicologo.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
-		return ResponseEntity.ok(psicologo.get());
+		return psicologo.get();
 	}
 
-	public ResponseEntity<Psicologo> create(Psicologo medicacao) {		
-		return ResponseEntity.ok(psicologos.save(medicacao));
+	public Psicologo create(Psicologo psicologo) {		
+		return psicologos.save(psicologo);
 	}
 
-	public ResponseEntity<Psicologo> update(long id, Psicologo psicologoP) {
+	public Psicologo update(long id, Psicologo psicologoP) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);		
         
         if(!psicologo.isPresent()) {
-            return ResponseEntity.notFound().build();
+            return null;
         }
         if(!(psicologoP.getNome() == null)) {
         	psicologo.get().setNome(psicologoP.getNome());
@@ -59,16 +59,16 @@ public class PsicologoService {
             psicologo.get().setCrp(psicologoP.getCrp());
         }
 
-		return ResponseEntity.ok(psicologos.save(psicologo.get()));
+		return psicologos.save(psicologo.get());
 
 	}
 
-	public ResponseEntity<Psicologo> delete(long id) {
+	public Psicologo delete(long id) {
 		Optional<Psicologo> psicologo = psicologos.findById(id);
 		if (!psicologo.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
 		psicologos.delete(psicologo.get());
-		return ResponseEntity.ok(psicologo.get());
+		return psicologo.get();
 	}
 }

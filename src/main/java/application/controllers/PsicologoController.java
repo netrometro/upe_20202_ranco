@@ -25,26 +25,54 @@ public class PsicologoController {
 
 	@GetMapping
 	public ResponseEntity<List<Psicologo>> getMedicacoes() {
-		return psicologoService.findAll();
+		return ResponseEntity.ok(psicologoService.findAll());
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Psicologo> getPsicologo(@PathVariable Long id) {
-		return psicologoService.findById(id);
+		Psicologo byId = psicologoService.findById(id);
+		if(byId == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(byId);
 	}
 
 	@PostMapping
 	public ResponseEntity<Psicologo> createPsicologo(@RequestBody Psicologo psicologo) {
-		return psicologoService.create(psicologo);
+		if(psicologo.getNome() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		if(psicologo.getSenha() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		if(psicologo.getEmail() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		if(psicologo.getTipoUsuario() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		if(psicologo.getCrp() == null) {
+			return ResponseEntity.badRequest().build();
+		}
+		
+		return ResponseEntity.ok(psicologoService.create(psicologo));
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Psicologo> updatePsicologo(@PathVariable long id, @RequestBody Psicologo psicologo) {
-		return psicologoService.update(id, psicologo);
+		Psicologo psicologo2 = psicologoService.update(id, psicologo);
+		if(psicologo2 == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(psicologo2);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Psicologo> deletePsicologo(@PathVariable long id) {
-		return psicologoService.delete(id);
+		Psicologo psicologo = psicologoService.delete(id);
+		if(psicologo == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(psicologo);
 	}
 }
