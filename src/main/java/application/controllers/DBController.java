@@ -50,8 +50,7 @@ public class DBController {
 			stmt.executeUpdate("DROP TABLE evento CASCADE");
 			stmt.executeUpdate("DROP TABLE medicacao CASCADE");
 			stmt.executeUpdate("DROP TABLE paciente CASCADE");
-			stmt.executeUpdate("DROP TABLE psicologo CASCADE");
-			stmt.executeUpdate("DROP TABLE paciente_medicacoes CASCADE");
+			stmt.executeUpdate("DROP TABLE psicologo CASCADE");			
 			
 			ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
 
