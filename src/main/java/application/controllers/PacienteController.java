@@ -36,26 +36,48 @@ public class PacienteController extends HttpServlet {
 	
 	@GetMapping
 	public ResponseEntity<List<Paciente>> getAll(){
-		return pacienteService.findAll();
+		return ResponseEntity.ok(pacienteService.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Paciente> getMedicacao(@PathVariable Long id){
-		return pacienteService.findById(id);
+	public ResponseEntity<Paciente> getPaciente(@PathVariable Long id){
+		Paciente paciente = pacienteService.findById(id);
+		if(paciente == null) {
+			return ResponseEntity.notFound().build();
+		}else {
+			return ResponseEntity.ok(paciente);
+			
+		}
+		
 	}
 	
 	@PostMapping
-	public ResponseEntity<Paciente> createMedicacao(@RequestBody Paciente paciente){
-		return pacienteService.create(paciente);
+	public ResponseEntity<Paciente> createPaciente(@RequestBody Paciente paciente){
+		try {
+			return ResponseEntity.ok(pacienteService.create(paciente));
+		}catch(Exception e)
+		{
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Paciente>updateMedicacao(@PathVariable long id, @RequestBody Paciente paciente){
-		return pacienteService.update(id, paciente);
+	public ResponseEntity<Paciente> updatePaciente(@PathVariable long id, @RequestBody Paciente paciente){
+		if(paciente == null) {
+			return ResponseEntity.notFound().build();
+		}else 
+		{
+			return ResponseEntity.ok(pacienteService.update(id, paciente));
+		}
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Paciente> deleteMedicacao(@PathVariable long id){
-		return pacienteService.delete(id);
+	public ResponseEntity<Paciente> deletePaciente(@PathVariable long id){
+		try {
+			return ResponseEntity.ok(pacienteService.delete(id));
+		}catch(Exception e)
+		{
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

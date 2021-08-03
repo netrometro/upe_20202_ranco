@@ -17,40 +17,40 @@ public class PacienteService {
 	@Autowired
 	private PacienteRepository pacientes;
 	
-	public ResponseEntity<List<Paciente>> findAll(){
-		return ResponseEntity.ok(pacientes.findAll());
+	public List<Paciente> findAll(){
+		return pacientes.findAll();
 	}
 	
-	public ResponseEntity<Paciente> findById(Long id_paciente){
+	public Paciente findById(Long id_paciente){
 		Optional<Paciente> paciente = pacientes.findById(id_paciente);
 		if(!paciente.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
 		else {
-			return ResponseEntity.ok(paciente.get());
+			return paciente.get();
 		}
 	}
 	
-	public ResponseEntity<Paciente> create(Paciente pacienteParam){
+	public Paciente create(Paciente pacienteParam){
 		Paciente paciente = pacientes.save(new Paciente(pacienteParam.getNome(), pacienteParam.getEmail(), pacienteParam.getSenha(), pacienteParam.getTipoUsuario()));
-		return ResponseEntity.ok(paciente);
+		return paciente;
 	}
 	
-	public ResponseEntity<Paciente> delete(Long id_paciente){
+	public Paciente delete(Long id_paciente){
 		
 		if(pacientes.existsById(id_paciente)) {
 			Optional<Paciente> paciente = pacientes.findById(id_paciente);
 			pacientes.delete(paciente.get());
-			return ResponseEntity.ok(paciente.get());
+			return paciente.get();
 		}
-		return ResponseEntity.notFound().build();
+		return null;
 	}
 	
-	public ResponseEntity<Paciente> update(Long id_paciente, Paciente pacienteParam){
+	public Paciente update(Long id_paciente, Paciente pacienteParam){
 		Optional<Paciente> paciente = pacientes.findById(id_paciente);
 		
 		if(!paciente.isPresent()) {
-			return ResponseEntity.notFound().build();
+			return null;
 		}
 		
 		if(!(pacienteParam.getNome() == null)) {
@@ -65,7 +65,7 @@ public class PacienteService {
 		if(!(pacienteParam.getTipoUsuario() == null)) {
 			paciente.get().setTipoUsuario(pacienteParam.getTipoUsuario());
 		}
-		return ResponseEntity.ok(pacientes.save(paciente.get()));
+		return pacientes.save(paciente.get());
 		
 	}
 	
