@@ -25,8 +25,8 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Paciente extends Usuario {
 	
-//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Evento> eventos;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+	private List<Evento> eventos;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 	@JsonManagedReference
