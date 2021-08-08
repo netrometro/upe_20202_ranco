@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 
 import application.models.Paciente;
 import application.models.enums.TipoDeUsuario;
-import application.repositories.PacienteRepository;
+import application.repositories.IPacienteDAO;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
-public class PacienteService {
+@Slf4j
+public class PacienteCRUDService {
 	
 	@Autowired
-	private PacienteRepository pacientes;
+	private IPacienteDAO pacientes;
 	
 	public List<Paciente> findAll(){
 		return pacientes.findAll();

@@ -11,7 +11,7 @@ import application.models.Paciente;
  * camada de acesso a dados da entidade paciente
  * @author Dahise
  */
-public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+public interface IPacienteDAO extends JpaRepository<Paciente, Long> {
 
 	List<Paciente> findByNome(String nome);
 }

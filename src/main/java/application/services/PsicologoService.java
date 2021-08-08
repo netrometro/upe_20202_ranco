@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import application.models.Psicologo;
 import application.models.Paciente;
 import application.repositories.MedicacaoRepository;
-import application.repositories.PacienteRepository;
+import application.repositories.IPacienteDAO;
 import application.repositories.PsicologoRepository;
 
 @Service
@@ -19,7 +19,7 @@ public class PsicologoService {
 	private PsicologoRepository psicologos;
 
 	@Autowired
-	private PacienteRepository pacientes;
+	private IPacienteDAO pacientes;
 
 	public List<Psicologo> findAll() {
 		return psicologos.findAll();

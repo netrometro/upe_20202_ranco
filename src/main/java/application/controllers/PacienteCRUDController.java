@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.models.Paciente;
-import application.services.PacienteService;
+import application.services.PacienteCRUDService;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Dahis
@@ -28,10 +29,11 @@ import application.services.PacienteService;
 
 @RequestMapping("/api/pacientes")
 @RestController
-public class PacienteController extends HttpServlet {
+@Slf4j
+public class PacienteCRUDController extends HttpServlet {
 
 	@Autowired
-	private PacienteService pacienteService;
+	private PacienteCRUDService pacienteService;
 	
 	
 	@GetMapping

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import application.models.Evento;
 import application.models.Paciente;
 import application.repositories.EventoRepository;
-import application.repositories.PacienteRepository;
+import application.repositories.IPacienteDAO;
 
 
 @Service
@@ -20,7 +20,7 @@ public class EventoService {
 	private EventoRepository eventos;
 	
 	@Autowired
-	private PacienteRepository pacientes;
+	private IPacienteDAO pacientes;
 
 	public ResponseEntity<List<Evento>> findAll() {
 		return ResponseEntity.ok(eventos.findAll());
