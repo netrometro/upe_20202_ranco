@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import application.dao.EventoRepository;
+
 import application.models.Evento;
 import application.models.Paciente;
-import application.repositories.EventoRepository;
-import application.repositories.IPacienteDAO;
+
+import application.dao.IPacienteDAO;
+
 
 
 @Service

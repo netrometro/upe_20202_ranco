@@ -7,17 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import application.dao.IMedicacaoDao;
+import application.dao.IPacienteDAO;
 import application.models.Medicacao;
 import application.models.Paciente;
-import application.repositories.MedicacaoRepository;
-import application.repositories.IPacienteDAO;
 
 @Service
 public class MedicacaoService {
 	// Response entity deve ser tratada pelo controller
 	
 	@Autowired
-	private MedicacaoRepository medicacoes;
+	private IMedicacaoDao medicacoes;
 	
 	@Autowired
 	private IPacienteDAO pacientes;

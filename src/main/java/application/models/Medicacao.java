@@ -10,15 +10,13 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import application.models.abstracts.DbEntity;
 import lombok.Data;
 
 @Data
 @Entity
-public class Medicacao {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;		
+public class Medicacao extends DbEntity{
+		
 	private String nome;
 	private String posologia;
 	

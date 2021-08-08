@@ -8,15 +8,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import application.models.Psicologo;
+import application.dao.IMedicacaoDao;
+import application.dao.IPsicologoDao;
+import application.dao.IPacienteDAO;
 import application.models.Paciente;
-import application.repositories.MedicacaoRepository;
-import application.repositories.IPacienteDAO;
-import application.repositories.PsicologoRepository;
+
 
 @Service
 public class PsicologoService {
 	@Autowired
-	private PsicologoRepository psicologos;
+	private IPsicologoDao psicologos;
 
 	@Autowired
 	private IPacienteDAO pacientes;

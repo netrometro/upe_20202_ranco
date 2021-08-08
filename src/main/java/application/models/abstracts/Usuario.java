@@ -1,24 +1,14 @@
-package application.models;
+package application.models.abstracts;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 import application.models.enums.TipoDeUsuario;
 import lombok.Data;
-import lombok.ToString;
 
 @Data
 @MappedSuperclass
-public abstract class Usuario {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public abstract class Usuario extends DbEntity{
+	
 	private String nome;
 	private String email;
 	private String senha;

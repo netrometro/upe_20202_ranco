@@ -1,16 +1,17 @@
 /**
  * 
  */
-package application.repositories;
+package application.dao;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import application.models.Psicologo;
 
-
-public interface PsicologoRepository extends JpaRepository<Psicologo, Long> {
+@Repository
+public interface IPsicologoDao extends JpaRepository<Psicologo, Long> {
 	Optional<Psicologo> findBycrp(String crp);
 	
 }

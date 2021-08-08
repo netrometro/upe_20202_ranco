@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import application.dao.IPacienteDAO;
 import application.models.Paciente;
 import application.models.enums.TipoDeUsuario;
-import application.repositories.IPacienteDAO;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
