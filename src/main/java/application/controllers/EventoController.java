@@ -29,27 +29,43 @@ public class EventoController {
 	
 	@GetMapping
 	public ResponseEntity<List<Evento>> getEventos(){
-		return eventoService.findAll();
+		return ResponseEntity.ok(eventoService.findAll());
 	}	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Evento> getEvento(@PathVariable Long id){
-		return eventoService.findById(id);
+		Evento evento = eventoService.findById(id);
+		if (evento == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(evento);
 	}
 	
 	@PostMapping("/{id}")
 	public ResponseEntity<Evento> createEvento(@PathVariable Long id, @RequestBody Evento evento){
-		return eventoService.create(id, evento);
+		try {
+			return ResponseEntity.ok(eventoService.create(id, evento));			
+		}catch (Exception e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<Evento> updateEvento(@PathVariable long id, @RequestBody Evento evento){
-		return eventoService.update(id, evento);
+		Evento eventos = eventoService.update(id, evento);
+		if(eventos == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(eventos);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Evento> deleteEvento(@PathVariable long id){
-		return eventoService.delete(id);
+		Evento eventos = eventoService.delete(id);
+		if(eventos == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(eventos);
 	}
 	
 
