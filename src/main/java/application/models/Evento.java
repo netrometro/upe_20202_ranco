@@ -8,14 +8,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import application.models.abstracts.DbEntity;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
 @Entity
-public class Evento {
+public class Evento extends DbEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

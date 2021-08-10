@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import application.dao.EventoRepository;
+import application.dao.IEventoDao;
 import application.models.Evento;
 import application.services.EventoService;
 import io.micrometer.core.ipc.http.HttpSender.Response;

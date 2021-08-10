@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import application.dao.EventoRepository;
+import application.dao.IEventoDao;
 import application.dao.PacienteRepository;
 import application.models.Evento;
 import application.models.Paciente;
@@ -18,7 +18,7 @@ import application.models.Paciente;
 public class EventoService {
 	
 	@Autowired
-	private EventoRepository eventos;
+	private IEventoDao eventos;
 	
 	@Autowired
 	private PacienteRepository pacientes;
