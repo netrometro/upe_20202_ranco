@@ -16,16 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import application.dao.IEventoDao;
 import application.models.Evento;
-import application.services.EventoService;
+import application.services.EventoCRUDService;
 import io.micrometer.core.ipc.http.HttpSender.Response;
+import lombok.extern.slf4j.Slf4j;
 
 
 @RequestMapping("/api/eventos")
 @RestController
-public class EventoController {
+@Slf4j
+public class EventoCRUDController {
 	
 	@Autowired
-	EventoService eventoService;
+	EventoCRUDService eventoService;
 	
 	@GetMapping
 	public ResponseEntity<List<Evento>> getEventos(){

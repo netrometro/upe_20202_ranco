@@ -7,15 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import application.controllers.EventoCRUDController;
 import application.dao.IEventoDao;
 import application.dao.PacienteRepository;
 import application.models.Evento;
 import application.models.Paciente;
-
+import lombok.extern.slf4j.Slf4j;
 
 
 @Service
-public class EventoService {
+@Slf4j
+public class EventoCRUDService {
 	
 	@Autowired
 	private IEventoDao eventos;
