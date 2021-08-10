@@ -1,27 +1,20 @@
 package application.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import application.models.abstracts.DbEntity;
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
 @Entity
 public class Evento extends DbEntity {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id_evento;
+	
 	private Date data;
 	private String local;
 	private String pessoaEnvolvida;
