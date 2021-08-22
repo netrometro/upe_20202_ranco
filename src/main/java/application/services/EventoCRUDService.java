@@ -10,8 +10,6 @@ import application.models.Evento;
 import application.models.Paciente;
 import lombok.extern.slf4j.Slf4j;
 
-
-
 @Service
 @Slf4j
 public class EventoCRUDService {
@@ -62,8 +60,8 @@ public class EventoCRUDService {
     if (!(eventoParam.getDescricao() == null)) {
       evento.get().setDescricao(eventoParam.getDescricao());
     }
-    if (!(eventoParam.getCategoria() == 0)) {
-      evento.get().setCategoria(eventoParam.getCategoria());
+    if(!(eventoParam.getCategoria() == null)) {
+		evento.get().setCategoria(eventoParam.getCategoria());
     }
     if (!(eventoParam.getPontoMelhoria() == null)) {
       evento.get().setPontoMelhoria(eventoParam.getPontoMelhoria());
@@ -74,8 +72,8 @@ public class EventoCRUDService {
     if (!(eventoParam.isStatus() == true)) {
       evento.get().setStatus(eventoParam.isStatus());
     }
-    if (!(eventoParam.getSentimentos() == null)) {
-      evento.get().setSentimentos(eventoParam.getSentimentos());
+    if (!(eventoParam.getMotivo() == null)) {
+        evento.get().setMotivo(eventoParam.getMotivo());
     }
 
     return eventos.save(evento.get());
