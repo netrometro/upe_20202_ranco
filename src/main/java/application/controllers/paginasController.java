@@ -28,11 +28,6 @@ public class paginasController {
 
 	@Autowired
 	private PacienteCRUDService pacienteService;
-	@Autowired
-	private EventoCRUDService eventoService;
-	@Autowired
-	private MedicacaoService medicacaoService;
-	
 	@GetMapping("/dashboard/{id}")
 	public ResponseEntity<dashboardDTO> getPaciente(@PathVariable Long id){
 		Paciente paciente = pacienteService.findById(id);
@@ -47,16 +42,19 @@ public class paginasController {
 		}
 	}
 	
-	@GetMapping("/eventos")
-	public ResponseEntity<listaEventosDTO> getEventos(){
-		List<Evento> eventos = eventoService.findAll();
+	@GetMapping("/eventos/{id}")
+	public ResponseEntity<listaEventosDTO> getEventos(@PathVariable Long id){
+		Paciente paciente = pacienteService.findById(id);
+		List<Evento> eventos= paciente.getEventos();
 		listaEventosDTO eventosDTO = new listaEventosDTO(eventos);
 		return ResponseEntity.ok(eventosDTO);
 	}
 	
-	@GetMapping("/medicacoes")
-	public ResponseEntity<listaMedicacoesDTO> getMedicacoes(){
-		listaMedicacoesDTO medicacoesDTO = new listaMedicacoesDTO(medicacaoService.findAll());
+	@GetMapping("/medicacoes/{id}")
+	public ResponseEntity<listaMedicacoesDTO> getMedicacoes(@PathVariable Long id){
+		Paciente paciente = pacienteService.findById(id);
+		List<Medicacao> medicacoes= paciente.getMedicacoes();
+		listaMedicacoesDTO medicacoesDTO = new listaMedicacoesDTO(medicacoes);
 		return ResponseEntity.ok(medicacoesDTO);
 	}
 	
