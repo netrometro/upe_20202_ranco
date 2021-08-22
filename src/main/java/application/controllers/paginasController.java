@@ -24,6 +24,7 @@ public class paginasController {
 	@GetMapping("/dashboard/{id}")
 	public ResponseEntity<dashboardDTO> getPaciente(@PathVariable Long id){
 		Paciente paciente = pacienteService.findById(id);
+		
 		dashboardDTO board = new dashboardDTO(paciente);
 		if(paciente == null) {
 			
