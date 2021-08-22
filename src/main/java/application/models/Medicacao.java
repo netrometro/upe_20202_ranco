@@ -1,5 +1,7 @@
 package application.models;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,7 +16,10 @@ import lombok.Data;
 public class Medicacao extends DbEntity{
 		
 	private String nome;
-	private String posologia;
+	private String descricao;
+	private String observacao;
+	private int intervalo;
+	private LocalDateTime ultimaDosagem;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
@@ -26,13 +31,13 @@ public class Medicacao extends DbEntity{
 	public Medicacao(String nome, String posologia) {
 		super();
 		this.nome = nome;
-		this.posologia = posologia;
+		this.descricao = posologia;
 	}
 
 	public Medicacao(String nome, String posologia, Paciente usuario) {
 		super();
 		this.nome = nome;
-		this.posologia = posologia;
+		this.descricao = posologia;
 		this.usuario = usuario;
 	}
 

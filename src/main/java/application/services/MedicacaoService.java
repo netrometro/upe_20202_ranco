@@ -55,9 +55,19 @@ public class MedicacaoService {
 		if(!(medicacaoParam.getNome() ==null)) {
 			medicacao.get().setNome(medicacaoParam.getNome());
 		}
-		if(!(medicacaoParam.getPosologia() == null)) {
-			medicacao.get().setPosologia(medicacaoParam.getPosologia());
+		if(!(medicacaoParam.getDescricao() == null)) {
+			medicacao.get().setDescricao(medicacaoParam.getDescricao());
 		}
+		if(!(medicacaoParam.getDescricao() == null)) {
+			medicacao.get().setObservacao(medicacaoParam.getObservacao());
+		}
+		if(!(medicacaoParam.getIntervalo() == 0)) {
+			medicacao.get().setIntervalo(medicacaoParam.getIntervalo());
+		}
+		if(!(medicacaoParam.getUltimaDosagem() == null)) {
+			medicacao.get().setUltimaDosagem(medicacaoParam.getUltimaDosagem());
+		}
+		
 		medicacao.get().setDataModificacao(LocalDateTime.now());
 		return medicacoes.save(medicacao.get());
 		
