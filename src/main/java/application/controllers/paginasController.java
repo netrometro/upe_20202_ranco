@@ -1,5 +1,6 @@
 package application.controllers;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class paginasController {
 	public ResponseEntity<listaEventosDTO> getEventos(@PathVariable Long id){
 		Paciente paciente = pacienteService.findById(id);
 		List<Evento> eventos= paciente.getEventos();
+		Collections.reverse(eventos);
 		listaEventosDTO eventosDTO = new listaEventosDTO(eventos);
 		return ResponseEntity.ok(eventosDTO);
 	}
@@ -54,6 +56,7 @@ public class paginasController {
 	public ResponseEntity<listaMedicacoesDTO> getMedicacoes(@PathVariable Long id){
 		Paciente paciente = pacienteService.findById(id);
 		List<Medicacao> medicacoes= paciente.getMedicacoes();
+		Collections.reverse(medicacoes);
 		listaMedicacoesDTO medicacoesDTO = new listaMedicacoesDTO(medicacoes);
 		return ResponseEntity.ok(medicacoesDTO);
 	}
