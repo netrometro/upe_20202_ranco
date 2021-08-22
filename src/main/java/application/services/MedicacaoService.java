@@ -1,5 +1,8 @@
 package application.services;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +42,7 @@ public class MedicacaoService {
 		if(!paciente.isPresent()) {
 			throw new RuntimeException(null, null);
 		}
+		medicacao.setDataInclusao(LocalDateTime.now());
 		medicacao.setUsuario(paciente.get());		
 		return medicacoes.save(medicacao); 
 	}
@@ -54,7 +58,7 @@ public class MedicacaoService {
 		if(!(medicacaoParam.getPosologia() == null)) {
 			medicacao.get().setPosologia(medicacaoParam.getPosologia());
 		}
-
+		medicacao.get().setDataModificacao(LocalDateTime.now());
 		return medicacoes.save(medicacao.get());
 		
 	}
