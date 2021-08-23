@@ -1,10 +1,13 @@
 package application.models;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -27,6 +30,9 @@ public class Evento extends DbEntity {
 	private boolean status;
 	private Categoria categoria;
 	private Motivo motivo;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "evento")
+	private List<Sentimento> sentimentos;
 	
 
 	@ManyToOne
