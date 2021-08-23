@@ -16,8 +16,6 @@ import application.dto.listaMedicacoesDTO;
 import application.models.Evento;
 import application.models.Medicacao;
 import application.models.Paciente;
-import application.services.EventoCRUDService;
-import application.services.MedicacaoService;
 import application.services.PacienteCRUDService;
 import lombok.extern.slf4j.Slf4j;
 
