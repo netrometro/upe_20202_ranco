@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import application.dto.dadosGraficoDTO;
 import application.dto.dashboardDTO;
 import application.dto.listaEventosDTO;
 import application.dto.listaMedicacoesDTO;
@@ -57,6 +58,14 @@ public class paginasController {
 		Collections.reverse(medicacoes);
 		listaMedicacoesDTO medicacoesDTO = new listaMedicacoesDTO(medicacoes);
 		return ResponseEntity.ok(medicacoesDTO);
+	}
+	
+	@GetMapping("/dados/{id}")
+	public ResponseEntity<dadosGraficoDTO> getDados(@PathVariable Long id){
+		Paciente paciente = pacienteService.findById(id);
+		List<Evento> eventos= paciente.getEventos();
+		dadosGraficoDTO dadosDTO = new dadosGraficoDTO(eventos);
+		return ResponseEntity.ok(dadosDTO);
 	}
 	
 	

@@ -28,6 +28,10 @@ public class Sentimento extends DbEntity{
 	@JsonBackReference
 	private Evento evento;
 	
+	public Sentimento() {
+		
+	}
+	
 	public Sentimento(Date data, String descarrego, TipoDeSentimento tipoSentimento, GrauSentimento grauSentimento, Evento evento ) {
 		super();
 		this.data = data;

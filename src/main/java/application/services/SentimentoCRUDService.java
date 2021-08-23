@@ -25,7 +25,7 @@ public class SentimentoCRUDService {
 	 public List<Sentimento> findAll() {
 	   return sentimentos.findAll();
 	  }
-	
+
 	public Sentimento findById(Long id_sentimento) {
 		    Optional<Sentimento> sentimento = sentimentos.findById(id_sentimento);
 		    if (!sentimento.isPresent()) {
