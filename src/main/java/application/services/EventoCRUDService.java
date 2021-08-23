@@ -49,6 +49,9 @@ public class EventoCRUDService {
       return null;
     }
     
+    if (!(eventoParam.getTitulo() == null)) {
+        evento.get().setTitulo(eventoParam.getTitulo());
+      }
     if (!(eventoParam.getData() == null)) {
       evento.get().setData(eventoParam.getData());
     }

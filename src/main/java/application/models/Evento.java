@@ -20,6 +20,7 @@ import lombok.Data;
 @Entity
 public class Evento extends DbEntity {
 	
+	private String titulo;
 	private Date data;
 	private String local;
 	private String pessoaEnvolvida;
@@ -44,9 +45,10 @@ public class Evento extends DbEntity {
 	public Evento() {
 	}
 
-	public Evento(Date data, String local, String pessoaEnvolvida,String descricao, Categoria categoria, 
+	public Evento(String titulo, Date data, String local, String pessoaEnvolvida,String descricao, Categoria categoria, 
 			String pontoMelhoria, String feedback, boolean status, Motivo motivo, Paciente usuario) {
 		super();
+		this.titulo = titulo;
 		this.data = data;
 		this.local = local;
 		this.pessoaEnvolvida = pessoaEnvolvida;
