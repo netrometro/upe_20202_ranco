@@ -20,6 +20,8 @@ public class Sentimento extends DbEntity{
 	
 	private Date data;
 	private String descarrego;
+	private TipoDeSentimento tipoSentimento;
+	private GrauSentimento grauSentimento;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_evento")
@@ -30,8 +32,11 @@ public class Sentimento extends DbEntity{
 		super();
 		this.data = data;
 		this.descarrego = descarrego;
+		this.tipoSentimento = tipoSentimento;
+		this.grauSentimento = grauSentimento;
 		this.evento = evento;
 	}
+
 	
 
 }

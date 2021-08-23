@@ -9,5 +9,6 @@ import application.models.Sentimento;
 
 @Repository
 public interface ISentimentoDao extends JpaRepository<Sentimento, Long>{
+	Optional<Sentimento> findById(String id_sentimento);
 
 }
