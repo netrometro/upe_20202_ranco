@@ -1,5 +1,6 @@
 package application.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +35,8 @@ public class PsicologoCRUDService {
 		return psicologo.get();
 	}
 
-	public Psicologo create(Psicologo psicologo) {		
+	public Psicologo create(Psicologo psicologo) {
+		psicologo.setDataInclusao(LocalDateTime.now());
 		return psicologos.save(psicologo);
 	}
 
@@ -59,7 +61,7 @@ public class PsicologoCRUDService {
         if(!(psicologoP.getCrp() == null)) {
             psicologo.get().setCrp(psicologoP.getCrp());
         }
-
+        psicologo.get().setDataModificacao(LocalDateTime.now());
 		return psicologos.save(psicologo.get());
 
 	}
