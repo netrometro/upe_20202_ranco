@@ -58,7 +58,7 @@ public class MedicacaoService {
 		if(!(medicacaoParam.getDescricao() == null)) {
 			medicacao.get().setDescricao(medicacaoParam.getDescricao());
 		}
-		if(!(medicacaoParam.getDescricao() == null)) {
+		if(!(medicacaoParam.getObservacao() == null)) {
 			medicacao.get().setObservacao(medicacaoParam.getObservacao());
 		}
 		if(!(medicacaoParam.getIntervalo() == 0)) {
