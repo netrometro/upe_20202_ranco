@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import application.dao.IMedicacaoDao;
 import application.models.Medicacao;
-import application.services.MedicacaoService;
+import application.services.MedicacaoCRUDService;
 import io.micrometer.core.ipc.http.HttpSender.Response;
 
 @RequestMapping("/api/medicacoes")
 @RestController
-public class MedicacaoController {
+public class MedicacaoCRUDController {
 
 	@Autowired
-	MedicacaoService medicacaoService;
+	MedicacaoCRUDService medicacaoService;
 	
 	@GetMapping
 	public ResponseEntity<List<Medicacao>> getMedicacoes(){

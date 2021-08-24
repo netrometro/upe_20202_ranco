@@ -15,7 +15,7 @@ import application.models.Paciente;
 
 
 @Service
-public class PsicologoService {
+public class PsicologoCRUDService {
 	@Autowired
 	private IPsicologoDao psicologos;
 
