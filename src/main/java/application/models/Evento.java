@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -20,16 +21,21 @@ import lombok.Data;
 @Entity
 public class Evento extends DbEntity {
 	
+	@NotBlank (message = "Titulo é um campo obrigatório")
 	private String titulo;
 	private Date data;
 	private String local;
 	private String pessoaEnvolvida;
-	private String expectativa;
+	private String expectativa;	
+	@NotBlank (message = "Descrição é um campo obrigatório")
 	private String descricao;
 	private String pontoMelhoria;
 	private String feedback;
 	private boolean status;
+	
+	@NotBlank (message = "Categoria é um campo obrigatório")
 	private Categoria categoria;
+	@NotBlank (message = "Movico é um campo obrigatório")
 	private Motivo motivo;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "evento")

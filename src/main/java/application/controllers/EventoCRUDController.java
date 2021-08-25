@@ -2,9 +2,10 @@ package application.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,7 +45,7 @@ public class EventoCRUDController {
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<Evento> createEvento(@PathVariable Long id, @RequestBody Evento evento){
+	public ResponseEntity<Evento> createEvento(@PathVariable Long id, @Valid @RequestBody Evento evento){
 		try {
 			return ResponseEntity.ok(eventoService.create(id, evento));			
 		}catch (Exception e) {
