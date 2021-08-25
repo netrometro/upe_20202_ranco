@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -19,6 +20,7 @@ import lombok.Data;
 public class Sentimento extends DbEntity{
 	
 	private Date data;
+	@NotBlank (message = "Descarrego é um campo obrigatório")
 	private String descarrego;
 	private TipoDeSentimento tipoSentimento;
 	private GrauSentimento grauSentimento;

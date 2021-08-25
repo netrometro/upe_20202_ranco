@@ -32,10 +32,7 @@ public class Evento extends DbEntity {
 	private String pontoMelhoria;
 	private String feedback;
 	private boolean status;
-	
-	@NotBlank (message = "Categoria é um campo obrigatório")
 	private Categoria categoria;
-	@NotBlank (message = "Movico é um campo obrigatório")
 	private Motivo motivo;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "evento")

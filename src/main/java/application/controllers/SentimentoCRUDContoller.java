@@ -2,6 +2,8 @@ package application.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,7 +42,7 @@ public class SentimentoCRUDContoller {
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<Sentimento> createSentimento(@PathVariable Long id, @RequestBody Sentimento sentimento){
+	public ResponseEntity<Sentimento> createSentimento(@PathVariable Long id, @Valid @RequestBody Sentimento sentimento){
 		try {
 			return ResponseEntity.ok(sentimentoService.create(id, sentimento));			
 		}catch (Exception e) {
