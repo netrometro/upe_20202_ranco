@@ -2,6 +2,8 @@ package application.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +40,7 @@ public class PsicologoCRUDController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Psicologo> createPsicologo(@RequestBody Psicologo psicologo) {
+	public ResponseEntity<Psicologo> createPsicologo(@Valid @RequestBody Psicologo psicologo) {
 		if(psicologo.getNome() == null) {
 			return ResponseEntity.badRequest().build();
 		}
