@@ -45,12 +45,13 @@ public class Evento extends DbEntity {
 	public Evento() {
 	}
 
-	public Evento(String titulo, Date data, String local, String pessoaEnvolvida,String descricao, Categoria categoria, 
+	public Evento(String titulo, Date data, String local, String expectativa, String pessoaEnvolvida,String descricao, Categoria categoria, 
 			String pontoMelhoria, String feedback, boolean status, Motivo motivo, Paciente usuario) {
 		super();
 		this.titulo = titulo;
 		this.data = data;
 		this.local = local;
+		this.expectativa = expectativa;
 		this.pessoaEnvolvida = pessoaEnvolvida;
 		this.descricao = descricao;
 		this.categoria = categoria;

@@ -73,11 +73,14 @@ public class EventoCRUDService {
     if (!(eventoParam.getFeedback() == null)) {
       evento.get().setFeedback(eventoParam.getFeedback());
     }
-    if (!(eventoParam.isStatus() == true)) {
+    if (!(eventoParam.isStatus() == false)) {
       evento.get().setStatus(eventoParam.isStatus());
     }
     if (!(eventoParam.getMotivo() == null)) {
         evento.get().setMotivo(eventoParam.getMotivo());
+    }
+    if (!(eventoParam.getExpectativa() == null)) {
+        evento.get().setExpectativa(eventoParam.getExpectativa());
     }
 
     return eventos.save(evento.get());
