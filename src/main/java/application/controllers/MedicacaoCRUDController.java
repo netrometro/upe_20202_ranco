@@ -2,6 +2,8 @@ package application.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -41,7 +43,7 @@ public class MedicacaoCRUDController {
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @RequestBody Medicacao medicao){
+	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @Valid @RequestBody Medicacao medicao){
 		try {
 			return ResponseEntity.ok(medicacaoService.create(id, medicao));			
 		}catch (Exception e) {
