@@ -39,6 +39,7 @@ public class EventoCRUDService {
     if (!paciente.isPresent()) {
       return null;
     }
+    
     evento.setDataInclusao(LocalDateTime.now());
     evento.setUsuario(paciente.get());
     return eventos.save(evento);
