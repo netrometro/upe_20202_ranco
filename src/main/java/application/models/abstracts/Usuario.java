@@ -1,6 +1,7 @@
 package application.models.abstracts;
 
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
 
 import application.models.enums.TipoDeUsuario;
 import lombok.Data;
@@ -9,9 +10,15 @@ import lombok.Data;
 @MappedSuperclass
 public abstract class Usuario extends DbEntity{
 	
+	@NotBlank(message = "Name is mandatory")
 	private String nome;
+	
+	@NotBlank(message = "Email is mandatory")
 	private String email;
+	
+	@NotBlank(message = "Senha is mandatory")
 	private String senha;
+	
 	private TipoDeUsuario tipoUsuario;
 
 	protected Usuario() {}
