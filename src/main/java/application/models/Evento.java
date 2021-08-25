@@ -16,9 +16,11 @@ import application.models.abstracts.DbEntity;
 import application.models.enums.Categoria;
 import application.models.enums.Motivo;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
+@ToString(exclude = {"usuario"})
 public class Evento extends DbEntity {
 	
 	@NotBlank (message = "Titulo é um campo obrigatório")
@@ -38,7 +40,7 @@ public class Evento extends DbEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "evento")
 	private List<Sentimento> sentimentos;
 	
-
+	
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	@JsonBackReference
@@ -47,6 +49,7 @@ public class Evento extends DbEntity {
 
 	public Evento() {
 	}
+
 
 	public Evento(String titulo, Date data, String local, String expectativa, String pessoaEnvolvida,String descricao, Categoria categoria, 
 			String pontoMelhoria, String feedback, boolean status, Motivo motivo, Paciente usuario) {
