@@ -2,6 +2,8 @@ package application.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import application.dao.IMedicacaoDao;
 import application.models.Medicacao;
-import application.services.MedicacaoService;
+import application.services.MedicacaoCRUDService;
 import io.micrometer.core.ipc.http.HttpSender.Response;
 
 @RequestMapping("/api/medicacoes")
 @RestController
-public class MedicacaoController {
+public class MedicacaoCRUDController {
 
 	@Autowired
-	MedicacaoService medicacaoService;
+	MedicacaoCRUDService medicacaoService;
 	
 	@GetMapping
 	public ResponseEntity<List<Medicacao>> getMedicacoes(){
@@ -41,7 +43,7 @@ public class MedicacaoController {
 	}
 	
 	@PostMapping("/{id}")
-	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @RequestBody Medicacao medicao){
+	public ResponseEntity<Medicacao> createMedicacao(@PathVariable Long id, @Valid @RequestBody Medicacao medicao){
 		try {
 			return ResponseEntity.ok(medicacaoService.create(id, medicao));			
 		}catch (Exception e) {

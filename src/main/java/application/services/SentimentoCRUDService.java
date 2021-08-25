@@ -1,5 +1,6 @@
 package application.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,8 @@ public class SentimentoCRUDService {
 	    if (!evento.isPresent()) {
 	      return null;
 	    }
+	    
+	    sentimento.setDataInclusao(LocalDateTime.now());
 	    sentimento.setEvento(evento.get());
 	    return sentimentos.save(sentimento);
 	  }
@@ -65,7 +68,8 @@ public class SentimentoCRUDService {
 	    if (!(sentimentoParam.getEvento() == null)) {
 		      sentimento.get().setEvento(sentimentoParam.getEvento());
 		}
-
+	    
+	    sentimento.get().setDataModificacao(LocalDateTime.now());
 	    return sentimentos.save(sentimento.get());
 
 	  }

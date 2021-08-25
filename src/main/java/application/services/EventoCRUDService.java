@@ -1,5 +1,6 @@
 package application.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,8 @@ public class EventoCRUDService {
     if (!paciente.isPresent()) {
       return null;
     }
+    
+    evento.setDataInclusao(LocalDateTime.now());
     evento.setUsuario(paciente.get());
     System.out.println("create evento service=" + evento + "paciente = " + paciente);
     return eventos.save(evento);
@@ -74,13 +77,17 @@ public class EventoCRUDService {
     if (!(eventoParam.getFeedback() == null)) {
       evento.get().setFeedback(eventoParam.getFeedback());
     }
-    if (!(eventoParam.isStatus() == true)) {
+    if (!(eventoParam.isStatus() == false)) {
       evento.get().setStatus(eventoParam.isStatus());
     }
     if (!(eventoParam.getMotivo() == null)) {
         evento.get().setMotivo(eventoParam.getMotivo());
     }
-
+    if (!(eventoParam.getExpectativa() == null)) {
+        evento.get().setExpectativa(eventoParam.getExpectativa());
+    }
+    
+    evento.get().setDataModificacao(LocalDateTime.now());
     return eventos.save(evento.get());
 
   }

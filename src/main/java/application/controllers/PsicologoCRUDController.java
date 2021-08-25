@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.models.Psicologo;
-import application.services.PsicologoService;
+import application.services.PsicologoCRUDService;
 
 @RequestMapping("/api/psicologos")
 @RestController
 
-public class PsicologoController {
+public class PsicologoCRUDController {
 	@Autowired
-	PsicologoService psicologoService;
+	PsicologoCRUDService psicologoService;
 
 	@GetMapping
 	public ResponseEntity<List<Psicologo>> getMedicacoes() {

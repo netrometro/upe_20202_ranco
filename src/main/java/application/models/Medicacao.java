@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -14,10 +16,12 @@ import lombok.Data;
 @Data
 @Entity
 public class Medicacao extends DbEntity{
-		
+	
+	@NotBlank(message = "O nome do medicamento é obrigatório")
 	private String nome;
 	private String descricao;
 	private String observacao;
+	@Min(1)
 	private int intervalo;
 	private LocalDateTime ultimaDosagem;
 	
