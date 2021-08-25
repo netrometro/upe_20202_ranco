@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import application.models.abstracts.Usuario;
 import application.models.enums.TipoDeUsuario;
@@ -16,6 +17,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Psicologo extends Usuario {
 
+	@NotBlank(message = "O CRP é obrigatório")
 	private String crp;
 
 	protected Psicologo() {
