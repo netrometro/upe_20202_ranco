@@ -39,6 +39,7 @@ public class EventoCRUDService {
       return null;
     }
     evento.setUsuario(paciente.get());
+    System.out.println("create evento service=" + evento + "paciente = " + paciente);
     return eventos.save(evento);
   }
 

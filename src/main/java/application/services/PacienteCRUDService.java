@@ -1,5 +1,6 @@
 package application.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public class PacienteCRUDService {
 	
 	public Paciente create(Paciente pacienteParam){
 		Paciente paciente = pacientes.save(new Paciente(pacienteParam.getNome(), pacienteParam.getEmail(), pacienteParam.getSenha(), pacienteParam.getTipoUsuario()));
+		paciente.setDataInclusao(LocalDateTime.now());
 		return paciente;
 	}
 	
@@ -67,6 +69,7 @@ public class PacienteCRUDService {
 		if(!(pacienteParam.getTipoUsuario() == null)) {
 			paciente.get().setTipoUsuario(pacienteParam.getTipoUsuario());
 		}
+		paciente.get().setDataModificacao(LocalDateTime.now());
 		return pacientes.save(paciente.get());
 		
 	}
