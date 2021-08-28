@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import application.dto.PsicologoDTO;
 import application.models.Psicologo;
 import application.services.PsicologoCRUDService;
 
@@ -26,13 +27,13 @@ public class PsicologoCRUDController {
 	PsicologoCRUDService psicologoService;
 
 	@GetMapping
-	public ResponseEntity<List<Psicologo>> getMedicacoes() {
+	public ResponseEntity<List<PsicologoDTO>> getMedicacoes() {
 		return ResponseEntity.ok(psicologoService.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Psicologo> getPsicologo(@PathVariable Long id) {
-		Psicologo byId = psicologoService.findById(id);
+	public ResponseEntity<PsicologoDTO> getPsicologo(@PathVariable Long id) {
+		PsicologoDTO byId = psicologoService.findById(id);
 		if(byId == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -40,7 +41,7 @@ public class PsicologoCRUDController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Psicologo> createPsicologo(@Valid @RequestBody Psicologo psicologo) {
+	public ResponseEntity<PsicologoDTO> createPsicologo(@Valid @RequestBody Psicologo psicologo) {
 		if(psicologo.getNome() == null) {
 			return ResponseEntity.badRequest().build();
 		}
@@ -61,8 +62,8 @@ public class PsicologoCRUDController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Psicologo> updatePsicologo(@PathVariable long id, @RequestBody Psicologo psicologo) {
-		Psicologo psicologo2 = psicologoService.update(id, psicologo);
+	public ResponseEntity<PsicologoDTO> updatePsicologo(@PathVariable long id, @RequestBody Psicologo psicologo) {
+		PsicologoDTO psicologo2 = psicologoService.update(id, psicologo);
 		if(psicologo2 == null) {
 			return ResponseEntity.notFound().build();
 		}
@@ -70,8 +71,8 @@ public class PsicologoCRUDController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Psicologo> deletePsicologo(@PathVariable long id) {
-		Psicologo psicologo = psicologoService.delete(id);
+	public ResponseEntity<PsicologoDTO> deletePsicologo(@PathVariable long id) {
+		PsicologoDTO psicologo = psicologoService.delete(id);
 		if(psicologo == null) {
 			return ResponseEntity.notFound().build();
 		}
