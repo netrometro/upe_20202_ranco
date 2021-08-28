@@ -18,7 +18,7 @@ public class dashboardDTO {
 		
 	}
 	
-	public dashboardDTO(Paciente paciente) {
+	public dashboardDTO(PacienteDTO paciente) {
 		eventos = new ArrayList<eventoDTO>();
 		medicacoes = new ArrayList<medicacaoDTO>();
 		this.nome = paciente.getNome();

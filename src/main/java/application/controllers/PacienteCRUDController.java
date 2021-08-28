@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import application.dto.PacienteDTO;
 import application.models.Paciente;
 import application.services.PacienteCRUDService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,13 +40,13 @@ public class PacienteCRUDController extends HttpServlet {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Paciente>> getAll(){
+	public ResponseEntity<List<PacienteDTO>> getAll(){
 		return ResponseEntity.ok(pacienteService.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Paciente> getPaciente(@PathVariable Long id){
-		Paciente paciente = pacienteService.findById(id);
+	public ResponseEntity<PacienteDTO> getPaciente(@PathVariable Long id){
+		PacienteDTO paciente = pacienteService.findById(id);
 		if(paciente == null) {
 			return ResponseEntity.notFound().build();
 		}else {
@@ -56,7 +57,7 @@ public class PacienteCRUDController extends HttpServlet {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Paciente> createPaciente(@Valid @RequestBody Paciente paciente){
+	public ResponseEntity<PacienteDTO> createPaciente(@Valid @RequestBody Paciente paciente){
 		try {
 			return ResponseEntity.ok(pacienteService.create(paciente));
 		}catch(Exception e)
@@ -66,7 +67,7 @@ public class PacienteCRUDController extends HttpServlet {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Paciente> updatePaciente(@PathVariable long id, @RequestBody Paciente paciente){
+	public ResponseEntity<PacienteDTO> updatePaciente(@PathVariable long id, @RequestBody Paciente paciente){
 		if(paciente == null) {
 			return ResponseEntity.notFound().build();
 		}else 
@@ -76,7 +77,7 @@ public class PacienteCRUDController extends HttpServlet {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Paciente> deletePaciente(@PathVariable long id){
+	public ResponseEntity<PacienteDTO> deletePaciente(@PathVariable long id){
 		try {
 			return ResponseEntity.ok(pacienteService.delete(id));
 		}catch(Exception e)

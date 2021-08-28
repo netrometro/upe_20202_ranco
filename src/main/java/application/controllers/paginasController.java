@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import application.dto.PacienteDTO;
 import application.dto.dadosGraficoDTO;
 import application.dto.dashboardDTO;
 import application.dto.listaEventosDTO;
@@ -30,7 +31,7 @@ public class paginasController {
 	private PacienteCRUDService pacienteService;
 	@GetMapping("/dashboard/{id}")
 	public ResponseEntity<dashboardDTO> getPaciente(@PathVariable Long id){
-		Paciente paciente = pacienteService.findById(id);
+		PacienteDTO paciente = pacienteService.findById(id);
 		
 		dashboardDTO board = new dashboardDTO(paciente);
 		if(paciente == null) {
@@ -44,7 +45,7 @@ public class paginasController {
 	
 	@GetMapping("/eventos/{id}")
 	public ResponseEntity<listaEventosDTO> getEventos(@PathVariable Long id){
-		Paciente paciente = pacienteService.findById(id);
+		PacienteDTO paciente = pacienteService.findById(id);
 		List<Evento> eventos= paciente.getEventos();
 		Collections.reverse(eventos);
 		listaEventosDTO eventosDTO = new listaEventosDTO(eventos);
@@ -53,7 +54,7 @@ public class paginasController {
 	
 	@GetMapping("/medicacoes/{id}")
 	public ResponseEntity<listaMedicacoesDTO> getMedicacoes(@PathVariable Long id){
-		Paciente paciente = pacienteService.findById(id);
+		PacienteDTO paciente = pacienteService.findById(id);
 		List<Medicacao> medicacoes= paciente.getMedicacoes();
 		Collections.reverse(medicacoes);
 		listaMedicacoesDTO medicacoesDTO = new listaMedicacoesDTO(medicacoes);
@@ -62,7 +63,7 @@ public class paginasController {
 	
 	@GetMapping("/dados/{id}")
 	public ResponseEntity<dadosGraficoDTO> getDados(@PathVariable Long id){
-		Paciente paciente = pacienteService.findById(id);
+		PacienteDTO paciente = pacienteService.findById(id);
 		List<Evento> eventos= paciente.getEventos();
 		dadosGraficoDTO dadosDTO = new dadosGraficoDTO(eventos);
 		return ResponseEntity.ok(dadosDTO);
