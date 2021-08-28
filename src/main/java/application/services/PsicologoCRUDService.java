@@ -32,7 +32,7 @@ public class PsicologoCRUDService {
 		List<Psicologo> findAll = psicologos.findAll();
 		List<PsicologoDTO> list = new ArrayList<PsicologoDTO>();
 		for (Psicologo p : findAll) {
-			list.add(new PsicologoDTO(p.getNome(), p.getEmail(), p.getTipoUsuario(), p.getCrp()));
+			list.add(new PsicologoDTO(p.getId(), p.getNome(), p.getEmail(), p.getTipoUsuario(), p.getCrp()));
 		}
 		return list;
 	}
@@ -42,8 +42,8 @@ public class PsicologoCRUDService {
 		if (!psicologo.isPresent()) {
 			return null;
 		}
-		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getNome(), psicologo.get().getEmail(),
-				psicologo.get().getTipoUsuario(), psicologo.get().getCrp());
+		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getId(), psicologo.get().getNome(),
+				psicologo.get().getEmail(), psicologo.get().getTipoUsuario(), psicologo.get().getCrp());
 		return psicologoDTO;
 	}
 
@@ -52,9 +52,9 @@ public class PsicologoCRUDService {
 		psicologo.setSenha(encodedPass);
 		psicologo.setDataInclusao(LocalDateTime.now());
 		psicologos.save(psicologo);
-		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.getNome(), psicologo.getEmail(),
+		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.getId(), psicologo.getNome(), psicologo.getEmail(),
 				psicologo.getTipoUsuario(), psicologo.getCrp());
-		return psicologoDTO;		
+		return psicologoDTO;
 	}
 
 	public PsicologoDTO update(long id, Psicologo psicologoP) {
@@ -80,9 +80,9 @@ public class PsicologoCRUDService {
 		}
 		psicologo.get().setDataModificacao(LocalDateTime.now());
 		psicologos.save(psicologo.get());
-		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getNome(), psicologo.get().getEmail(),
-				psicologo.get().getTipoUsuario(), psicologo.get().getCrp());
-		return psicologoDTO;		
+		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getId(), psicologo.get().getNome(),
+				psicologo.get().getEmail(), psicologo.get().getTipoUsuario(), psicologo.get().getCrp());
+		return psicologoDTO;
 	}
 
 	public PsicologoDTO delete(long id) {
@@ -91,8 +91,8 @@ public class PsicologoCRUDService {
 			return null;
 		}
 		psicologos.delete(psicologo.get());
-		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getNome(), psicologo.get().getEmail(),
+		PsicologoDTO psicologoDTO = new PsicologoDTO(psicologo.get().getId(), psicologo.get().getNome(), psicologo.get().getEmail(),
 				psicologo.get().getTipoUsuario(), psicologo.get().getCrp());
-		return psicologoDTO;		
+		return psicologoDTO;
 	}
 }

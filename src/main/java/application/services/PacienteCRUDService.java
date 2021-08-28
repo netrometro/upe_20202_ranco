@@ -26,7 +26,8 @@ public class PacienteCRUDService {
 		List<Paciente> findAll = pacientes.findAll();
 		List<PacienteDTO> list = new ArrayList<PacienteDTO>();
 		for (Paciente p : findAll) {
-			list.add(new PacienteDTO(p.getNome(), p.getEmail(), p.getTipoUsuario(), p.getEventos(), p.getMedicacoes()));
+			list.add(new PacienteDTO(p.getId(), p.getNome(), p.getEmail(), p.getTipoUsuario(), p.getEventos(),
+					p.getMedicacoes()));
 		}
 		return list;
 	}
@@ -36,8 +37,9 @@ public class PacienteCRUDService {
 		if (!paciente.isPresent()) {
 			return null;
 		} else {
-			PacienteDTO pacientedto = new PacienteDTO(paciente.get().getNome(), paciente.get().getEmail(),
-					paciente.get().getTipoUsuario(), paciente.get().getEventos(), paciente.get().getMedicacoes());
+			PacienteDTO pacientedto = new PacienteDTO(paciente.get().getId(), paciente.get().getNome(),
+					paciente.get().getEmail(), paciente.get().getTipoUsuario(), paciente.get().getEventos(),
+					paciente.get().getMedicacoes());
 			return pacientedto;
 		}
 	}
@@ -47,8 +49,8 @@ public class PacienteCRUDService {
 		pacienteParam.setSenha(encodedPass);
 		pacienteParam.setDataInclusao(LocalDateTime.now());
 		Paciente paciente = pacientes.save(pacienteParam);
-		PacienteDTO pacientedto = new PacienteDTO(paciente.getNome(), paciente.getEmail(), paciente.getTipoUsuario(),
-				paciente.getEventos(), paciente.getMedicacoes());
+		PacienteDTO pacientedto = new PacienteDTO(paciente.getId(), paciente.getNome(), paciente.getEmail(),
+				paciente.getTipoUsuario(), paciente.getEventos(), paciente.getMedicacoes());
 		return pacientedto;
 	}
 
@@ -57,8 +59,9 @@ public class PacienteCRUDService {
 		if (pacientes.existsById(id_paciente)) {
 			Optional<Paciente> paciente = pacientes.findById(id_paciente);
 			pacientes.delete(paciente.get());
-			PacienteDTO pacientedto = new PacienteDTO(paciente.get().getNome(), paciente.get().getEmail(),
-					paciente.get().getTipoUsuario(), paciente.get().getEventos(), paciente.get().getMedicacoes());
+			PacienteDTO pacientedto = new PacienteDTO(paciente.get().getId(), paciente.get().getNome(),
+					paciente.get().getEmail(), paciente.get().getTipoUsuario(), paciente.get().getEventos(),
+					paciente.get().getMedicacoes());
 			return pacientedto;
 		}
 		return null;
@@ -84,9 +87,10 @@ public class PacienteCRUDService {
 			paciente.get().setTipoUsuario(pacienteParam.getTipoUsuario());
 		}
 		paciente.get().setDataModificacao(LocalDateTime.now());
-		PacienteDTO pacientedto = new PacienteDTO(paciente.get().getNome(), paciente.get().getEmail(),
-				paciente.get().getTipoUsuario(), paciente.get().getEventos(), paciente.get().getMedicacoes());
-		return pacientedto;		
+		PacienteDTO pacientedto = new PacienteDTO(paciente.get().getId(), paciente.get().getNome(),
+				paciente.get().getEmail(), paciente.get().getTipoUsuario(), paciente.get().getEventos(),
+				paciente.get().getMedicacoes());
+		return pacientedto;
 
 	}
 

@@ -8,9 +8,10 @@ public class PsicologoDTO extends UsuarioDTO {
 	
 	private String crp;
 
-	public PsicologoDTO(String nome, String email, TipoDeUsuario tipoUsuario, String crp) {
-		super(nome, email, tipoUsuario);
+	public PsicologoDTO(long id, String nome, String email, TipoDeUsuario tipoUsuario, String crp) {
+		super(id, nome, email, tipoUsuario);
 		this.crp = crp;
-	}	
+	}
+
 
 }
