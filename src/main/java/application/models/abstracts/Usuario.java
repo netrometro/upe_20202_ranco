@@ -3,6 +3,8 @@ package application.models.abstracts;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import application.models.enums.TipoDeUsuario;
 import lombok.Data;
 
@@ -15,7 +17,7 @@ public abstract class Usuario extends DbEntity{
 	
 	@NotBlank(message = "Email is mandatory")
 	private String email;
-	
+		
 	@NotBlank(message = "Senha is mandatory")
 	private String senha;
 	

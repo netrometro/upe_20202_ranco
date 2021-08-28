@@ -22,6 +22,9 @@ public class PsicologoCRUDService {
 
 	@Autowired
 	private IPacienteDAO pacientes;
+	
+	@Autowired
+	private PasswordEncriptionAndDecription encription;
 
 	public List<Psicologo> findAll() {
 		return psicologos.findAll();
@@ -36,6 +39,8 @@ public class PsicologoCRUDService {
 	}
 
 	public Psicologo create(Psicologo psicologo) {
+		String encodedPass = encription.encode(psicologo.getSenha());
+		psicologo.setSenha(encodedPass);
 		psicologo.setDataInclusao(LocalDateTime.now());
 		return psicologos.save(psicologo);
 	}
