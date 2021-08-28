@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import application.models.abstracts.Usuario;
@@ -15,7 +16,7 @@ import lombok.ToString;
 
 @Data
 @Entity
-@ToString(callSuper = true)
+//@ToString(callSuper = true)
 public class Paciente extends Usuario {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
@@ -37,42 +38,7 @@ public class Paciente extends Usuario {
 	public Paciente(String nome, String email, String senha, TipoDeUsuario tipoUsuario) {
 		super(nome, email, senha, tipoUsuario);
 	}
-	
-	
-	private void conectarMedico() {
-		
-	}
-	
-	private void registrarEvento() {
-		
-	}
-	
-	private void escreverFeedBack() {
-		
-	}
-	
-	private void registrarMedicacao() {
-		
-	}
-	
-	public void vizualizarDashboard() {
-		
-	}
-	
-	private void configurarAlarme() {
-		
-	}
 
-
-	/*
-	public ArrayList<String> getAnotações() {
-		return anotações;
-	}
-
-	public void setAnotações(ArrayList<String> anotações) {
-		this.anotações = anotações;
-	}*/
-	
 	
 	
 }

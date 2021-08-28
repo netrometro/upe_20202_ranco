@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.dao.IEventoDao;
+import application.dto.eventoDTO;
 import application.models.Evento;
 import application.services.EventoCRUDService;
 import io.micrometer.core.ipc.http.HttpSender.Response;
@@ -46,9 +47,10 @@ public class EventoCRUDController {
 	
 	@PostMapping("/{id}")
 
-	public ResponseEntity<Evento> createEvento(@PathVariable Long id, @Valid @RequestBody Evento evento){
+	public ResponseEntity<eventoDTO> createEvento(@PathVariable Long id, @Valid @RequestBody Evento evento){
 		try {
-			return ResponseEntity.ok(eventoService.create(id, evento));		
+			eventoDTO eventodto = new eventoDTO(eventoService.create(id, evento));
+			return ResponseEntity.ok(eventodto);		
 		}catch (Exception e) {
 			return ResponseEntity.notFound().build();
 		}
