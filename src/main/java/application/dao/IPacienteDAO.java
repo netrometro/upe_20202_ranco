@@ -17,5 +17,5 @@ import application.models.Psicologo;
 public interface IPacienteDAO extends JpaRepository<Paciente, Long> {
 
 	List<Paciente> findByNome(String nome);
-	Optional<Psicologo> findByEmail(String email);
+	Optional<Paciente> findByEmail(String email);
 }
