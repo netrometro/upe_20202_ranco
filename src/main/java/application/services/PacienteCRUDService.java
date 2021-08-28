@@ -39,8 +39,8 @@ public class PacienteCRUDService {
 	public Paciente create(Paciente pacienteParam){
 		String encodedPass = encription.encode(pacienteParam.getSenha());
 		pacienteParam.setSenha(encodedPass);
-		Paciente paciente = pacientes.save(new Paciente(pacienteParam.getNome(), pacienteParam.getEmail(), pacienteParam.getSenha(), pacienteParam.getTipoUsuario()));
-		paciente.setDataInclusao(LocalDateTime.now());
+		pacienteParam.setDataInclusao(LocalDateTime.now());
+		Paciente paciente = pacientes.save(pacienteParam);
 		return paciente;
 	}
 	
