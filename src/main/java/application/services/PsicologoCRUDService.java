@@ -48,6 +48,10 @@ public class PsicologoCRUDService {
 	}
 
 	public PsicologoDTO create(Psicologo psicologo) {
+		Optional<Psicologo> findByEmail = psicologos.findByEmail(psicologo.getEmail());
+		if(findByEmail.isPresent()) {
+			return null;
+		}
 		String encodedPass = encription.encode(psicologo.getSenha());
 		psicologo.setSenha(encodedPass);
 		psicologo.setDataInclusao(LocalDateTime.now());

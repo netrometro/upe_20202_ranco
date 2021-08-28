@@ -45,6 +45,10 @@ public class PacienteCRUDService {
 	}
 
 	public PacienteDTO create(Paciente pacienteParam) {
+		Optional<Paciente> findByEmail = pacientes.findByEmail(pacienteParam.getEmail());
+		if(findByEmail.isPresent()) {
+			return null;
+		}
 		String encodedPass = encription.encode(pacienteParam.getSenha());
 		pacienteParam.setSenha(encodedPass);
 		pacienteParam.setDataInclusao(LocalDateTime.now());

@@ -58,7 +58,11 @@ public class PsicologoCRUDController {
 			return ResponseEntity.badRequest().build();
 		}
 		
-		return ResponseEntity.ok(psicologoService.create(psicologo));
+		PsicologoDTO create = psicologoService.create(psicologo);
+		if(create == null) {			
+			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.ok(create);
 	}
 
 	@PutMapping("/{id}")
