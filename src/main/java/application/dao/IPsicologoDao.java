@@ -14,6 +14,6 @@ import application.models.Psicologo;
 @Repository
 public interface IPsicologoDao extends JpaRepository<Psicologo, Long> {
 	Optional<Psicologo> findBycrp(String crp);
-	Psicologo findByEmail(String email);
+	Optional<Psicologo> findByEmail(String email);
 	
 }
