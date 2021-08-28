@@ -19,6 +19,8 @@ public class PacienteCRUDService {
 	
 	@Autowired
 	private IPacienteDAO pacientes;
+	@Autowired
+	private PasswordEncriptionAndDecription encription;
 	
 	public List<Paciente> findAll(){
 		return pacientes.findAll();
@@ -35,6 +37,8 @@ public class PacienteCRUDService {
 	}
 	
 	public Paciente create(Paciente pacienteParam){
+		String encodedPass = encription.encode(pacienteParam.getSenha());
+		pacienteParam.setSenha(encodedPass);
 		Paciente paciente = pacientes.save(new Paciente(pacienteParam.getNome(), pacienteParam.getEmail(), pacienteParam.getSenha(), pacienteParam.getTipoUsuario()));
 		paciente.setDataInclusao(LocalDateTime.now());
 		return paciente;
