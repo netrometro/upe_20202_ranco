@@ -1,59 +1,75 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 
-class EventoDetalhes extends React.Component {
-    constructor(props) {
-        super(props);
+export default () => {
+    useEffect(() => {
+        getEvento();
+    }, [])
 
-        // this.state = { evento: null };
+    const [evento, setEvento] = useState({});
+
+    const getEvento = () => {
+        fetch('http://localhost:5000/api/eventos/43')
+            .then(async response => {
+                const data = await response.json();
+
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response statusText
+                    const error = (data && data.message) || response.statusText;
+                    return Promise.reject(error);
+                }
+                setEvento(data);
+            })                
     }
-
-    async componentDidMount() {        
-        const response = await fetch('http://localhost:5000/api/eventos/43');
-        const evento = await response.json();
-        this.setState({ evento: evento });            
-    }
-
-    render() {
+    {
         return (
             <div>
-                <h1>Evento</h1>
+                ? <h1>{evento.titulo}</h1>                
                 <div name="status">
-                    <p> Status</p>
+                    <h3> Status</h3>
+                    <p>{evento.status}</p>
                 </div>
                 <div name="categoria">
-                    <p> Categoria</p>
+                    <h3> Categoria</h3>
+                    <p>{evento.categoria}</p>
                 </div>
                 <div name="descricao">
-                    <p> Descrição</p>
+                    <h3> Descrição</h3>
+                    <p>{evento.descricao}</p>
                 </div>
                 <div name="motivo">
-                    <p> Motivo</p>
+                    <h3> Motivo</h3>
+                    <p>{evento.motivo}</p>
                 </div>
                 <div name="data">
-                    <p> Data</p>
+                    <h3> Data</h3>
+                    <p>{evento.data}</p>
                 </div>
                 <div name="expectativa">
-                    <p> Expectativa</p>
+                    <h3> Expectativa</h3>
+                    <p>{evento.expectativa}</p>
                 </div>
                 <div name="local">
-                    <p> local</p>
+                    <h3> local</h3>
+                    <p>{evento.local}</p>
                 </div>
                 <div name="pessoasEnvolvidas">
-                    <p>Pessoas envolvidas</p>
+                    <h3>Pessoas envolvidas</h3>
+                    <p>{evento.pessoasEnvolvidas}</p>
                 </div>
                 <div name="feedback">
-                    <p> feedback</p>
+                    <h3> feedback</h3>
+                    <p>{evento.feedback}</p>
                 </div>
                 <div name="pontosDeMelhoria">
-                    <p>Pontos de melhoria</p>
+                    <h3>Pontos de melhoria</h3>
+                    <p>{evento.pontosDeMelhoria}</p>
                 </div>
                 <div name="sentimentos">
-                    <p>Sentimentos</p>
+                    <h3>Sentimentos</h3>
                 </div>
             </div>
         );
     }
 }
-
-export default EventoDetalhes;
