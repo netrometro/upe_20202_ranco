@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 
 export default ({match}) => {
-    useEffect(() => {
-        getEvento(match.id);
+    useEffect(() => {        
+        getEvento(match.params.id);
     }, [])
 
     const [evento, setEvento] = useState({});
 
     const getEvento = (id) => {
-        console.log("id = " + id)
         fetch(`http://localhost:5000/api/eventos/${id}`)
             .then(async response => {
                 const data = await response.json();

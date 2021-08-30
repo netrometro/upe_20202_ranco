@@ -20,6 +20,7 @@ export default () => {
                     const error = (data && data.message) || response.statusText;
                     return Promise.reject(error);
                 }
+                console.log(data);
                 setEventos(data);
             })
     }
@@ -27,7 +28,7 @@ export default () => {
     return (
         <div>
             <h1>Meus eventos</h1>
-            {eventos.map(evento => (
+            {eventos.map(evento => (                
                 <Link to={`/eventos/${evento.id}`}>
                     <div key={evento.id}>
                         <h3>{evento.titulo}</h3>
