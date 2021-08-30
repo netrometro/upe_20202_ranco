@@ -1,12 +1,12 @@
 import React from "react";
-import style from "../styles/login.css"
+import "../styles/login.css"
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import ReactDOM from 'react-dom';
 
 class Cadastro extends React.Component {
     render() {
         return (
-            <div className="container">
+            <div className="container_login">
                 <form className="formulario">
                     <FormGroup >
                         <legend className="titulo">login</legend>
