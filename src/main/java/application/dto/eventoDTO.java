@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class eventoDTO {
+	private long id;
 	private String descricao;
 	private boolean status;
 	private Categoria categoria;
@@ -17,6 +18,7 @@ public class eventoDTO {
 
 	public eventoDTO(Evento evento) {
 		sentimentos = new ArrayList<>();
+		this.id = evento.getId();
 		this.descricao = evento.getDescricao();
 		this.status = evento.isStatus();
 		this.categoria = evento.getCategoria();
