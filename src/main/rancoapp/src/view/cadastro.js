@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/cadastro.css"
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import ReactDOM from 'react-dom';
 
 class Cadastro extends React.Component {
@@ -11,42 +10,41 @@ class Cadastro extends React.Component {
                 <div className="container_cadastro">
                     <div className="conteudo">
                         <form className="formulario">
-                            <FormGroup >
+                            <div >
                                 <legend className="texto">Cadastro</legend>
-                                <label className="label" for="email">Email</label>
-                                <Input type="email" name="email" id="Email" placeholder="escreva seu email"/>
-                            </FormGroup>
-                            <FormGroup >
-                                <label className="label" for="password">Senha</label>
-                                <Input type="password" name="password" id="Password" placeholder="escreva sua senha"/>
-                            </FormGroup>
+                                <label className="label" >Email</label>
+                                <input type="email" name="email" id="Email" placeholder="escreva seu email"/>
+                            </div>
+                            <div >
+                                <label className="label">Senha</label>
+                                <input type="password" name="password" id="Password" placeholder="escreva sua senha"/>
+                            </div>
 
-                            <FormGroup tag="fieldset">
+                            <div tag="fieldset">
                                 <legend className="texto">Tipo de Usuario</legend>
-                                <FormGroup check >
-                                    <label className="texto" check>
+                                <div >
+                                    <label className="texto">
                                     <input  type="radio" name="tipo"/>{' '}
                                     Psicologo
                                     </label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <label className="texto" check>
+                                </div>
+                                <div>
+                                    <label className="texto">
                                     <input type="radio" name="tipo"/>{' '}
                                     Paciente
                                     </label>
-                                </FormGroup>
-                            </FormGroup>
+                                </div>
+                            </div>
                         </form>
                         <div className="descricao">
-                            <text className="texto">Tipo de Usuario</text>
-                            <text>Descrição</text>
+                            <p className="texto">Tipo de Usuario</p>
+                            <p>Descrição</p>
                         </div>
                     </div>
                     <div className="botoes">
-                        <Button className="botao" size="lg" > Cadastrar </Button>{' '}
+                        <button className="botao" size="lg" > Cadastrar </button>{' '}
                     </div>
                 </div>
-                                
             </div>
         );
     };

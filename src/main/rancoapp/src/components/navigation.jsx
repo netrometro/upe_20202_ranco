@@ -1,15 +1,10 @@
 export const Navigation = (props) => {
   return (
-    <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
+    <nav>
       <div >
-        <img src="img/assets/Logo-upe-site.png" className="logoUPE" alt="" />{" "}
+        {/* <img src="img/assets/Logo-upe-site.png" className="logoUPE" alt="" />{" "} */}
         <div className='navbar-header'>
-          <button
-            type='button'
-            className='navbar-toggle collapsed'
-            data-toggle='collapse'
-            data-target='#bs-example-navbar-collapse-1'
-          >
+          <button>
             {' '}
             <span className='sr-only'>Toggle navigation</span>{' '}
             <span className='icon-bar'></span>{' '}
