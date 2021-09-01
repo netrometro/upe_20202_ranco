@@ -10,41 +10,43 @@ class Cadastro extends React.Component {
                 <div className="container_cadastro">
                     <div className="conteudo">
                         <form className="formulario">
-                            <div >
-                                <legend className="texto">Cadastro</legend>
+                                <h1>Cadastro</h1>
                                 <label className="label" >Email</label>
                                 <input type="email" name="email" id="Email" placeholder="escreva seu email"/>
-                            </div>
-                            <div >
+
                                 <label className="label">Senha</label>
                                 <input type="password" name="password" id="Password" placeholder="escreva sua senha"/>
-                            </div>
 
-                            <div tag="fieldset">
+                            <div>
                                 <legend className="texto">Tipo de Usuario</legend>
                                 <div >
                                     <label className="texto">
-                                    <input  type="radio" name="tipo"/>{' '}
+                                    <input  id='opcoes' type="radio" name="tipo"/>{' '}
                                     Psicologo
                                     </label>
                                 </div>
                                 <div>
                                     <label className="texto">
-                                    <input type="radio" name="tipo"/>{' '}
+                                    <input id='opcoes' type="radio" name="tipo"/>{' '}
                                     Paciente
                                     </label>
                                 </div>
                             </div>
+
                         </form>
+
                         <div className="descricao">
                             <p className="texto">Tipo de Usuario</p>
                             <p>Descrição</p>
                         </div>
                     </div>
                     <div className="botoes">
-                        <button className="botao" size="lg" > Cadastrar </button>{' '}
+                        <button className="botao"> Cadastrar </button>{' '}
+                        <a href='/login' className="botao"> Login </a>{' '}
                     </div>
+
                 </div>
+
             </div>
         );
     };
