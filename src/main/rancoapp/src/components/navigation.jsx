@@ -1,52 +1,35 @@
 export const Navigation = (props) => {
   return (
-    <nav>
-      <div >
-        {/* <img src="img/assets/Logo-upe-site.png" className="logoUPE" alt="" />{" "} */}
+    <nav className='navbar'>
+      <div className='navegacao'>
         <div className='navbar-header'>
-          <button>
-            {' '}
-            <span className='sr-only'>Toggle navigation</span>{' '}
-            <span className='icon-bar'></span>{' '}
-            <span className='icon-bar'></span>{' '}
-            <span className='icon-bar'></span>{' '}
-          </button>
-          <a className='navbar-brand page-scroll' href='#page-top'>
+          <a className='tittle' href='/'>
             Invocado
           </a>{' '}
         </div>
 
-        <div
-          className='collapse navbar-collapse'
-          id='bs-example-navbar-collapse-1'
-        >
-          <ul className='nav navbar-nav navbar-right'>
+        <div className='paginas'>
             <li>
-              <a href='/' className='page-scroll'>
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a href='/eventos' className='page-scroll'>
+              <a href='/eventos' className='page'>
                 Eventos
               </a>
             </li>
             <li>
-              <a href='/medicações' className='page-scroll'>
+              <a href='/medicações' className='page'>
                 Medicações
               </a>
             </li>
             <li>
-              <a href='/cadastro' className='page-scroll'>
+              <a href='/cadastro' className='page'>
                 Cadastro
               </a>
             </li>
             <li>
-              <a href='/perfil' className='page-scroll'>
+              <a href='/perfil' className='page'>
                 Perfil
               </a>
             </li>
-          </ul>
+            
         </div>
       </div>
     </nav>

@@ -1,0 +1,57 @@
+.navbar{
+    background-color: #55A955;
+    color: white;
+}
+
+.paginas{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px;
+    margin-right: 60px;
+}
+.page{
+   padding: 30px;
+   font-size: 20px;
+   
+}
+
+.navegacao{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: space-between;
+}
+
+.Nav{
+    display: flex;
+   
+}
+
+li{
+    list-style: none;
+}
+
+a:link {
+    text-decoration: none;
+  }
+
+a{
+    color: white;
+}
+
+a:hover{
+    color:indigo;
+}
+
+.tittle{
+    font-size: 30px;
+    margin-left: 60px;
+}
+
+a.tittle:hover{
+    color:rgba(204, 177, 223, 0.993);
+}

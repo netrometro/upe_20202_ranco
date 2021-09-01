@@ -6,6 +6,7 @@ import Cadastro from './view/cadastro';
 import Login from './view/Login';
 import { Navigation } from './components/navigation';
 import EventoLista from './view/EventoLista';
+import './styles/navegacao.css'
 
 function App() {
   return (
