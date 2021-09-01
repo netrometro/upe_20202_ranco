@@ -32,7 +32,7 @@ function Login() {
                     return Promise.reject(error);
                 }
 
-                setUser(JSON.stringify(data))
+                setUser(data)
                 // console.log(data.toString())
             })
             .catch(error => {
@@ -67,7 +67,7 @@ function Login() {
                     </div>
                     {/* <button className="botao" size="lg" > Login </button>{' '} */}
                     <button> Login </button>
-                    { user !== null && user !== "" ? <p>{user}</p>
+                    { user !== null && user !== "" ? <p>{user.nome}</p>
                         : <p>{errorText}</p>
                     }
                 </form>
