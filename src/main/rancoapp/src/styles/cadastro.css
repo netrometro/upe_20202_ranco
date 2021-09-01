@@ -15,7 +15,7 @@
 }
 .container{
     display: flex;
-    align-content: center;
+    justify-content: center;
 }
 .container_cadastro{
     flex-direction: column;
