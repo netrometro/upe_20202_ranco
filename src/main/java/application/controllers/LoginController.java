@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.dto.AccountDTO;
+import application.dto.UsuarioDTO;
 import application.models.abstracts.Usuario;
 import application.services.LoginService;
+import javassist.NotFoundException;
 
 @RequestMapping("/login")
 @RestController
@@ -17,13 +19,18 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
-	
+
 	@PostMapping
-	public ResponseEntity<String> login(@RequestBody AccountDTO account){
-		Boolean login = loginService.login(account);
-		if(login.booleanValue() == true) {
-			return ResponseEntity.ok("Sucesso"); 			
+	public ResponseEntity<UsuarioDTO> login(@RequestBody AccountDTO account) {
+		UsuarioDTO login;
+		try {
+			System.out.println(account.toString());
+			login = loginService.login(account);
+			return ResponseEntity.ok(login);
+		} catch (NotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok("Usuário ou senha inválidos"); 			
 	}
 }
