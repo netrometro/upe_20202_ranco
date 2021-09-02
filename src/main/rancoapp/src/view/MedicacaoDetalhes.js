@@ -24,7 +24,7 @@ export default ({match}) => {
     }
     return (
         <div>
-            ? <h1>{medicacoes.nome}</h1>
+            <h1>{medicacoes.nome}</h1>
             <div name="posologia">
                 <h3> Posologia</h3>
                 <p>{medicacoes.posologia}</p>
