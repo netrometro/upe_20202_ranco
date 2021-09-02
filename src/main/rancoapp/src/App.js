@@ -15,7 +15,6 @@ function App() {
         <Navigation />
         <Switch>
           {/* <Route path='/' exact component={Login} ></Route> */}
-
           <Route path='/cadastro' exact component={Cadastro} ></Route>
           <Route path='/login' exact component={Login} ></Route>
           <Route path='/eventos' exact component={EventoLista} ></Route>

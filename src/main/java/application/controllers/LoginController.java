@@ -13,7 +13,7 @@ import application.models.abstracts.Usuario;
 import application.services.LoginService;
 import javassist.NotFoundException;
 
-@RequestMapping("/login")
+@RequestMapping("/api/login")
 @RestController
 public class LoginController {
 

@@ -15,7 +15,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href='/medicações' className='page'>
+              <a href='/medicacoes' className='page'>
                 Medicações
               </a>
             </li>
