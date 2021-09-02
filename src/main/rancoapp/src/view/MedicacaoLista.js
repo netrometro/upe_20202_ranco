@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 export default () => {
     useEffect(() => {
-        getEventos();
+        getMedicacao();
     }, [])
 
-    const [eventos, setEventos] = useState([]);
+    const [medicacoes, setMedicacao] = useState([]);
 
-    const getEventos = () => {
-        fetch('http://localhost:5000/api/eventos')
+    const getMedicacao = () => {
+        fetch('http://localhost:5000/api/medicacoes') 
             .then(async response => {
                 const data = await response.json();
 
@@ -21,17 +21,17 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setEventos(data);
+                setMedicacao(data);
             })
     }
 
     return (
         <div>
-            <h1>Meus Eventos</h1>
-            {eventos.map((evento) => (                
-                <Link to={`/eventos/${evento.id}`} key={evento.id}>
+            <h1>Minhas Medicações</h1>
+            {medicacoes.map((medicacao) => (                
+                <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
                     <div>
-                        <h3>{evento.titulo}</h3>
+                        <h3>{medicacao.nome}</h3>
                     </div>
                 </Link>
             ))}

@@ -6,6 +6,8 @@ import Cadastro from './view/cadastro';
 import Login from './view/Login';
 import { Navigation } from './components/navigation';
 import EventoLista from './view/EventoLista';
+import MedicacaoLista from './view/MedicacaoLista';
+import MedicacaoDetalhes from './view/MedicacaoDetalhes';
 import './styles/navegacao.css'
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path='/login' exact component={Login} ></Route>
           <Route path='/eventos' exact component={EventoLista} ></Route>
           <Route path='/eventos/:id' component={EventoDetalhes} ></Route>
+          <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
+          <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
         </Switch>
 
       </div>
