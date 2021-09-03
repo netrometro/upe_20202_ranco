@@ -10,7 +10,7 @@ export default () => {
     const [medicacoes, setMedicacao] = useState([]);
 
     const getMedicacao = () => {
-        fetch('http://localhost:5000/api/medicacoes') 
+        fetch('http://localhost:5000/api/medicações') 
             .then(async response => {
                 const data = await response.json();
 
@@ -29,7 +29,7 @@ export default () => {
         <div>
             <h1>Minhas Medicações</h1>
             {medicacoes.map((medicacao) => (                
-                <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
+                <Link to={`/medicações/${medicacao.id}`} key={medicacao.id}>
                     <div>
                         <h3>{medicacao.nome}</h3>
                     </div>
