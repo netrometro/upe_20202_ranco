@@ -1,0 +1,36 @@
+.listaEvento{
+    background-color: #90ee90;
+    margin: 80px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+a{
+    color: black;
+}
+
+.blocoEvento{
+    margin: 10px 30px;
+    border-radius: 15px;
+    height: 110px;
+    background-color: #55A955;
+    padding: 10px 30px;
+    font-family: -webkit-pictograph ;
+    border: 5px solid white;
+    flex-grow: 1;
+}
+
+h1{
+    margin-left: 30px;
+    font-family: -webkit-pictograph ;
+}
+
+#detalhes{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#descricao.blocoEvento{
+    flex-grow: 2;
+}
