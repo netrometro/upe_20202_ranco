@@ -26,15 +26,17 @@ export default () => {
     }
 
     return (
-        <div>
-            <h1>Meus eventos</h1>
-            {eventos.map((evento) => (                
-                <Link to={`/eventos/${evento.id}`} key={evento.id}>
-                    <div>
-                        <h3>{evento.titulo}</h3>
-                    </div>
-                </Link>
-            ))}
+        <div className="container">
+            <div className='quadro'>
+                <h1>Meus eventos</h1>
+                {eventos.map((evento) => (                
+                    <Link to={`/eventos/${evento.id}`} key={evento.id}>
+                        <div>
+                            <h3>{evento.titulo}</h3>
+                        </div>
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }
