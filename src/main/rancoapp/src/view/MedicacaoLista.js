@@ -30,9 +30,6 @@ export default () => {
         <div className= "listaEvento">
             <h1 id = 'medicacao'>Minhas Medicações</h1>
             <div>
-            <a href='/medicacoes/${medicacao.id}'>Visualizar Medicações</a>
-            </div>
-            <div>
             <a href= '/cadastrarmedicacoes' >Adicionar Medicações</a>
             </div>
             

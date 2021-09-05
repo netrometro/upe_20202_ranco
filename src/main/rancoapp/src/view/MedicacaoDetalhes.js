@@ -24,9 +24,9 @@ export default ({match}) => {
     }
     return (
         <div className = 'listaMedicamento'>
-            <div className = 'inicio'>
-            <h1>{medicacoes.nome}</h1>
-            </div>
+            <div className = 'header' id = 'header'>
+                <h1>{medicacoes.nome}</h1>
+                <div className = 'colunas' id = 'colunas'>
             <div className = 'primeiraColuna'>
             <div className= 'blocoMedicamento' name="descricao" id="descricao">
                 <h3>Descricao</h3>
@@ -52,6 +52,13 @@ export default ({match}) => {
                 <p>{medicacoes.posologia}</p>
             </div>
             </div>
+
+            </div>
+            </div>
+
+            
+            
+            
             
         </div>
     );

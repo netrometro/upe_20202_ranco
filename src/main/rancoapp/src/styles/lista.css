@@ -83,11 +83,17 @@ h1#medicacao{
     border: 5px solid white;
 }
 
-.inicio{
+#header{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+#colunas{
+    display: flex;
+   
+}
+
 
 .primeiraColuna{
     display: flex;
