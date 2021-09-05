@@ -26,12 +26,13 @@ export default () => {
     }
 
     return (
-        <div>
+        <div className= "listaEvento">
             <h1>Minhas Medicações</h1>
             {medicacoes.map((medicacao) => (                
-                <Link to={`/medicações/${medicacao.id}`} key={medicacao.id}>
-                    <div>
+                <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
+                    <div className= "blocoEvento">
                         <h3>{medicacao.nome}</h3>
+                        <h3>Posologia: {medicacao.posologia}</h3>
                     </div>
                 </Link>
             ))}
