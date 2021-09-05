@@ -12,9 +12,9 @@ a{
 .blocoEvento{
     margin: 10px 10px;
     border-radius: 15px;
-    height: 110px;
+    /* height: 110px; */
     background-color: #55A955;
-    padding: 10px 30px;
+    padding: 10px 20px;
     font-family: -webkit-pictograph ;
     border: 5px solid white;
 }
@@ -48,6 +48,8 @@ h1{
 }
 
 .coluna1{
+    display: flex;
+    flex-direction: column;
     flex-grow: 5;
 }
 

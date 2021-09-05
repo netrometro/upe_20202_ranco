@@ -3,4 +3,10 @@ textarea{
     border-radius: 10px;
     border: none;
     resize: none;
+    background-color: #cbfacbe3;
+    padding: 20px;
+}
+
+#descricao.blocoEvento{
+    flex-grow: 3;
 }

@@ -14,40 +14,42 @@ export default ({match}) => {
             <div className='colunas'>
                 <div className='coluna1'>
                     <div className='blocoEvento' name="descricao" id='descricao'>
-                        <h3> Descrição</h3>
-                        <textarea rows="3" cols="50" name="projectname" id="novoProjeto" placeholder= 'descrição'></textarea>
+                        <textarea rows="21" cols="80" id="novoProjeto" placeholder= 'descrição'></textarea>
                 </div>
                 <div className='blocoEvento' name="sentimentos">
-                        <h3>Sentimentos</h3>
+                    <h3> Sentimentos</h3>
+                    <a href='/adicionarSentimento' >Adicionar sentimento</a>
                 </div>
                 <div className='blocoEvento' name="pontosDeMelhoria">
-                    <h3>Pontos de melhoria</h3>
+                    <textarea rows="3" cols="80"  id="novoProjeto" placeholder= 'Pontos de melhoria'></textarea>
                 </div>
+                <div className='blocoEvento' name="expectativa">
+                        <textarea rows="3" cols="80"  id="novoProjeto" placeholder= 'Expectativa'></textarea>
+                    </div>
+                <div className='blocoEvento' name="feedback">
+                        <textarea rows="3" cols="80"  id="novoProjeto" placeholder= 'Feedback'></textarea>
+                    </div>
                 </div>
                 <div className='coluna2'>
                     <div id='detalhes'>
                     <div  className='blocoEvento' name="categoria">
-                        <h3> Categoria</h3>
+                        <h3> Categoria</h3> //
                     </div>
                     
                     <div className='blocoEvento' name="motivo">
-                        <h3> Motivo</h3>
+                        <h3> Motivo</h3> //
                     </div>
                     <div className='blocoEvento' name="data">
                         <h3> Data</h3>
                     </div>
-                    <div className='blocoEvento' name="expectativa">
-                        <h3> Expectativa</h3>
-                    </div>
+                    
                     <div className='blocoEvento' name="local">
-                        <h3> local</h3>
+                        <textarea rows="1" cols="20" id="novoProjeto" placeholder= 'Local'></textarea>
                     </div>
                     <div className='blocoEvento' name="pessoasEnvolvidas">
-                        <h3>Pessoas envolvidas</h3>
+                        <textarea rows="3" cols="20"  id="novoProjeto" placeholder= 'Pessoas Envolvidas'></textarea>
                     </div>
-                    <div className='blocoEvento' name="feedback">
-                        <h3> feedback</h3>
-                    </div>
+                    
                     
                     
             </div>
