@@ -10,7 +10,7 @@ export default () => {
     }, [])
 
     const state = useAuthState();
-    const [eventos, setEventos] = useState([]);        
+    const [eventos, setEventos] = useState([]);
     const getEventos = () => {
         fetch(`http://localhost:5000/eventos/${JSON.parse(state.userDetails).id}`)
             .then(async response => {
@@ -26,25 +26,31 @@ export default () => {
             })
     }
 
+    if (state.userDetails) {
 
-    return (
-        <div>
-            <div className='listaEvento'>
-                <h1 id='eventos'>Meus Eventos</h1>
-                <a href='/adicionarEvento'>Adicionar Evento</a>
-                {eventos.map((evento) => (
-                    <Link to={`/eventos/${evento.id}`} key={evento.id}>
-                        <div className='blocoEvento'>
-                            <h3>{evento.titulo}</h3>
-                            <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+
+        return (
+            <div>
+                <div className='listaEvento'>
+                    <h1 id='eventos'>Meus Eventos</h1>
+                    <a href='/adicionarEvento'>Adicionar Evento</a>
+                    {eventos.map((evento) => (
+                        <Link to={`/eventos/${evento.id}`} key={evento.id}>
+                            <div className='blocoEvento'>
+                                <h3>{evento.titulo}</h3>
+                                <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                </div>
+                                <h3>Categoria : {evento.categoria}</h3>
+                                {/* se o status for false bloco vermelho, se for true, verde */}
                             </div>
-                            <h3>Categoria : {evento.categoria}</h3>
-                            {/* se o status for false bloco vermelho, se for true, verde */}
-                        </div>
-                    </Link>
-                ))}
-            </div>
+                        </Link>
+                    ))}
+                </div>
 
-        </div>
-    )
+            </div>
+        )
+    }
+    else {
+        window.location.href = '/login'
+    }
 }

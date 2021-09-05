@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import { useAuthState } from "../context";
 
 export default ({ match }) => {
     useEffect(() => {
@@ -7,7 +8,7 @@ export default ({ match }) => {
     }, [])
 
     const [medicacoes, setMedicacao] = useState({});
-
+    const state = useAuthState();
     const getMedicacao = (id) => {
         fetch(`http://localhost:5000/api/medicacoes/${id}`)
             .then(async response => {
@@ -22,6 +23,7 @@ export default ({ match }) => {
                 setMedicacao(data);
             })
     }
+    if(state.userDetails){
     return (
         <div className='listaMedicamento'>
             <h1>{medicacoes.nome}</h1>
@@ -62,4 +64,8 @@ export default ({ match }) => {
             </div>
         </div>
     );
+    }
+    else{
+        window.location.href = '/login'
+    }
 }

@@ -5,8 +5,6 @@ import { logout, useAuthDispatch, useAuthState } from "../context";
 
 export default ({ match }) => {
     const state = useAuthState();
-    const dispatch = useAuthDispatch()
-    console.log(state)
     if (state.userDetails) {
 
 
