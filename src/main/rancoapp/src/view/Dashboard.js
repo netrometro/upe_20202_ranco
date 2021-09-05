@@ -46,7 +46,7 @@ export default () => {
                         </Link>
                     ))}
 
-                </div> */} */}
+                </div> */}
 
                 <canvas>
                     
