@@ -11,6 +11,7 @@ import MedicacaoDetalhes from './view/MedicacaoDetalhes';
 import './styles/navegacao.css'
 import adicionarEvento from './view/adicionarEvento';
 import { AuthProvider } from "./context";
+import cadastrarMedicacoes from './view/cadastrarMedicacoes';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
             <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
             <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
+            <Route path='/cadastrarmedicacoes' component={cadastrarMedicacoes} ></Route>
           </Switch>
         </div>
       </Router>
