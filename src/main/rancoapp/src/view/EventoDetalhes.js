@@ -43,46 +43,57 @@ export default ({match}) => {
                     <p>{(setStatusColor(evento.status))}</p>
                 </div>
             </div>
-            <div id='detalhes'>
-                <div className='blocoEvento' name="descricao" id='descricao'>
-                    <h3> Descrição</h3>
+            <div className='colunas'>
+                <div className='coluna1'>
+                    <div className='blocoEvento' name="descricao" id='descricao'>
+                        <h3> Descrição</h3>
                     <p>{evento.descricao}</p>
                 </div>
-                <div  className='blocoEvento' name="categoria">
-                    <h3> Categoria</h3>
-                    <p>{evento.categoria}</p>
-                </div>
-                
-                <div className='blocoEvento' name="motivo">
-                    <h3> Motivo</h3>
-                    <p>{evento.motivo}</p>
-                </div>
-                <div className='blocoEvento' name="data">
-                    <h3> Data</h3>
-                    <p>{evento.data}</p>
-                </div>
-                <div className='blocoEvento' name="expectativa">
-                    <h3> Expectativa</h3>
-                    <p>{evento.expectativa}</p>
-                </div>
-                <div className='blocoEvento' name="local">
-                    <h3> local</h3>
-                    <p>{evento.local}</p>
-                </div>
-                <div className='blocoEvento' name="pessoasEnvolvidas">
-                    <h3>Pessoas envolvidas</h3>
-                    <p>{evento.pessoasEnvolvidas}</p>
-                </div>
-                <div className='blocoEvento' name="feedback">
-                    <h3> feedback</h3>
-                    <p>{evento.feedback}</p>
+                <div className='blocoEvento' name="sentimentos">
+                        <h3>Sentimentos</h3>
+                        <a href='/adicionarSentimento' >Adicionar sentimento</a>
                 </div>
                 <div className='blocoEvento' name="pontosDeMelhoria">
                     <h3>Pontos de melhoria</h3>
                     <p>{evento.pontosDeMelhoria}</p>
                 </div>
-                <div className='blocoEvento' name="sentimentos">
-                    <h3>Sentimentos</h3>
+                </div>
+                <div className='coluna2'>
+                    <div id='detalhes'>
+                    <div  className='blocoEvento' name="categoria">
+                        <h3> Categoria</h3>
+                        <p>{evento.categoria}</p>
+                    </div>
+                    
+                    <div className='blocoEvento' name="motivo">
+                        <h3> Motivo</h3>
+                        <p>{evento.motivo}</p>
+                    </div>
+                    <div className='blocoEvento' name="data">
+                        <h3> Data</h3>
+                        <p>{evento.data}</p>
+                    </div>
+                    <div className='blocoEvento' name="expectativa">
+                        <h3> Expectativa</h3>
+                        <p>{evento.expectativa}</p>
+                    </div>
+                    <div className='blocoEvento' name="local">
+                        <h3> local</h3>
+                        <p>{evento.local}</p>
+                    </div>
+                    <div className='blocoEvento' name="pessoasEnvolvidas">
+                        <h3>Pessoas envolvidas</h3>
+                        <p>{evento.pessoasEnvolvidas}</p>
+                    </div>
+                    <div className='blocoEvento' name="feedback">
+                        <h3> feedback</h3>
+                        <p>{evento.feedback}</p>
+                    </div>
+                    
+                    
+            </div>
+            
+            
                 </div>
             </div>
         </div>

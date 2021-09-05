@@ -10,14 +10,13 @@ a{
 }
 
 .blocoEvento{
-    margin: 10px 30px;
+    margin: 10px 10px;
     border-radius: 15px;
     height: 110px;
     background-color: #55A955;
     padding: 10px 30px;
     font-family: -webkit-pictograph ;
     border: 5px solid white;
-    flex-grow: 1;
 }
 
 h1{
@@ -29,13 +28,29 @@ h1{
     display: flex;
     flex-direction: column; 
     align-content: space-around;
-}
-
-#descricao{
-    flex-grow: 2;
+    padding-left: 0px;
 }
 
 #status {
     width: 2px;
     height: 10px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colunas{
+    display: flex;
+   
+}
+
+.coluna1{
+    flex-grow: 5;
+}
+
+.coluna2{
+    flex-grow: 2;
 }
