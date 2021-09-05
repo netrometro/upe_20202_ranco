@@ -22,7 +22,7 @@ function Cadastro(props) {
 
     const cadastrar = () => {
         const user = tipoUsuario === "PACIENTE" ? { nome: nome, email: email, senha: password, tipoUsuario: tipoUsuario }
-            : { nome: nome, email: email, password: password, tipoUsuario: tipoUsuario, crp: CRP }
+            : { nome: nome, email: email, senha: password, tipoUsuario: tipoUsuario, crp: CRP }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -58,21 +58,21 @@ function Cadastro(props) {
             <div className="container_cadastro">
                 <div className="conteudo">
                     <form className="formulario">
-                        <h1>Cadastro</h1>
-                        <label className="label" >Nome</label>
+                        <h1 className="h1Cadastro">Cadastro</h1>
+                        <label className="labelCadastro" >Nome</label>
                         <input type="nome" name="nome" id="nome" placeholder="escreva seu nome" required
                             value={nome}
                             onChange={(e) => setNome(e.target.value)} />
-                        <label className="label" >Email</label>
+                        <label className="labelCadastro" >Email</label>
                         <input type="email" name="email" id="Email" placeholder="escreva seu email" required
                             value={email}
                             onChange={(e) => setEmail(e.target.value)} />
-                        <label className="label">Senha</label>
+                        <label className="labelCadastro">Senha</label>
                         <input type="password" name="password" id="Password" placeholder="escreva sua senha" required
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
                         <div>
-                            <legend className="texto">Tipo de Usuario</legend>
+                            <legend className="labelCadastro">Tipo de Usuario</legend>
                             <div>
                                 <label className="texto">
                                     <input type="radio" name="tipo" value="PACIENTE" selected="selected" onChange={handleRadioChange} />{' '}
@@ -88,35 +88,37 @@ function Cadastro(props) {
                         </div>
                         {
                             tipoUsuario === "PSICOLOGO" ?
-                                <div>
-                                    <label className="label" htmlFor="crp">CRP</label>
-                                    <input type="text" name="crp" id="crp" placeholder="escreva seu CRP" />
-                                </div>
+                                <>
+                                    <legend className="labelCadastro" htmlFor="crp">CRP</legend>
+                                    <input type="text" name="crp" id="crp" placeholder="escreva seu CRP" required
+                                    value={CRP}
+                                    onChange={(e) => setCRP(e.target.value)}
+                                    />
+                                </>
                                 : <></>
                         }
 
                     </form>
 
-                    <div className="descricao">
-                        <p className="texto">Tipo de Usuario</p>
+                    <div id="descricao" className="descricao">
+                        <p className="tituloDescricao">Tipo de Usuario</p>
                         {
                             tipoUsuario === 'PACIENTE' ?
-                                <p>
+                                <p className="textoCadastro">
                                     Pacientes são usuários que possuem dificuldade com ranço. Eles podem adicionar eventos
                                     que causaram sentimentos negativos, monitorando e acompanhando a evolução de seus casos.
                                 </p>
                                 :
-                                <p>
+                                <p className="textoCadastro">
                                     Psicologos são usuários que podem acompanhar pacientes, ajudando-os em suas dificuldades com ranço.
                                     Eles podem visualizar eventos dos pacientes e deixar conselhos, auxiliando-os em seus casos.
                                 </p>
-                        }
-                        <p>Descrição</p>
+                        }                        
                     </div>
                 </div>
-                <div className="botoes">
-                    <button className="botao" onClick={cadastrar}> Cadastrar </button>{' '}
-                    <button className="botao" onClick={gotToLogin}> Login </button>{' '}
+                <div className="botoesCadastro">
+                    <button className="botaoCadastro" onClick={gotToLogin}> Login </button>{' '}
+                    <button className="botaoCadastro" onClick={cadastrar}> Cadastrar </button>{' '}
                 </div>
 
             </div>
