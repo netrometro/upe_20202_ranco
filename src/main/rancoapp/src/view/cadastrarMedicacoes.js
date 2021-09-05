@@ -81,7 +81,7 @@ export default ({ match }) => {
                     <div className='segundaColuna'>
                         <div className='blocoEvento' name="intervalo">
                             <h3>Intervalo</h3>
-                            <input type={Int} id="intervalo" name="intervalo" placeholder="intervalo"
+                            <input type={Number} id="intervalo" name="intervalo" placeholder="intervalo"
                                 value={intervalo}
                                 onChange={e => setIntervalo(e.target.value)}
                             ></input>
