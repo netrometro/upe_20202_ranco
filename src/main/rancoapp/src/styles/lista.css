@@ -27,10 +27,15 @@ h1{
 
 #detalhes{
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: column; 
+    align-content: space-around;
 }
 
-#descricao.blocoEvento{
+#descricao{
     flex-grow: 2;
+}
+
+#status {
+    width: 2px;
+    height: 10px;
 }
