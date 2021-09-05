@@ -5,7 +5,7 @@ import { logout, useAuthDispatch, useAuthState } from "../context";
 
 export default ({ match }) => {
     const state = useAuthState();
-    const [eventResponse, setEventResponse] = useState();
+    const [eventResponse, setEventResponse] = useState({});
     const [titulo, setTitulo] = useState();
     const [descricao, setDescricao] = useState();
     const [pontoMelhoria, setPontoMelhoria] = useState();
@@ -17,11 +17,11 @@ export default ({ match }) => {
     const [local, setLocal] = useState();
     const [pessoasEnvolvidas, setPessoasEnvolvidas] = useState();
     const [sentimentos, setSentimentos] = useState([
-        { data: "", descarrego: '', tipoSentimento: '', grauSentimento: '' }
+        { data: '', descarrego: '', tipoSentimento: '', grauSentimento: '' }
     ]);
 
     const handleSentimentoslist = (e, index) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target;        
         const list = [...sentimentos];
         list[index][name] = value;
         setSentimentos(list);
@@ -57,7 +57,7 @@ export default ({ match }) => {
             status: true,
             categoria: categoria,
             motivo: motivo,
-            sentimentos: []
+            sentimentos: sentimentos
         }
         const requestOptions = {
             method: 'POST',
@@ -65,11 +65,13 @@ export default ({ match }) => {
             body: JSON.stringify(event)
         };
         console.log(event)
+        console.log(JSON.parse(state.userDetails).id)
         fetch(`http://localhost:5000/api/eventos/${JSON.parse(state.userDetails).id}`, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();
 
+                console.log(data)
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response status
@@ -78,31 +80,9 @@ export default ({ match }) => {
                     return Promise.reject(error);
                 }
 
-                setEventResponse(data)
-                if (sentimentos) {
-                    const requestOptions = {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(sentimentos)
-                    };
-                    console.log(event)
-                    fetch(`http://localhost:5000/api/sentimentos/${JSON.parse(eventResponse).id}`, requestOptions)
-                        .then(async response => {
-                            const isJson = response.headers.get('content-type')?.includes('application/json');
-                            const data = isJson && await response.json();
-
-                            // check for error response
-                            if (!response.ok) {
-                                // get error message from body or default to response status
-                                const error = (data && data.message) || response.status;
-                                console.log(error);
-                                return Promise.reject(error);
-                            }
-
-                            setEventResponse(data)
-                        })
-                }
-            })
+                setEventResponse(data)        
+                window.location.href = '/eventos'        
+            })       
     }
 
     if (state.userDetails) {
@@ -151,14 +131,16 @@ export default ({ match }) => {
                                             <legend htmlFor="data">Data</legend>
                                             <input type="date" name='data'
                                                 value={item.data}
-                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                                onChange={(e) => handleSentimentoslist(e, i)}
                                             />
                                         </div>
                                         <div className="sentimentoItem">
                                             <legend htmlFor="tipoSentimento">Sentimento</legend>
                                             <select name="tipoSentimento" id="tipoSentimento" value={item.tipoSentimento}
-                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                                required
+                                                onChange={(e) => handleSentimentoslist(e, i)}
                                             >
+                                                <option value={null}>Selecione</option>
                                                 <option value="RAIVA">Raiva</option>
                                                 <option value="VERGONHA">Vergonha</option>
                                                 <option value="TRISTEZA">Tristeza</option>
@@ -171,8 +153,10 @@ export default ({ match }) => {
                                         <div className="sentimentoItem">
                                             <legend htmlFor="grauSentimento">Intensidade</legend>
                                             <select className='custom-select' name="grauSentimento" value={item.grauSentimento}
-                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                                required
+                                                onChange={(e) => handleSentimentoslist(e, i)}
                                             >
+                                                <option value={null}>Selecione</option>
                                                 <option value="LEVE">Leve</option>
                                                 <option value="MODERADO">Moderado</option>
                                                 <option value="INTENSO">Intenso</option>
@@ -183,8 +167,9 @@ export default ({ match }) => {
                                             </select>
                                         </div>
                                         <textarea rows="3" cols="30" id="novoProjeto" placeholder='Descarrego ... desabafar faz bem'
+                                            name='descarrego'
                                             value={item.descarrego}
-                                            onChange={(e, i) => handleSentimentoslist(e, i)}
+                                            onChange={(e) => handleSentimentoslist(e, i)}
                                         ></textarea>
                                         <button className="sentimentoButton" onClick={i => handleRemoveSentimentos(i)}>Remover</button>
                                     </div>
