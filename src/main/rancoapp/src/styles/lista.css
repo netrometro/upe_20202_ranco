@@ -66,6 +66,7 @@ h1#eventos{
     margin: 80px;
     padding: 50px;
     border-radius: 15px;
+    display: flex;
 }
 
 h1#medicacao{
@@ -75,13 +76,31 @@ h1#medicacao{
 .blocoMedicamento{
     margin: 10px 30px;
     border-radius: 15px;
-    height: 110px;
+    /*height: 110px;*/
     background-color: #55A955;
-    padding: 10px 30px;
+    padding: 10px 20px;
     font-family: -webkit-pictograph ;
     border: 5px solid white;
-    flex-grow: 1;
 }
+
+.inicio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.primeiraColuna{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 5;
+}
+
+.segundaColuna{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
 
 .descricaoMedicacao{
     margin: 20px;
