@@ -20,6 +20,11 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
+              <a href='/cadastrarmedicacoes' className='page'>
+                Novas Medicações
+              </a>
+            </li>
+            <li>
               <a href='/cadastro' className='page'>
                 Cadastro
               </a>

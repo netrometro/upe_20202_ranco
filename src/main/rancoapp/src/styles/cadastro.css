@@ -10,6 +10,7 @@
 }
 
 .label{
+    padding: 10px;
     font-size: small;
     color: white;
 }
@@ -31,7 +32,7 @@
 .conteudo{
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
+    align-items:stretch;
 }
 
 .descricao{
@@ -46,12 +47,47 @@
     color: white;
     border-radius: 10px;
     background-color: #271D24;
-    padding: 5px;
     font: small;
+    height: 30px;
+    border: none;
 }
 
 .botoes{
+    display: flex;
     padding: 10px;
-    margin-top: 70px;
+    /* margin-top: 70px; */
+    align-items: center;
+   
     
+}
+
+a.botao{
+    margin-left: 20px;
+    width: 50px;
+    text-align: center;
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form{
+    display: flex;
+    align-content: flex-start;
+    align-items: baseline;
+    flex-direction: column;
+}
+
+input{
+    /* width: 250px; */
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+input#opcoes{
+    width: 10px;
 }
