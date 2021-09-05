@@ -57,7 +57,7 @@ export default ({ match }) => {
                         </div>
                         <div className='blocoEvento' name="pontosDeMelhoria">
                             <h3>Pontos de melhoria</h3>
-                            <p>{evento.pontosDeMelhoria}</p>
+                            <p>{evento.pontoMelhoria}</p>
                         </div>
                     </div>
                     <div className='coluna2'>
@@ -85,7 +85,7 @@ export default ({ match }) => {
                             </div>
                             <div className='blocoEvento' name="pessoasEnvolvidas">
                                 <h3>Pessoas envolvidas</h3>
-                                <p>{evento.pessoasEnvolvidas}</p>
+                                <p>{evento.pessoaEnvolvida}</p>
                             </div>
                             <div className='blocoEvento' name="feedback">
                                 <h3> feedback</h3>

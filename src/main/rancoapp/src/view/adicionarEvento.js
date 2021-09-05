@@ -40,7 +40,7 @@ export default ({ match }) => {
             categoria: categoria,
             motivo: motivo,
             sentimentos: []
-        }        
+        }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -56,7 +56,7 @@ export default ({ match }) => {
                 if (!response.ok) {
                     // get error message from body or default to response status
                     const error = (data && data.message) || response.status;
-                    console.log(error);                    
+                    console.log(error);
                     return Promise.reject(error);
                 }
 
@@ -214,13 +214,13 @@ export default ({ match }) => {
                             <div className='blocoEvento' name="local">
                                 <textarea rows="1" cols="20" id="novoProjeto" placeholder='Local'
                                     value={local}
-                                    onchange={(e) => setLocal(e.target.value)}
+                                    onChange={(e) => setLocal(e.target.value)}                                    
                                 ></textarea>
                             </div>
                             <div className='blocoEvento' name="pessoasEnvolvidas">
                                 <textarea rows="3" cols="20" id="novoProjeto" placeholder='Pessoas Envolvidas'
                                     value={pessoasEnvolvidas}
-                                    onchange={(e) => setPessoasEnvolvidas(e.target.value)}
+                                    onChange={(e) => setPessoasEnvolvidas(e.target.value)}
                                 ></textarea>
                             </div>
 
