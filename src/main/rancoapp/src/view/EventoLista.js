@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import "../styles/lista.css"
 import { Link } from "react-router-dom";
+import { useAuthDispatch, useAuthState } from "../context";
 
 export default () => {
     useEffect(() => {
         getEventos();
     }, [])
 
-    const [eventos, setEventos] = useState([]);
-
+    const state = useAuthState();
+    const [eventos, setEventos] = useState([]);        
     const getEventos = () => {
-        fetch('http://localhost:5000/eventos/52')
+        fetch(`http://localhost:5000/eventos/${JSON.parse(state.userDetails).id}`)
             .then(async response => {
                 const data = await response.json();
-
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response statusText
@@ -32,11 +32,11 @@ export default () => {
             <div className='listaEvento'>
                 <h1 id='eventos'>Meus Eventos</h1>
                 <a href='/adicionarEvento'>Adicionar Evento</a>
-                {eventos.map((evento) => (                
+                {eventos.map((evento) => (
                     <Link to={`/eventos/${evento.id}`} key={evento.id}>
                         <div className='blocoEvento'>
                             <h3>{evento.titulo}</h3>
-                            <div className='blocoEvento' name="status" id={evento.status? 'statusTRUE': 'statusFALSE'}>
+                            <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
                             </div>
                             <h3>Categoria : {evento.categoria}</h3>
                             {/* se o status for false bloco vermelho, se for true, verde */}
