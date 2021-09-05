@@ -31,26 +31,26 @@ export default ({ match }) => {
                 <div className='colunas' id='colunas'>
                     <div className='primeiraColuna'>
                         <div className='blocoMedicamento' name="descricao" id="descricao">
-                            <h3>Descricao</h3>
+                            <h3>Descrição:</h3>
                             <p>{medicacoes.descricao}</p>
                         </div>
                         <div className='blocoMedicamento' name="observacao" id="observacao">
-                            <h3>Observação</h3>
+                            <h3>Observação:</h3>
                             <p>{medicacoes.observacao}</p>
                         </div>
                     </div>
 
                     <div className='segundaColuna'>
                         <div className='blocoMedicamento' name="intervalo" id="intervalo">
-                            <h3>Intervalo</h3>
+                            <h3>Intervalo:</h3>
                             <p>{medicacoes.intervalo}</p>
                         </div>
                         <div className='blocoMedicamento' name="ultimaDosagem" id="ultimaDosagem">
-                            <h3>Última Dosagem</h3>
+                            <h3>Última Dosagem:</h3>
                             <p>{medicacoes.ultimaDosagem}</p>
                         </div>
                         <div className='blocoMedicamento' name="posologia" id="posologia">
-                            <h3> Posologia</h3>
+                            <h3>Posologia:</h3>
                             <p>{medicacoes.posologia}</p>
                         </div>
                     </div>

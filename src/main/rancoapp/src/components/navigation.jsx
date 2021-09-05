@@ -41,17 +41,7 @@ export const Navigation = (props) => {
               : <></>
           }
 
-          {
-            state.userDetails
-              ?
-              <li>
-                <a href='/cadastrarmedicacoes' className='page'>
-                  Novas Medicações
-                </a>
-              </li>
-
-              : <></>
-          }
+          
           {
             !state.userDetails
               ?
