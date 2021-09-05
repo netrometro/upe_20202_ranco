@@ -122,8 +122,10 @@ export default ({ match }) => {
                             ></textarea>
                         </div>
                         <div className='blocoEvento' name="sentimentos">
-                            <h3> Sentimentos</h3>
-                            <button onClick={handleADDSentimentos} className='sentimentoButton'>Adicionar sentimento</button>
+                            <div className='sentimentoField'>
+                                <h3> Sentimentos</h3>
+                                <button onClick={handleADDSentimentos} className='sentimentoButton'>Adicionar sentimento</button>
+                            </div>
                             {sentimentos.map((item, i) => {
                                 return (
                                     <div id='data' key={i} className="sentimentoField">
