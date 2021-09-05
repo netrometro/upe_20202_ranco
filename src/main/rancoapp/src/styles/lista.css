@@ -56,3 +56,7 @@ h1{
 .coluna2{
     flex-grow: 2;
 }
+
+h1#eventos{
+    text-align: start;
+}

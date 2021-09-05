@@ -82,7 +82,7 @@ form{
 }
 
 input{
-    width: 250px;
+    /* width: 250px; */
     padding: 10px;
     border-radius: 10px;
     border: none;
