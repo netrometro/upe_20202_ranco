@@ -29,29 +29,30 @@ function Login() {
         <div className='container'>
             <div className="container_login">
                 <form className="formulario" onSubmit={handleLogin}>
-                    <div >
-                        <legend className="titulo">login</legend>
-                        <label className="label">Email</label>
-                        <input type="email" name="email" id="Email" placeholder="escreva seu email" required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div >
-                        <label className="label">Senha</label>
-                        <input type="password" name="password" id="Password" placeholder="escreva sua senha" required
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                    <legend className="titulo">Login</legend>
+                    <legend className="label">Email</legend>
+                    <input type="email" name="email" id="Email" placeholder="escreva seu email" required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <legend className="label">Senha</legend>
+                    <input type="password" name="password" id="Password" placeholder="escreva sua senha" required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                     {
                         loading
                             ? <p>Carregando ..</p>
-                            : <button> Login </button>
+                            : <button className="botao"> Login </button>
                     }
+                    {/* {
+                        errorMessage
+                            ? <p>{errorMessage.}</p>
+                            : <></>
+                    } */}
 
+                    <a id="subscribeLogin" href="/cadastro">Cadastre-se</a>
                 </form>
-
             </div>
         </div>
     );
