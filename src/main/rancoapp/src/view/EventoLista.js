@@ -11,7 +11,7 @@ export default () => {
     const [eventos, setEventos] = useState([]);
 
     const getEventos = () => {
-        fetch('http://localhost:5000/api/eventos')
+        fetch('http://localhost:5000/eventos/52')
             .then(async response => {
                 const data = await response.json();
 
@@ -22,7 +22,7 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setEventos(data);
+                setEventos(data.eventos);
             })
     }
 

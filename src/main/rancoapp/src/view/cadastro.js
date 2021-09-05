@@ -100,7 +100,7 @@ function Cadastro(props) {
 
                     </form>
 
-                    <div id="descricao" className="descricao">
+                    <div id="descricaoTipo" className="descricao">
                         <p className="tituloDescricao">Tipo de Usuario</p>
                         {
                             tipoUsuario === 'PACIENTE' ?
