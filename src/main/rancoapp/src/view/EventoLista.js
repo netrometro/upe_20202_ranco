@@ -27,6 +27,7 @@ export default () => {
     }
 
     return (
+<<<<<<< HEAD
         <div>
             <div className='listaEvento'>
                 <h1>Meus Eventos</h1>
@@ -42,6 +43,19 @@ export default () => {
 
             </div>
 
+=======
+        <div className="container">
+            <div className='quadro'>
+                <h1>Meus eventos</h1>
+                {eventos.map((evento) => (                
+                    <Link to={`/eventos/${evento.id}`} key={evento.id}>
+                        <div>
+                            <h3>{evento.titulo}</h3>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+>>>>>>> telas_cadastro_e_login
         </div>
     )
 }
