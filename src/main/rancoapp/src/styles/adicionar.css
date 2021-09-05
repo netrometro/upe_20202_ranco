@@ -1,0 +1,31 @@
+
+textarea{
+    border-radius: 10px;
+    border: none;
+    resize: none;
+    background-color: #cbfacbe3;
+    padding: 20px;
+}
+
+#descricao.blocoEvento{
+    flex-grow: 3;
+}
+
+input#data{
+    border-radius: 10px;
+    border: none;
+    background-color: #cbfacbe3;
+    padding: 20px;
+}
+
+#titulo{
+    margin-left: 15px;
+}
+
+#salvar{
+    padding: 15px;
+    width: 80px;
+    text-align: center;
+    align-self: flex-end;
+    margin-right: 10px;
+}
