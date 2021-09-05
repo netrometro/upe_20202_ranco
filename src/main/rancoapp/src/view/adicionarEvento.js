@@ -136,6 +136,7 @@ export default ({match}) => {
                         <textarea rows="3" cols="20"  id="novoProjeto" placeholder= 'Pessoas Envolvidas'></textarea>
                     </div>
                     
+                    <a className='botao' id='salvar'>Salvar</a>
                     
                     
             </div>
