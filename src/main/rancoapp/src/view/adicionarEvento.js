@@ -16,7 +16,25 @@ export default ({ match }) => {
     const [date, setDate] = useState();
     const [local, setLocal] = useState();
     const [pessoasEnvolvidas, setPessoasEnvolvidas] = useState();
+    const [sentimentos, setSentimentos] = useState([
+        { data: "", descarrego: '', tipoSentimento: '', grauSentimento: '' }
+    ]);
 
+    const handleSentimentoslist = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...sentimentos];
+        list[index][name] = value;
+        setSentimentos(list);
+    }
+    const handleADDSentimentos = () => {
+        setSentimentos([...sentimentos, { data: "", descarrego: '', tipoSentimento: '', grauSentimento: '' }]);
+    }
+
+    const handleRemoveSentimentos = index => {
+        const list = [...sentimentos]
+        list.splice(index, 1)
+        setSentimentos(list);
+    }
     const handleCategoria = (e) => {
         const { name, value } = e.target
         setCategoria(value)
@@ -61,7 +79,29 @@ export default ({ match }) => {
                 }
 
                 setEventResponse(data)
-                // props.history.push("/login")
+                if (sentimentos) {
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(sentimentos)
+                    };
+                    console.log(event)
+                    fetch(`http://localhost:5000/api/sentimentos/${JSON.parse(eventResponse).id}`, requestOptions)
+                        .then(async response => {
+                            const isJson = response.headers.get('content-type')?.includes('application/json');
+                            const data = isJson && await response.json();
+
+                            // check for error response
+                            if (!response.ok) {
+                                // get error message from body or default to response status
+                                const error = (data && data.message) || response.status;
+                                console.log(error);
+                                return Promise.reject(error);
+                            }
+
+                            setEventResponse(data)
+                        })
+                }
             })
     }
 
@@ -103,7 +143,53 @@ export default ({ match }) => {
                         </div>
                         <div className='blocoEvento' name="sentimentos">
                             <h3> Sentimentos</h3>
-                            <a href='/adicionarSentimento' >Adicionar sentimento</a>
+                            <button onClick={handleADDSentimentos} className='sentimentoButton'>Adicionar sentimento</button>
+                            {sentimentos.map((item, i) => {
+                                return (
+                                    <div id='data' key={i} className="sentimentoField">
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="data">Data</legend>
+                                            <input type="date" name='data'
+                                                value={item.data}
+                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                            />
+                                        </div>
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="tipoSentimento">Sentimento</legend>
+                                            <select name="tipoSentimento" id="tipoSentimento" value={item.tipoSentimento}
+                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                            >
+                                                <option value="RAIVA">Raiva</option>
+                                                <option value="VERGONHA">Vergonha</option>
+                                                <option value="TRISTEZA">Tristeza</option>
+                                                <option value="CULPA">Culpa</option>
+                                                <option value="FRUSTRACAO">Frustração</option>
+                                                <option value="CHATEACAO">Chateação</option>
+                                                <option value="MEDO">Medo</option>
+                                            </select>
+                                        </div>
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="grauSentimento">Intensidade</legend>
+                                            <select className='custom-select' name="grauSentimento" value={item.grauSentimento}
+                                                onChange={(e, i) => handleSentimentoslist(e, i)}
+                                            >
+                                                <option value="LEVE">Leve</option>
+                                                <option value="MODERADO">Moderado</option>
+                                                <option value="INTENSO">Intenso</option>
+                                                <option value="INCONTROLAVEL">Incontrável</option>
+                                                <option value="TRANQUILO">Tranquilo</option>
+                                                <option value="MUITO">Muito</option>
+                                                <option value="POUCO">Pouco</option>
+                                            </select>
+                                        </div>
+                                        <textarea rows="3" cols="30" id="novoProjeto" placeholder='Descarrego ... desabafar faz bem'
+                                            value={item.descarrego}
+                                            onChange={(e, i) => handleSentimentoslist(e, i)}
+                                        ></textarea>
+                                        <button className="sentimentoButton" onClick={i => handleRemoveSentimentos(i)}>Remover</button>
+                                    </div>
+                                )
+                            })}
                         </div>
                         <div className='blocoEvento' name="pontosDeMelhoria">
                             <textarea rows="3" cols="80" id="novoProjeto" placeholder='Pontos de melhoria'
@@ -214,7 +300,7 @@ export default ({ match }) => {
                             <div className='blocoEvento' name="local">
                                 <textarea rows="1" cols="20" id="novoProjeto" placeholder='Local'
                                     value={local}
-                                    onChange={(e) => setLocal(e.target.value)}                                    
+                                    onChange={(e) => setLocal(e.target.value)}
                                 ></textarea>
                             </div>
                             <div className='blocoEvento' name="pessoasEnvolvidas">
