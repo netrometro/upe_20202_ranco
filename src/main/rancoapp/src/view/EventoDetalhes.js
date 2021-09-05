@@ -24,49 +24,50 @@ export default ({match}) => {
     }
 
     return (
-        <div>
-            ? <h1>{evento.titulo}</h1>
-            <div name="status">
+        <div className='listaEvento' id='detalhes'>
+            <h1>{evento.titulo}</h1>
+            <div className='blocoEvento' name="status">
                 <h3> Status</h3>
                 <p>{evento.status}</p>
             </div>
-            <div name="categoria">
-                <h3> Categoria</h3>
-                <p>{evento.categoria}</p>
-            </div>
-            <div name="descricao">
+            <div className='blocoEvento' name="descricao" id='descricao'>
                 <h3> Descrição</h3>
                 <p>{evento.descricao}</p>
             </div>
-            <div name="motivo">
+            <div  className='blocoEvento' name="categoria">
+                <h3> Categoria</h3>
+                <p>{evento.categoria}</p>
+            </div>
+            
+            <div className='blocoEvento' name="motivo">
                 <h3> Motivo</h3>
                 <p>{evento.motivo}</p>
             </div>
-            <div name="data">
+            <div className='blocoEvento' name="data">
                 <h3> Data</h3>
                 <p>{evento.data}</p>
             </div>
-            <div name="expectativa">
+            <div className='blocoEvento' name="expectativa">
                 <h3> Expectativa</h3>
                 <p>{evento.expectativa}</p>
             </div>
-            <div name="local">
+            <div className='blocoEvento' name="local">
                 <h3> local</h3>
                 <p>{evento.local}</p>
             </div>
-            <div name="pessoasEnvolvidas">
+            <div className='blocoEvento' name="pessoasEnvolvidas">
                 <h3>Pessoas envolvidas</h3>
                 <p>{evento.pessoasEnvolvidas}</p>
             </div>
-            <div name="feedback">
+            <div className='blocoEvento' name="feedback">
                 <h3> feedback</h3>
                 <p>{evento.feedback}</p>
             </div>
-            <div name="pontosDeMelhoria">
+            <div className='blocoEvento' name="pontosDeMelhoria">
                 <h3>Pontos de melhoria</h3>
                 <p>{evento.pontosDeMelhoria}</p>
             </div>
-            <div name="sentimentos">
+            <div className='blocoEvento' name="sentimentos">
                 <h3>Sentimentos</h3>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import "../styles/lista.css"
 import { Link } from "react-router-dom";
 
 export default () => {
@@ -27,14 +28,20 @@ export default () => {
 
     return (
         <div>
-            <h1>Meus Eventos</h1>
-            {eventos.map((evento) => (                
-                <Link to={`/eventos/${evento.id}`} key={evento.id}>
-                    <div>
-                        <h3>{evento.titulo}</h3>
-                    </div>
-                </Link>
-            ))}
+            <div className='listaEvento'>
+                <h1>Meus Eventos</h1>
+                {eventos.map((evento) => (                
+                    <Link to={`/eventos/${evento.id}`} key={evento.id}>
+                        <div className='blocoEvento'>
+                            <h3>{evento.titulo}</h3>
+                            <h3>Categoria : {evento.categoria}</h3>
+                            {/* se o status for false bloco vermelho, se for true, verde */}
+                        </div>
+                    </Link>
+                ))}
+
+            </div>
+
         </div>
     )
 }
