@@ -60,3 +60,33 @@ h1{
 h1#eventos{
     text-align: start;
 }
+
+.listaMedicamento{
+    background-color: #90ee90;
+    margin: 80px;
+    padding: 50px;
+    border-radius: 15px;
+}
+
+h1#medicacao{
+    text-align: start;
+}
+
+.blocoMedicamento{
+    margin: 10px 30px;
+    border-radius: 15px;
+    height: 110px;
+    background-color: #55A955;
+    padding: 10px 30px;
+    font-family: -webkit-pictograph ;
+    border: 5px solid white;
+    flex-grow: 1;
+}
+
+.descricaoMedicacao{
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: justify;
+    
+  }

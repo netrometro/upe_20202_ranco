@@ -23,25 +23,25 @@ export default ({match}) => {
             })
     }
     return (
-        <div>
+        <div className = 'listaMedicamento'>
             <h1>{medicacoes.nome}</h1>
-            <div name="descricao">
+            <div className= 'blocoMedicamento' name="descricao">
                 <h3>Descricao</h3>
                 <p>{medicacoes.descricao}</p>
             </div>
-            <div name="observacao">
+            <div className= 'blocoMedicamento' name="observacao">
                 <h3>Observação</h3>
                 <p>{medicacoes.observacao}</p>
             </div>
-            <div name="intervalo">
+            <div className= 'blocoMedicamento' name="intervalo">
                 <h3>Intervalo</h3>
                 <p>{medicacoes.intervalo}</p>
             </div>
-            <div name="ultimaDosagem">
+            <div className= 'blocoMedicamento' name="ultimaDosagem">
                 <h3>Última Dosagem</h3>
                 <p>{medicacoes.ultimaDosagem}</p>
             </div>
-            <div name="posologia">
+            <div className= 'blocoMedicamento' name="posologia">
                 <h3> Posologia</h3>
                 <p>{medicacoes.posologia}</p>
             </div>
