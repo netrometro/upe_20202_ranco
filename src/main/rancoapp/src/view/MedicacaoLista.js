@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import "../styles/lista.css"
 import { Link } from "react-router-dom";
 
 export default () => {
@@ -27,7 +28,15 @@ export default () => {
 
     return (
         <div className= "listaEvento">
-            <h1>Minhas Medicações</h1>
+            <h1 id = 'medicacao'>Minhas Medicações</h1>
+            <div>
+            <a href='/medicacoes/${medicacao.id}'>Visualizar Medicações</a>
+            </div>
+            <div>
+            <a href= '/cadastrarmedicacoes' >Adicionar Medicações</a>
+            </div>
+            
+
             {medicacoes.map((medicacao) => (                
                 <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
                     <div className= "blocoEvento">
