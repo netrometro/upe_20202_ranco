@@ -10,7 +10,7 @@ export default () => {
     const [medicacoes, setMedicacao] = useState([]);
 
     const getMedicacao = () => {
-        fetch('http://localhost:5000/api/medicações') 
+        fetch('http://localhost:5000/api/medicacoes') 
             .then(async response => {
                 const data = await response.json();
 

@@ -9,7 +9,7 @@ export default ({match}) => {
     const [medicacoes, setMedicacao] = useState({});
 
     const getMedicacao = (id) => {
-        fetch(`http://localhost:5000/api/medicações/${id}`)
+        fetch(`http://localhost:5000/api/medicacoes/${id}`)
             .then(async response => {
                 const data = await response.json();
 
@@ -25,6 +25,22 @@ export default ({match}) => {
     return (
         <div>
             <h1>{medicacoes.nome}</h1>
+            <div name="descricao">
+                <h3>Descricao</h3>
+                <p>{medicacoes.descricao}</p>
+            </div>
+            <div name="observacao">
+                <h3>Observação</h3>
+                <p>{medicacoes.observacao}</p>
+            </div>
+            <div name="intervalo">
+                <h3>Intervalo</h3>
+                <p>{medicacoes.intervalo}</p>
+            </div>
+            <div name="ultimaDosagem">
+                <h3>Última Dosagem</h3>
+                <p>{medicacoes.ultimaDosagem}</p>
+            </div>
             <div name="posologia">
                 <h3> Posologia</h3>
                 <p>{medicacoes.posologia}</p>
