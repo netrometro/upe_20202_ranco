@@ -128,3 +128,15 @@ h1#medicacao{
     text-align: justify;
     
   }
+
+  #statusTRUE{
+    width: 2px;
+    height: 10px;
+    background-color: green;
+  }
+
+  #statusFALSE{
+    width: 2px;
+    height: 10px;
+    background-color: red;
+  }
