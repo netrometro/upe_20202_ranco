@@ -26,6 +26,7 @@ export default ({match}) => {
         try{
             if(status == false){
                 document.getElementById( 'status' ).style.background = 'red';
+                
             }
             else{
                 document.getElementById( 'status' ).style.background = 'green';

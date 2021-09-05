@@ -11,7 +11,7 @@ export default () => {
     const [eventos, setEventos] = useState([]);
 
     const getEventos = () => {
-        fetch('http://localhost:5000/api/eventos')
+        fetch('http://localhost:5000/eventos/52')
             .then(async response => {
                 const data = await response.json();
 
@@ -22,9 +22,10 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setEventos(data);
+                setEventos(data.eventos);
             })
     }
+
 
     return (
         <div>
@@ -35,12 +36,13 @@ export default () => {
                     <Link to={`/eventos/${evento.id}`} key={evento.id}>
                         <div className='blocoEvento'>
                             <h3>{evento.titulo}</h3>
+                            <div className='blocoEvento' name="status" id={evento.status? 'statusTRUE': 'statusFALSE'}>
+                            </div>
                             <h3>Categoria : {evento.categoria}</h3>
                             {/* se o status for false bloco vermelho, se for true, verde */}
                         </div>
                     </Link>
                 ))}
-
             </div>
 
         </div>

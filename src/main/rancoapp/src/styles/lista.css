@@ -80,9 +80,12 @@ body{
     padding: 50px;
     border-radius: 15px;
     display: flex;
+    flex-direction: column;
 }
 
 h1#medicacao{
+    margin-left: 30px;
+    font-family: -webkit-pictograph ;
     text-align: start;
 }
 
@@ -96,11 +99,17 @@ h1#medicacao{
     border: 5px solid white;
 }
 
-.inicio{
+#header{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+#colunas{
+    display: flex;
+   
+}
+
 
 .primeiraColuna{
     display: flex;
@@ -121,4 +130,16 @@ h1#medicacao{
     border-radius: 15px;
     text-align: justify;
     
+  }
+
+  #statusTRUE{
+    width: 2px;
+    height: 10px;
+    background-color: green;
+  }
+
+  #statusFALSE{
+    width: 2px;
+    height: 10px;
+    background-color: red;
   }
