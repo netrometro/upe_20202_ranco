@@ -29,7 +29,13 @@ export default () => {
     return (
         <div className= "listaEvento">
             <h1 id = 'medicacao'>Minhas Medicações</h1>
-            <a href='/medicacoes/${medicacao.id}'>Visualizar Evento</a>
+            <div>
+            <a href='/medicacoes/${medicacao.id}'>Visualizar Medicações</a>
+            </div>
+            <div>
+            <a href= '/cadastrarmedicacoes' >Adicionar Medicações</a>
+            </div>
+            
 
             {medicacoes.map((medicacao) => (                
                 <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>

@@ -20,7 +20,7 @@ export const CadastrarMedicacao = (props) => {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(projeto)
+            body: JSON.stringify(medicacao)
         };
         fetch('http://localhost:5000/api/medicacoes', requestOptions)
             .then(async response => {
@@ -35,7 +35,7 @@ export const CadastrarMedicacao = (props) => {
                     setErrorText(error);
                     return Promise.reject(error);
                 }                
-                props.history.push("/projetos")
+                props.history.push("/medicacoes")
             })
             .catch(error => {
                 setErrorText(error.toString());
@@ -44,13 +44,35 @@ export const CadastrarMedicacao = (props) => {
 
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (a) => {
+        a.preventDefault();
         cadastrar();
     }
 
     return (
-        <div></div>
+        <div className = 'listaMedicamento'>
+            <h1>{medicacoes.nome}</h1>
+            <div className= 'blocoMedicamento' name="descricao">
+                <h3>Descricao</h3>
+                <p>{medicacoes.descricao}</p>
+            </div>
+            <div className= 'blocoMedicamento' name="observacao">
+                <h3>Observação</h3>
+                <p>{medicacoes.observacao}</p>
+            </div>
+            <div className= 'blocoMedicamento' name="intervalo">
+                <h3>Intervalo</h3>
+                <p>{medicacoes.intervalo}</p>
+            </div>
+            <div className= 'blocoMedicamento' name="ultimaDosagem">
+                <h3>Última Dosagem</h3>
+                <p>{medicacoes.ultimaDosagem}</p>
+            </div>
+            <div className= 'blocoMedicamento' name="posologia">
+                <h3> Posologia</h3>
+                <p>{medicacoes.posologia}</p>
+            </div>
+        </div>
 
     );
 
