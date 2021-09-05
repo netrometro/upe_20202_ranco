@@ -33,7 +33,7 @@ export default () => {
 
         return (
             <div>
-                <div className='listaEvento'>
+                {/* <div className='listaEvento'>
                     <h1 id='eventos'>Dashboard</h1>
                     <a href='/adicionarEvento'>Adicionar Evento</a>
                     {eventos.map((evento) => (
@@ -42,11 +42,15 @@ export default () => {
                                 <h3>{evento.titulo}</h3>
                                 <h3>Categoria : {evento.categoria}</h3>
                                 {/* se o status for false bloco vermelho, se for true, verde */}
-                            </div>
+                          {/*   </div>
                         </Link>
                     ))}
 
-                </div>
+                </div> */} */}
+
+                <canvas>
+                    
+                </canvas>
 
             </div>
         )

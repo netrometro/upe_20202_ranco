@@ -12,6 +12,7 @@ import './styles/navegacao.css'
 import adicionarEvento from './view/adicionarEvento';
 import { AuthProvider } from "./context";
 import cadastrarMedicacoes from './view/cadastrarMedicacoes';
+import Dashboard from './view/Dashboard';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Navigation />
           <Switch>
             {/* <Route path='/' exact component={Login} ></Route> */}
+            <Route path='/' exact component={Dashboard} ></Route>
             <Route path='/cadastro' exact component={Cadastro} ></Route>
             <Route path='/login' exact component={Login} ></Route>
             <Route path='/eventos' exact component={EventoLista} ></Route>
