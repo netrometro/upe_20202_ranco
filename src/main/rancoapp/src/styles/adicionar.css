@@ -10,3 +10,14 @@ textarea{
 #descricao.blocoEvento{
     flex-grow: 3;
 }
+
+input#data{
+    border-radius: 10px;
+    border: none;
+    background-color: #cbfacbe3;
+    padding: 20px;
+}
+
+#titulo{
+    margin-left: 15px;
+}
