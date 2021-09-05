@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import "../styles/adicionar.css"
 
 export default ({match}) => {
     return (
@@ -14,6 +15,7 @@ export default ({match}) => {
                 <div className='coluna1'>
                     <div className='blocoEvento' name="descricao" id='descricao'>
                         <h3> Descrição</h3>
+                        <textarea rows="3" cols="50" name="projectname" id="novoProjeto" placeholder= 'descrição'></textarea>
                 </div>
                 <div className='blocoEvento' name="sentimentos">
                         <h3>Sentimentos</h3>
