@@ -52,11 +52,17 @@ export const Navigation = (props) => {
 
               : <></>
           }
-          <li>
-            <a href='/cadastro' className='page'>
-              Cadastro
-            </a>
-          </li>
+          {
+            !state.userDetails
+              ?
+              <li>
+                <a href='/cadastro' className='page'>
+                  Cadastro
+                </a>
+              </li>
+
+              : <></>
+          }
           {
             state.userDetails
               ?
@@ -72,8 +78,8 @@ export const Navigation = (props) => {
             state.userDetails
               ?
               <li>
-                <button onClick={handleLogout} className='page'>
-                  sair
+                <button id='sairButton' onClick={handleLogout} className='page'>
+                  Sair
                 </button>
               </li>
 
