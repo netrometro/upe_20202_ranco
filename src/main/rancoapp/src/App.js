@@ -13,8 +13,8 @@ import adicionarEvento from './view/adicionarEvento';
 
 function App() {
   return (
-    <Router>
-      <div>
+    <div className='back'>
+      <Router>
         <Navigation />
         <Switch>
           {/* <Route path='/' exact component={Login} ></Route> */}
@@ -27,8 +27,8 @@ function App() {
           <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
         </Switch>
 
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

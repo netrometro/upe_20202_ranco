@@ -60,3 +60,16 @@ h1{
 h1#eventos{
     text-align: start;
 }
+
+.back{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: url(./img/background_invocado.png) center center repeat;
+}
+
+body{
+    padding: 0px;
+    margin: 0px 0px;
+    background-color:black;
+}
