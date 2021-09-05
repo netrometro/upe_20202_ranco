@@ -31,7 +31,7 @@ export default ({ match }) => {
                 <div className='colunas' id='colunas'>
                     <div className='primeiraColuna'>
                         <div className='blocoMedicamento' name="descricao" id="descricao">
-                            <h3>Descricao:</h3>
+                            <h3>Descrição:</h3>
                             <p>{medicacoes.descricao}</p>
                         </div>
                         <div className='blocoMedicamento' name="observacao" id="observacao">

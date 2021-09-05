@@ -12,11 +12,11 @@ export default ({ match }) => {
             <div className='colunas' id='colunas'>
                 <div className='primeiraColuna'>
                     <div className='blocoEvento' name="descricao" id='descricao'>
-                        <textarea rows="21" cols="80" id="novoProjeto" placeholder='descrição'></textarea>
+                        <textarea rows="21" cols="80" id="novoProjeto" placeholder='Descrição'></textarea>
 
                     </div>
                     <div className='blocoEvento' name="observacao" id='observacao'>
-                        <textarea rows="21" cols="80" id="novoProjeto" placeholder='observacao'></textarea>
+                        <textarea rows="21" cols="80" id="novoProjeto" placeholder='Observação'></textarea>
 
                     </div>
                 </div>
@@ -33,7 +33,7 @@ export default ({ match }) => {
                         </input>
                     </div>
                     <div className='blocoEvento' name="posologia" id='posologia'>
-                        <textarea id="novoProjeto" placeholder='posologia'></textarea>
+                        <textarea id="novoProjeto" placeholder='Posologia'></textarea>
 
                     </div>
 
