@@ -17,10 +17,10 @@ function Login() {
         e.preventDefault();
         const payload = { email: email, password: password }
         try {
-            let response = await loginUser(dispatch, payload)
-            if (!response) return
+            let response = await loginUser(dispatch, payload)            
+            if (!response) return            
             window.location.href = '/'
-        } catch (error) {
+        } catch (error) {            
             console.log(error)
         }
     }
@@ -49,6 +49,11 @@ function Login() {
                             ? <p>Carregando ..</p>
                             : <button> Login </button>
                     }
+                    {/* {
+                        errorMessage
+                            ? <p>{errorMessage.}</p>
+                            : <></>
+                    } */}
 
                 </form>
 
