@@ -9,6 +9,7 @@ import EventoLista from './view/EventoLista';
 import MedicacaoLista from './view/MedicacaoLista';
 import MedicacaoDetalhes from './view/MedicacaoDetalhes';
 import './styles/navegacao.css'
+import adicionarEvento from './view/adicionarEvento';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/eventos/:id' component={EventoDetalhes} ></Route>
           <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
           <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
+          <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
         </Switch>
 
       </div>

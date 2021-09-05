@@ -30,6 +30,7 @@ export default () => {
         <div>
             <div className='listaEvento'>
                 <h1>Meus Eventos</h1>
+                <a href='/adicionarEvento'>Adicionar Evento</a>
                 {eventos.map((evento) => (                
                     <Link to={`/eventos/${evento.id}`} key={evento.id}>
                         <div className='blocoEvento'>
