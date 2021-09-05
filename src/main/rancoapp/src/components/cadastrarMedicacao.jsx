@@ -50,29 +50,7 @@ export const CadastrarMedicacao = (props) => {
     }
 
     return (
-        <div className='listaEvento' id='detalhes'>
-            <h1>{medicacoes.nome}</h1>
-            <div className='blocoEvento' name="descricao">
-                <h3>Descricao</h3>
-                <p>{medicacoes.descricao}</p>
-            </div>
-            <div className='blocoEvento' name="observacao">
-                <h3>Observação</h3>
-                <p>{medicacoes.observacao}</p>
-            </div>
-            <div className='blocoEvento' name="intervalo">
-                <h3>Intervalo</h3>
-                <p>{medicacoes.intervalo}</p>
-            </div>
-            <div className='blocoEvento' name="ultimaDosagem">
-                <h3>Última Dosagem</h3>
-                <p>{medicacoes.ultimaDosagem}</p>
-            </div>
-            <div className='blocoEvento' name="posologia">
-                <h3> Posologia</h3>
-                <p>{medicacoes.posologia}</p>
-            </div>
-        </div>
+        <div></div>
 
     );
 
