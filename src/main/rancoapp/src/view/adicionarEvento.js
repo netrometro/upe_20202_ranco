@@ -138,11 +138,11 @@ export default ({ match }) => {
                                         </div>
                                         <div className="sentimentoItem">
                                             <legend htmlFor="tipoSentimento">Sentimento</legend>
-                                            <select name="tipoSentimento" id="tipoSentimento" value={item.tipoSentimento}
+                                            <select name="tipoSentimento" id="select" value={item.tipoSentimento}
                                                 required
                                                 onChange={(e) => handleSentimentoslist(e, i)}
                                             >
-                                                <option value={null}>Selecione</option>
+                                                <option value={null} hidden>Selecione</option>
                                                 <option value="RAIVA">Raiva</option>
                                                 <option value="VERGONHA">Vergonha</option>
                                                 <option value="TRISTEZA">Tristeza</option>
@@ -154,11 +154,11 @@ export default ({ match }) => {
                                         </div>
                                         <div className="sentimentoItem">
                                             <legend htmlFor="grauSentimento">Intensidade</legend>
-                                            <select className='custom-select' name="grauSentimento" value={item.grauSentimento}
+                                            <select className='custom-select' id="select" name="grauSentimento" value={item.grauSentimento}
                                                 required
                                                 onChange={(e) => handleSentimentoslist(e, i)}
                                             >
-                                                <option value={null}>Selecione</option>
+                                                <option value={null} hidden>Selecione</option>
                                                 <option value="LEVE">Leve</option>
                                                 <option value="MODERADO">Moderado</option>
                                                 <option value="INTENSO">Intenso</option>
