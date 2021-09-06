@@ -9,6 +9,7 @@ import application.dao.IEventoDao;
 import application.dao.IPacienteDAO;
 import application.models.Evento;
 import application.models.Paciente;
+import application.models.Sentimento;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -20,6 +21,8 @@ public class EventoCRUDService {
 
   @Autowired
   private IPacienteDAO pacientes;
+  @Autowired
+  private SentimentoCRUDService sentimentoService;
 
   public List<Evento> findAll() {
     return eventos.findAll();
@@ -39,11 +42,14 @@ public class EventoCRUDService {
     if (!paciente.isPresent()) {
       return null;
     }
-    
     evento.setDataInclusao(LocalDateTime.now());
     evento.setUsuario(paciente.get());
     System.out.println("create evento service=" + evento + "paciente = " + paciente);
-    return eventos.save(evento);
+    Evento e = eventos.save(evento);
+    for(Sentimento s : evento.getSentimentos()) {    	
+    	sentimentoService.create(e.getId(), s);
+    }
+    return e;
   }
 
 

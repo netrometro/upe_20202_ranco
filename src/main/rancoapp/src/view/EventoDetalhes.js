@@ -4,7 +4,7 @@ import { useAuthState } from "../context";
 
 export default ({ match }) => {
     useEffect(() => {
-        getEvento(match.params.id);
+        getEvento(match.params.id);        
     }, [])
     const state = useAuthState();
     const [evento, setEvento] = useState({});
@@ -12,14 +12,14 @@ export default ({ match }) => {
         fetch(`http://localhost:5000/api/eventos/${id}`)
             .then(async response => {
                 const data = await response.json();
-
+                console.log(data)
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response statusText
                     const error = (data && data.message) || response.statusText;
                     return Promise.reject(error);
                 }
-                setEvento(data);
+                setEvento(data);                
             })
     }
 
