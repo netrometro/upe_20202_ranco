@@ -4,23 +4,19 @@ import { useAuthState } from "../context";
 
 export default ({ match }) => {
     useEffect(() => {
-        getEvento(match.params.id);        
+        getEvento(match.params.id);
     }, [])
     const state = useAuthState();
     const [evento, setEvento] = useState({});
+    const [sentimentos, setSentimentos] = useState([]);
     const getEvento = (id) => {
         fetch(`http://localhost:5000/api/eventos/${id}`)
-            .then(async response => {
-                const data = await response.json();
-                console.log(data)
-                // check for error response
-                if (!response.ok) {
-                    // get error message from body or default to response statusText
-                    const error = (data && data.message) || response.statusText;
-                    return Promise.reject(error);
-                }
-                setEvento(data);                
+            .then(response => response.json())
+            .then((response) => {
+                setEvento(response)
+                setSentimentos(response.sentimentos)
             })
+            
     }
 
     function setStatusColor(status) {
@@ -36,7 +32,7 @@ export default ({ match }) => {
             console.log(e)
         }
     }
-    if (state.userDetails) {
+    if (state.userDetails) {        
         return (
             <div className='listaEvento' >
                 <div className='header'>
@@ -52,8 +48,35 @@ export default ({ match }) => {
                             <p>{evento.descricao}</p>
                         </div>
                         <div className='blocoEvento' name="sentimentos">
-                            <h3>Sentimentos</h3>
-                            <a href='/adicionarSentimento' >Adicionar sentimento</a>
+                            <div className='sentimentoField'>
+                                <h3> Sentimentos</h3>                                
+                            </div>
+                            {sentimentos.map((item, i) => {
+                                return (
+                                    <div id='data' key={i} className="sentimentoField">
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="data">Data</legend>
+                                            <input type="date" name='data'                                            
+                                                value={item.data.slice(0,10)}                                                   
+                                                readOnly                                             
+                                            />
+                                        </div>
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="tipoSentimento">Sentimento</legend>
+                                            <p>{item.tipoSentimento}</p>
+                                        </div>
+                                        <div className="sentimentoItem">
+                                            <legend htmlFor="grauSentimento">Intensidade</legend>
+                                            <p>{item.grauSentimento}</p>
+                                        </div>
+                                        <textarea rows="3" cols="30" id="novoProjeto" placeholder='Descarrego ... desabafar faz bem'
+                                            name='descarrego'
+                                            value={item.descarrego}      
+                                            readOnly                                      
+                                        ></textarea>                                        
+                                    </div>
+                                )
+                            })}
                         </div>
                         <div className='blocoEvento' name="pontosDeMelhoria">
                             <h3>Pontos de melhoria</h3>
@@ -99,9 +122,10 @@ export default ({ match }) => {
                     </div>
                 </div>
             </div>
-        );
+        );        
     }
     else {
         window.location.href = '/login';
     }
+    console.log(evento)
 }
