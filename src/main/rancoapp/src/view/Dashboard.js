@@ -41,26 +41,6 @@ export default () => {
 
         return (
             <div>
-<<<<<<< HEAD
-                {/* <div className='listaEvento'>
-                    <h1 id='eventos'>Dashboard</h1>
-                    <a href='/adicionarEvento'>Adicionar Evento</a>
-                    {eventos.map((evento) => (
-                        <Link to={`/eventos/${evento.id}`} key={evento.id}>
-                            <div className='blocoEvento'>
-                                <h3>{evento.titulo}</h3>
-                                <h3>Categoria : {evento.categoria}</h3>
-                                {/* se o status for false bloco vermelho, se for true, verde */}
-                          {/*   </div>
-                        </Link>
-                    ))}
-
-                </div> */}
-
-                <canvas>
-                    
-                </canvas>
-=======
                 <div className='listaEvento'>
                 <Pie
         data={{
@@ -108,7 +88,6 @@ export default () => {
     </div>
 
                
->>>>>>> dashboard
 
             </div>
         )
