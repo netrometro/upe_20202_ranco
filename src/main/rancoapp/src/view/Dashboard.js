@@ -18,7 +18,7 @@ export default () => {
   const [motivo, setMotivo] = useState([]);
 
   const getEventos = () => {
-    fetch('http://localhost:5000/dados/52')
+    fetch('http://localhost:5000/dados/' + JSON.parse(state.userDetails).id)
       .then(async response => {
         const data = await response.json();
 
