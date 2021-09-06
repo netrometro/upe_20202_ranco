@@ -13,6 +13,7 @@ import adicionarEvento from './view/adicionarEvento';
 import { AuthProvider } from "./context";
 import cadastrarMedicacoes from './view/cadastrarMedicacoes';
 import Dashboard from './view/Dashboard';
+import AtualizarEvento from './view/AtualizarEvento';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
             <Route path='/cadastro' exact component={Cadastro} ></Route>
             <Route path='/login' exact component={Login} ></Route>
             <Route path='/eventos' exact component={EventoLista} ></Route>
-            <Route path='/eventos/:id' component={EventoDetalhes} ></Route>
+            <Route path='/eventos/:id' exact component={EventoDetalhes} ></Route>
+            <Route path='/eventos/update/:id' component={AtualizarEvento} ></Route>
             <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
             <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
             <Route path='/adicionarEvento' component={adicionarEvento} ></Route>

@@ -1,22 +1,33 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import { Link } from "react-router-dom";
 import { useAuthState } from "../context";
-
-export default ({ match }) => {
+<script crossorigin src="..."></script>
+export default ({ match, history }) => {
     useEffect(() => {
         getEvento(match.params.id);
     }, [])
     const state = useAuthState();
     const [evento, setEvento] = useState({});
     const [sentimentos, setSentimentos] = useState([]);
+    const [date, setDate] = useState();
     const getEvento = (id) => {
         fetch(`http://localhost:5000/api/eventos/${id}`)
             .then(response => response.json())
             .then((response) => {
                 setEvento(response)
                 setSentimentos(response.sentimentos)
+                setDate(response.data)
             })
 
+    }
+
+    const returnDate = () => {
+        let dataString = date
+        if (typeof dataString === 'string') {
+            dataString = dataString.slice(0, 10)
+        }
+        return dataString
     }
 
     function setStatusColor(status) {
@@ -65,7 +76,7 @@ export default ({ match }) => {
                             <div className='sentimentoField'>
                                 <h3> Sentimentos</h3>
                             </div>
-                            {sentimentos.map((item, i) => {
+                            {sentimentos? sentimentos.map((item, i) => {
                                 return (
                                     <div id='data' key={i} className="sentimentoField">
                                         <div className="sentimentoItem">
@@ -90,7 +101,7 @@ export default ({ match }) => {
                                         ></textarea>
                                     </div>
                                 )
-                            })}
+                            }): <></>}
                         </div>
                         <div className='blocoEvento' name="pontosDeMelhoria">
                             <h3>Pontos de melhoria</h3>
@@ -110,7 +121,7 @@ export default ({ match }) => {
                             </div>
                             <div className='blocoEvento' name="data">
                                 <h3> Data</h3>
-                                <p>{evento.data}</p>
+                                <p>{returnDate()}</p>
                             </div>
                             <div className='blocoEvento' name="expectativa">
                                 <h3> Expectativa</h3>
@@ -137,7 +148,9 @@ export default ({ match }) => {
                 </div>
                 <div className="header">
                     <button className="sentimentoButtonDanger sentimentoItem" onClick={() => deleteEvent(evento.id)}>Remover</button>
-                    <button className="sentimentoButton sentimentoItem" onClick={() => deleteEvent(evento.id)}>Alterar</button>
+                    <Link to={`/eventos/update/${evento.id}`}>
+                        <button className="sentimentoButton sentimentoItem">Alterar</button>
+                    </Link>
                 </div>
             </div>
         );
