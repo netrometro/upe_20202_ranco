@@ -16,7 +16,7 @@ export default ({ match }) => {
                 setEvento(response)
                 setSentimentos(response.sentimentos)
             })
-            
+
     }
 
     function setStatusColor(status) {
@@ -32,7 +32,21 @@ export default ({ match }) => {
             console.log(e)
         }
     }
-    if (state.userDetails) {        
+
+    const deleteEvent = (id) => {
+        const requestOptions = {
+            method: 'DELETE',
+        };
+        fetch(`http://localhost:5000/api/eventos/${id}`, requestOptions)
+            .then(response => response.json())
+            .then((response) => {
+                if (response.id) {
+                    window.location.href = '/eventos'
+                }
+            })
+    }
+
+    if (state.userDetails) {
         return (
             <div className='listaEvento' >
                 <div className='header'>
@@ -49,16 +63,16 @@ export default ({ match }) => {
                         </div>
                         <div className='blocoEvento' name="sentimentos">
                             <div className='sentimentoField'>
-                                <h3> Sentimentos</h3>                                
+                                <h3> Sentimentos</h3>
                             </div>
                             {sentimentos.map((item, i) => {
                                 return (
                                     <div id='data' key={i} className="sentimentoField">
                                         <div className="sentimentoItem">
                                             <legend htmlFor="data">Data</legend>
-                                            <input type="date" name='data'                                            
-                                                value={item.data.slice(0,10)}                                                   
-                                                readOnly                                             
+                                            <input type="date" name='data'
+                                                value={item.data.slice(0, 10)}
+                                                readOnly
                                             />
                                         </div>
                                         <div className="sentimentoItem">
@@ -71,9 +85,9 @@ export default ({ match }) => {
                                         </div>
                                         <textarea rows="3" cols="30" id="novoProjeto" placeholder='Descarrego ... desabafar faz bem'
                                             name='descarrego'
-                                            value={item.descarrego}      
-                                            readOnly                                      
-                                        ></textarea>                                        
+                                            value={item.descarrego}
+                                            readOnly
+                                        ></textarea>
                                     </div>
                                 )
                             })}
@@ -121,8 +135,12 @@ export default ({ match }) => {
 
                     </div>
                 </div>
+                <div className="header">
+                    <button className="sentimentoButtonDanger sentimentoItem" onClick={() => deleteEvent(evento.id)}>Remover</button>
+                    <button className="sentimentoButton sentimentoItem" onClick={() => deleteEvent(evento.id)}>Alterar</button>
+                </div>
             </div>
-        );        
+        );
     }
     else {
         window.location.href = '/login';

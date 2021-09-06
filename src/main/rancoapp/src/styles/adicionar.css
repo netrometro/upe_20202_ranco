@@ -25,11 +25,24 @@ textarea {
 }
 
 .sentimentoButton {
-    padding: 5px;
+    padding: 10px;
+    font-size: medium;
     margin: 0 30px;
     color: white;
     border-radius: 10px;
     background-color: #271D24;
+    font: small;
+    height: 30px;
+    border: none;
+    align-self: center;
+}
+.sentimentoButtonDanger {
+    padding: 10px;
+    font-size: medium;
+    margin: 0 30px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: #c90d06;
     font: small;
     height: 30px;
     border: none;

@@ -4,7 +4,7 @@ import "../styles/lista.css"
 import { Link } from "react-router-dom";
 import { useAuthDispatch, useAuthState } from "../context";
 
-export default () => {
+export default (props) => {
     useEffect(() => {
         getEventos();
     }, [])
@@ -26,15 +26,18 @@ export default () => {
             })
     }
 
+
     if (state.userDetails) {
 
 
         return (
             <div>
                 <div className='listaEvento'>
-                    <h1 id='eventos'>Meus Eventos</h1>
-                    <a href='/adicionarEvento'>Adicionar Evento</a>
-                    {eventos.map((evento) => (
+                    <div className='header'>
+                        <h1 id='eventos'>Meus Eventos</h1>
+                        <button className='sentimentoButton' onClick={() => { props.history.push('/adicionarEvento') }}>Adicionar Evento</button>
+                    </div>
+                    {eventos.map((evento, i) => (
                         <Link to={`/eventos/${evento.id}`} key={evento.id}>
                             <div className='blocoEvento'>
                                 <h3>{evento.titulo}</h3>
