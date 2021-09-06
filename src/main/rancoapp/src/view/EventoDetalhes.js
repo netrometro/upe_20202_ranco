@@ -146,10 +146,10 @@ export default ({ match, history }) => {
 
                     </div>
                 </div>
-                <div className="header">
-                    <button className="sentimentoButtonDanger sentimentoItem" onClick={() => deleteEvent(evento.id)}>Remover</button>
+                <div className="footer">
+                    <button className="sentimentoButtonDangerG" onClick={() => deleteEvent(evento.id)}>Remover</button>
                     <Link to={`/eventos/update/${evento.id}`}>
-                        <button className="sentimentoButton sentimentoItem">Alterar</button>
+                        <button className="sentimentoButtonG sentimentoItem">Alterar</button>
                     </Link>
                 </div>
             </div>

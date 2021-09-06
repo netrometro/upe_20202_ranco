@@ -36,9 +36,23 @@ textarea {
     border: none;
     align-self: center;
 }
-.sentimentoButtonDanger {
+.sentimentoButtonG {
     padding: 10px;
     font-size: medium;
+    margin: 0 30px;
+    color: white;
+    border-radius: 10px;
+    background-color: #271D24;
+    font: small;
+    height: 30px;
+    width: 300px;
+    border: none;
+    align-self: center;
+}
+.sentimentoButtonDangerG {
+    padding: 10px;
+    font-size: medium;
+    width: 300px;
     margin: 0 30px;
     color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -47,6 +61,12 @@ textarea {
     height: 30px;
     border: none;
     align-self: center;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #select {
