@@ -14,9 +14,11 @@ import application.models.abstracts.DbEntity;
 import application.models.enums.GrauSentimento;
 import application.models.enums.TipoDeSentimento;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
+@ToString(exclude = {"evento"})
 public class Sentimento extends DbEntity{
 	
 	private Date data;
