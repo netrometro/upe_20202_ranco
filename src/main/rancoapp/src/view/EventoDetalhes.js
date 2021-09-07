@@ -70,7 +70,7 @@ export default ({ match, history }) => {
                     <div className='coluna1'>
                         <div className='blocoEvento' name="descricao" id='descricao'>
                             <h3> Descrição</h3>
-                            <p>{evento.descricao}</p>
+                            <textarea  cols="100" value= {evento.descricao} readOnly id='descricaoDetalhes'/>
                         </div>
                         <div className='blocoEvento' name="sentimentos">
                             <div className='sentimentoField'>

@@ -94,7 +94,7 @@ export default () => {
 
     if (state.userDetails) {
         return (
-            <div>
+            <div className='centralizado'>
                 <div className='listaEvento'>
                     <div className='header'>
                         <h1>DashBoard</h1>

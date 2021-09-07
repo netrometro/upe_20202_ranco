@@ -6,8 +6,14 @@ textarea {
     padding: 20px;
 }
 
+textarea#descricaoDetalhes{
+    border: none;
+    background: none;
+}
+
+
 #descricao.blocoEvento {
-    flex-grow: 2;
+    /* flex-grow: 2; */
 }
 
 .sentimentoField {
