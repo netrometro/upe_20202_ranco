@@ -1,0 +1,16 @@
+.grafico{
+    padding: 20px;
+    width: 300px;
+}
+
+.graficos{
+    display: flex;
+}
+
+#listas{
+    display: flex;
+}
+
+#dashboard{
+    margin: 0px;
+}
