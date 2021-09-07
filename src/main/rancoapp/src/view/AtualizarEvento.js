@@ -21,7 +21,7 @@ export default ({ match, history }) => {
     const [evento, setEvento] = useState({});
 
     useEffect(() => {
-        getEvento(match.params.id);        
+        getEvento(match.params.id);
     }, [])
     const getEvento = (id) => {
         fetch(`http://localhost:5000/api/eventos/${id}`)
@@ -39,7 +39,7 @@ export default ({ match, history }) => {
                 setMotivo(response.motivo)
                 setDate(response.data)
                 setLocal(response.local)
-                setPessoasEnvolvidas(response.pessoaEnvolvida)                
+                setPessoasEnvolvidas(response.pessoaEnvolvida)
             })
 
     }
@@ -53,10 +53,24 @@ export default ({ match, history }) => {
         setSentimentos([...sentimentos, { data: "", descarrego: '', tipoSentimento: '', grauSentimento: '' }]);
     }
 
-    const handleRemoveSentimentos = index => {
-        const list = [...sentimentos]
-        list.splice(index, 1)
-        setSentimentos(list);
+    const deleteSentimento = (index, id) => {
+        fetch(`http://localhost:5000/api/sentimentos/${id}`, { method: 'DELETE' })
+            .then(response => response.json())
+            .then(() => {
+                const list = [...sentimentos]
+                list.splice(index, 1)
+                setSentimentos(list);
+            })
+    }
+    const handleRemoveSentimentos = (index, item) => {
+        console.log(item)
+        if (item.id) {
+            deleteSentimento(index, item.id)
+        } else {
+            const list = [...sentimentos]
+            list.splice(index, 1)
+            setSentimentos(list);
+        }
     }
     const handleCategoria = (e) => {
         const { name, value } = e.target
@@ -204,7 +218,7 @@ export default ({ match, history }) => {
                                             value={item.descarrego}
                                             onChange={(e) => handleSentimentoslist(e, i)}
                                         ></textarea>
-                                        <button className="sentimentoButton" onClick={i => handleRemoveSentimentos(i)}>Remover</button>
+                                        <button className="sentimentoButton" onClick={i => handleRemoveSentimentos(i, item)}>Remover</button>
                                     </div>
                                 )
                             })}
@@ -259,7 +273,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="categoria" value="FACULDADE" onChange={handleCategoria} 
+                                            <input type="radio" name="categoria" value="FACULDADE" onChange={handleCategoria}
                                                 checked={categoria === 'FACULDADE'}
                                             />{' '}
                                             Faculdade
@@ -267,7 +281,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div>
                                         <label className="texto">
-                                            <input type="radio" name="categoria" value='FAMILIA' onChange={handleCategoria} 
+                                            <input type="radio" name="categoria" value='FAMILIA' onChange={handleCategoria}
                                                 checked={categoria === 'FAMILIA'}
                                             />{' '}
                                             Familia
@@ -275,7 +289,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="categoria" value='TRABALHO' onChange={handleCategoria} 
+                                            <input type="radio" name="categoria" value='TRABALHO' onChange={handleCategoria}
                                                 checked={categoria === 'TRABALHO'}
                                             /> {' '}
                                             Trabalho
@@ -289,7 +303,7 @@ export default ({ match, history }) => {
                                 <div tag="fieldset">
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="motivo" value='CULPA' onChange={handleMotivo} 
+                                            <input type="radio" name="motivo" value='CULPA' onChange={handleMotivo}
                                                 checked={motivo === 'CULPA'}
                                             />{' '}
                                             Culpa
@@ -297,7 +311,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="motivo" value='MEDO' onChange={handleMotivo} 
+                                            <input type="radio" name="motivo" value='MEDO' onChange={handleMotivo}
                                                 checked={motivo === 'MEDO'}
                                             />{' '}
                                             Medo
@@ -305,7 +319,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="motivo" value='TIMIDEZ' onChange={handleMotivo} 
+                                            <input type="radio" name="motivo" value='TIMIDEZ' onChange={handleMotivo}
                                                 checked={motivo === 'TIMIDEZ'}
                                             />{' '}
                                             Timidez
@@ -313,7 +327,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div >
                                         <label className="texto">
-                                            <input type="radio" name="motivo" value='TRISTEZA' onChange={handleMotivo} 
+                                            <input type="radio" name="motivo" value='TRISTEZA' onChange={handleMotivo}
                                                 checked={motivo === 'TRISTEZA'}
                                             />{' '}
                                             Tristeza
@@ -321,7 +335,7 @@ export default ({ match, history }) => {
                                     </div>
                                     <div>
                                         <label className="texto">
-                                            <input type="radio" name="motivo" value='VERGONHA' onChange={handleMotivo} 
+                                            <input type="radio" name="motivo" value='VERGONHA' onChange={handleMotivo}
                                                 checked={motivo === 'VERGONHA'}
                                             />{' '}
                                             Vergonha
