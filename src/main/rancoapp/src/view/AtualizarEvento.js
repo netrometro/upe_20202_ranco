@@ -39,8 +39,7 @@ export default ({ match, history }) => {
                 setMotivo(response.motivo)
                 setDate(response.data)
                 setLocal(response.local)
-                setPessoasEnvolvidas(response.pessoaEnvolvida)
-                setSentimentos(response.sentimentos)
+                setPessoasEnvolvidas(response.pessoaEnvolvida)                
             })
 
     }

@@ -94,7 +94,11 @@ public class EventoCRUDService {
     }
     
     evento.get().setDataModificacao(LocalDateTime.now());
-    return eventos.save(evento.get());
+    Evento e = eventos.save(evento.get());
+    for(Sentimento s : eventoParam.getSentimentos()) {    	
+    	sentimentoService.update(e.getId(), s);
+    }
+    return e;
 
   }
 

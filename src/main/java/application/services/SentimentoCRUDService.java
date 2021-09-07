@@ -50,7 +50,7 @@ public class SentimentoCRUDService {
 	public Sentimento update(long id, Sentimento sentimentoParam) {
 	    Optional<Sentimento> sentimento = sentimentos.findById(id);
 	    if (!sentimento.isPresent()) {
-	      return null;
+	      return create(id, sentimentoParam);
 	    }
 	    
 	    if (!(sentimentoParam.getData() == null)) {
