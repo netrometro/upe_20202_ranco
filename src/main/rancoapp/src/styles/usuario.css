@@ -1,12 +1,29 @@
 #usuario{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     padding: 15px;
     margin-top: 20px;
-    width: 450px;
-    height: 450px; 
+    width: 400px;
+    height: 400px; 
     background-color:#55A955;
     border-radius: 10px;
+}
+
+textarea#perfil{
+    text-align: center;
+}
+
+#titulo{
+    text-align: center;
+    color: white;
+}
+
+.botaoAlterar{
+    margin-top: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    background: #271D24;
 }
