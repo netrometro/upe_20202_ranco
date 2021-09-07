@@ -7,7 +7,7 @@ textarea {
 }
 
 #descricao.blocoEvento {
-    flex-grow: 3;
+    flex-grow: 2;
 }
 
 .sentimentoField {

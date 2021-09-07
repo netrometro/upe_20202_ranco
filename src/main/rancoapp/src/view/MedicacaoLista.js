@@ -9,8 +9,8 @@ export default () => {
         getMedicacao();
     }, [])
 
-    const [medicacoes, setMedicacao] = useState([]);
     const state = useAuthState();
+    const [medicacoes, setMedicacao] = useState([]);
     const getMedicacao = () => {
         fetch('http://localhost:5000/api/medicacoes')
             .then(async response => {

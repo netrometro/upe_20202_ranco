@@ -14,6 +14,7 @@ import { AuthProvider } from "./context";
 import cadastrarMedicacoes from './view/cadastrarMedicacoes';
 import Dashboard from './view/Dashboard';
 import AtualizarEvento from './view/AtualizarEvento';
+import Perfil from './view/Perfil';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
             <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
             <Route path='/cadastrarmedicacoes' component={cadastrarMedicacoes} ></Route>
+            <Route path='/perfil' component={Perfil} ></Route>
           </Switch>
         </div>
       </Router>
