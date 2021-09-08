@@ -11,6 +11,7 @@ export default ({ match, history }) => {
     const [evento, setEvento] = useState({});
     const [sentimentos, setSentimentos] = useState([]);
     const [date, setDate] = useState();
+    const [status, setStatus] = useState();
     const getEvento = (id) => {
         fetch(`http://localhost:5000/api/eventos/${id}`)
             .then(response => response.json())
@@ -30,20 +31,6 @@ export default ({ match, history }) => {
         return dataString
     }
 
-    function setStatusColor(status) {
-        try {
-            if (status == false) {
-                document.getElementById('status').style.background = 'red';
-
-            }
-            else {
-                document.getElementById('status').style.background = 'green';
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     const deleteEvent = (id) => {
         const requestOptions = {
             method: 'DELETE',
@@ -57,14 +44,40 @@ export default ({ match, history }) => {
             })
     }
 
+    const update = () => {
+        const event = {
+            status : status
+        }
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(event)
+        };
+        //console.log(evento)
+        fetch(`http://localhost:5000/api/eventos/${evento.id}`, requestOptions)
+            .then(async (response) => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+                setEvento(data)
+
+                if (evento.id) {
+                   console.log(evento.status)
+                }
+            })
+    }
+
+    const changeStatus = () => {
+        setStatus(status? false: true)
+        update()
+    }
+
     if (state.userDetails) {
         return (
             <div className='listaEvento' >
                 <div className='header'>
                     <h1>{evento.titulo}</h1>
-                    <div className='blocoEvento' name="status" id='status'>
-                        <p>{(setStatusColor(evento.status))}</p>
-                    </div>
+                    <button className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'} onClick={changeStatus}>
+                    </button>
                 </div>
                 <div className='colunas'>
                     <div className='coluna1'>

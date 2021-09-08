@@ -12,7 +12,7 @@ export default () => {
     const state = useAuthState();
     const [medicacoes, setMedicacao] = useState([]);
     const getMedicacao = () => {
-        fetch('http://localhost:5000/api/medicacoes')
+        fetch(`http://localhost:5000/medicacoes/${JSON.parse(state.userDetails).id}`)
             .then(async response => {
                 const data = await response.json();
 
@@ -23,15 +23,15 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setMedicacao(data);
+                setMedicacao(data.medicacoes);
             })
     }
     if (state.userDetails) {
         return (
             <div className="listaEvento">
+                <div className='header'>
                 <h1 id='medicacao'>Minhas Medicações</h1>
-                <div>
-                    <a href='/cadastrarmedicacoes' >Adicionar Medicações</a>
+                    <a class="sentimentoButton" href='/cadastrarmedicacoes' >Adicionar Medicações</a>
                 </div>
 
 
@@ -39,7 +39,7 @@ export default () => {
                     <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
                         <div className="blocoEvento">
                             <h3>{medicacao.nome}</h3>
-                            <h3>Posologia: {medicacao.posologia}</h3>
+                            <h3>Intervalo: {medicacao.intervalo}</h3>
                         </div>
                     </Link>
                 ))}

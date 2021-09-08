@@ -21,7 +21,7 @@ export default () => {
     const [eventos, setEventos] = useState([]);
     const [medicacoes, setMedicacao] = useState([]);
     const getMedicacao = () => {
-        fetch('http://localhost:5000/api/medicacoes')
+        fetch(`http://localhost:5000/medicacoes/${JSON.parse(state.userDetails).id}`)
             .then(async response => {
                 const data = await response.json();
 
@@ -32,7 +32,7 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setMedicacao(data);
+                setMedicacao(data.medicacoes);
             })
     }
 
@@ -100,52 +100,7 @@ export default () => {
                         <h1>DashBoard</h1>
                     </div>
                     <div className='graficos'>
-                        <div className='grafico' >
 
-                            <Pie
-                                data={{
-                                    labels: ['Trabalho', 'Amigos', 'Desconhecidos', 'Escola', 'Faculdade', 'Familia'],
-                                    datasets: [
-                                        {
-                                            label: 'Categorias',
-                                            data: [qtdTrabalho, qtdAmigos, qtdDesconhecidos, qtdEscola, qtdFaculdade, qtdFamilia],
-                                            backgroundColor: [
-                                                'rgba(255, 99, 132, 1)',
-                                                'rgba(54, 162, 235, 1)',
-                                                'rgba(255, 206, 86, 1)',
-                                                'rgba(75, 192, 192, 1)',
-                                                'rgba(153, 102, 255, 1)',
-                                                'rgba(255, 159, 64, 1)',
-                                            ],
-                                            borderColor: [
-                                                'rgba(255, 255, 255, 1)',
-                                            ],
-                                            borderWidth: 1,
-                                        },
-
-                                    ],
-                                }}
-                                height={200}
-                                width={300}
-                                options={{
-                                    maintainAspectRatio: false,
-                                    scales: {
-                                        yAxes: [
-                                            {
-                                                ticks: {
-                                                    beginAtZero: true,
-                                                },
-                                            },
-                                        ],
-                                    },
-                                    legend: {
-                                        labels: {
-                                            fontSize: 15,
-                                        },
-                                    },
-                                }}
-                            />
-                        </div>
 
                         <div className='grafico'>
                             <Pie
@@ -242,37 +197,83 @@ export default () => {
                             />
 
                         </div>
+                        <div className='grafico' >
+
+                            <Pie
+                                data={{
+                                    labels: ['Trabalho', 'Amigos', 'Desconhecidos', 'Escola', 'Faculdade', 'Familia'],
+                                    datasets: [
+                                        {
+                                            label: 'Categorias',
+                                            data: [qtdTrabalho, qtdAmigos, qtdDesconhecidos, qtdEscola, qtdFaculdade, qtdFamilia],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                                'rgba(153, 102, 255, 1)',
+                                                'rgba(255, 159, 64, 1)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 255, 255, 1)',
+                                            ],
+                                            borderWidth: 1,
+                                        },
+
+                                    ],
+                                }}
+                                height={200}
+                                width={300}
+                                options={{
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        yAxes: [
+                                            {
+                                                ticks: {
+                                                    beginAtZero: true,
+                                                },
+                                            },
+                                        ],
+                                    },
+                                    legend: {
+                                        labels: {
+                                            fontSize: 15,
+                                        },
+                                    },
+                                }}
+                            />
+                        </div>
                     </div>
                     <div id='listas'>
 
-                  
-                    <div className='listaEvento' id='dashboard'>
-                        <div className='header'>
-                            <h1 id='eventos'>Meus Eventos</h1>
-                        </div>
-                        {eventos.map((evento, i) => (
-                            <Link to={`/eventos/${evento.id}`} key={evento.id}>
-                                <div className='blocoEvento'>
-                                    <h3>{evento.titulo}</h3>
-                                    <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+
+                        <div className='listaEvento' id='dashboard'>
+                            <div className='header'>
+                                <h1 id='eventos'>Meus Eventos</h1>
+                            </div>
+                            {eventos.map((evento, i) => (
+                                <Link to={`/eventos/${evento.id}`} key={evento.id}>
+                                    <div className='blocoEvento'>
+                                        <h3>{evento.titulo}</h3>
+                                        <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                        </div>
+                                        <h3>Categoria : {evento.categoria}</h3>
+                                        {/* se o status for false bloco vermelho, se for true, verde */}
                                     </div>
-                                    <h3>Categoria : {evento.categoria}</h3>
-                                    {/* se o status for false bloco vermelho, se for true, verde */}
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                    <div className="listaEvento" id='dashboard'>
-                        <h1 id='medicacao'>Minhas Medicações</h1>
-                        {medicacoes.map((medicacao) => (
-                            <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
-                                <div className="blocoEvento">
-                                    <h3>{medicacao.nome}</h3>
-                                    <h3>Posologia: {medicacao.posologia}</h3>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                        <div className="listaEvento" id='dashboard'>
+                            <h1 id='medicacao'>Minhas Medicações</h1>
+                            {medicacoes.map((medicacao) => (
+                                <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
+                                    <div className="blocoEvento">
+                                        <h3>{medicacao.nome}</h3>
+                                        <h3>Intervalo: {medicacao.intervalo}</h3>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
 
                 </div>

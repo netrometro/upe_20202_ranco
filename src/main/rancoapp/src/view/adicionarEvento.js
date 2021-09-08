@@ -94,22 +94,9 @@ export default ({ match }) => {
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
                     ></textarea>
-                    <div className='blocoEvento' name="status" id='status'>
+                    <div className='status'>
                         <p>status</p>
-                        {/*  <div tag="fieldset">
-                        <div >
-                            <label className="texto">
-                            <input  type="radio" name="tipo"/>{' '}
-                            Aberto
-                            </label>
-                        </div>
-                        <div >
-                            <label className="texto">
-                            <input  type="radio" name="tipo"/>{' '}
-                            Fechado
-                            </label>
-                        </div>
-                    </div> */}
+                        <div className='blocoEvento' name="status" id='status'/>
                     </div>
                 </div>
                 <div className='colunas'>

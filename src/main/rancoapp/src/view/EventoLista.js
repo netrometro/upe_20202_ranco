@@ -35,7 +35,8 @@ export default (props) => {
                 <div className='listaEvento'>
                     <div className='header'>
                         <h1 id='eventos'>Meus Eventos</h1>
-                        <button className='sentimentoButton' onClick={() => { props.history.push('/adicionarEvento') }}>Adicionar Evento</button>
+                        {/* <button className='sentimentoButton' onClick={() => { props.history.push('/adicionarEvento') }}>Adicionar Evento</button> */}
+                        <a className='sentimentoButton' href='/adicionarEvento' >Adicionar Evento</a>
                     </div>
                     {eventos.map((evento, i) => (
                         <Link to={`/eventos/${evento.id}`} key={evento.id}>

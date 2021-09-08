@@ -49,10 +49,6 @@ export default ({ match }) => {
                             <h3>Última Dosagem:</h3>
                             <p>{medicacoes.ultimaDosagem}</p>
                         </div>
-                        <div className='blocoMedicamento' name="posologia" id="posologia">
-                            <h3>Posologia:</h3>
-                            <p>{medicacoes.posologia}</p>
-                        </div>
                     </div>
 
                 </div>

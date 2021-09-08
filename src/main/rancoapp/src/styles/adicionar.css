@@ -135,3 +135,8 @@ input#data {
     text-align: center;
     align-self: center;    
 }
+
+.status{
+    display: flex;
+    
+}
