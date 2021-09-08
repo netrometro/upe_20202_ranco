@@ -19,6 +19,7 @@ export default ({ match, history }) => {
     const [pessoasEnvolvidas, setPessoasEnvolvidas] = useState();
     const [sentimentos, setSentimentos] = useState([]);
     const [evento, setEvento] = useState({});
+    const [status, setStatus] = useState();
 
     useEffect(() => {
         getEvento(match.params.id);
@@ -40,6 +41,7 @@ export default ({ match, history }) => {
                 setDate(response.data)
                 setLocal(response.local)
                 setPessoasEnvolvidas(response.pessoaEnvolvida)
+                setStatus(response.status)
             })
 
     }
@@ -92,7 +94,7 @@ export default ({ match, history }) => {
             descricao: descricao,
             pontoMelhoria: pontoMelhoria,
             feedback: feedback,
-            status: true,
+            status: status,
             categoria: categoria,
             motivo: motivo,
             sentimentos: sentimentos
@@ -130,32 +132,21 @@ export default ({ match, history }) => {
         return dataString
     }
 
+    const changeStatus = () => {
+        setStatus(status? false: true)
+    }
+
     if (state.userDetails) {
         return (
             <div className='listaEvento' >
                 <div className='header'>
-                    <textarea rows="1" cols="80" id="titulo" placeholder='Titulo'
+                    <textarea rows="1" cols="80" placeholder='Titulo'
                         required
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
-                    ></textarea>
-                    <div className='blocoEvento' name="status" id='status'>
-                        <p>status</p>
-                        {/*  <div tag="fieldset">
-                        <div >
-                            <label className="texto">
-                            <input  type="radio" name="tipo"/>{' '}
-                            Aberto
-                            </label>
-                        </div>
-                        <div >
-                            <label className="texto">
-                            <input  type="radio" name="tipo"/>{' '}
-                            Fechado
-                            </label>
-                        </div>
-                    </div> */}
-                    </div>
+                    >
+                    </textarea>
+                        <button className='blocoEvento' name="status" id={status ? 'statusTRUE' : 'statusFALSE'} onClick={changeStatus}/>
                 </div>
                 <div className='colunas'>
                     <div className='coluna1'>

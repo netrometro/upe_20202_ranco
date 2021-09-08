@@ -32,7 +32,7 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setMedicacao(data.medicacoes);
+                setMedicacao(data.medicacoes.slice(0, 5));
             })
     }
 
@@ -47,7 +47,7 @@ export default () => {
                     return Promise.reject(error);
                 }
                 console.log(data);
-                setEventos(data.eventos);
+                setEventos(data.eventos.slice(0, 3));
             })
     }
 
@@ -99,9 +99,12 @@ export default () => {
                     <div className='header'>
                         <h1>DashBoard</h1>
                     </div>
+                        <div className='legendas'>
+                        <legend>Evento status</legend>
+                        <legend>Evento Motivo</legend>
+                        <legend>Evento Categoria</legend>
+                        </div>
                     <div className='graficos'>
-
-
                         <div className='grafico'>
                             <Pie
                                 data={{
@@ -111,12 +114,10 @@ export default () => {
                                             label: 'Status',
                                             data: [qtdTrue, qtdFalse],
                                             backgroundColor: [
-                                                'rgba(255, 99, 132, 1)',
                                                 'rgba(54, 162, 235, 1)',
-                                                'rgba(255, 206, 86, 1)',
-                                                'rgba(75, 192, 192, 1)',
-                                                'rgba(153, 102, 255, 1)',
-                                                'rgba(255, 159, 64, 1)',
+                                                'rgba(255, 99, 132, 1)',
+                                                
+                                               
                                             ],
                                             borderColor: [
                                                 'rgba(255, 255, 255, 1)',
@@ -247,10 +248,10 @@ export default () => {
                     <div id='listas'>
 
 
-                        <div className='listaEvento' id='dashboard'>
                             <div className='header'>
                                 <h1 id='eventos'>Meus Eventos</h1>
                             </div>
+                        <div className='listaEvento' id='dashboard'>
                             {eventos.map((evento, i) => (
                                 <Link to={`/eventos/${evento.id}`} key={evento.id}>
                                     <div className='blocoEvento'>
@@ -263,8 +264,10 @@ export default () => {
                                 </Link>
                             ))}
                         </div>
+                        <div className='header'>
+                                <h1 id='eventos'>Minhas Medicações</h1>
+                            </div>
                         <div className="listaEvento" id='dashboard'>
-                            <h1 id='medicacao'>Minhas Medicações</h1>
                             {medicacoes.map((medicacao) => (
                                 <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>
                                     <div className="blocoEvento">
