@@ -45,7 +45,7 @@ export default ({ match }) => {
                     return Promise.reject(error);
                 }
                 setMedicacoesResponse(data)
-                //props.history.push("/cadastromedicacoes")
+                window.location.href = '/medicacoes'
             })
 
     }
