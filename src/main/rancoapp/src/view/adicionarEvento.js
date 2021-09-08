@@ -89,7 +89,7 @@ export default ({ match }) => {
         return (
             <div className='listaEvento' >
                 <div className='header'>
-                    <textarea rows="1" cols="80" id="titulo" placeholder='Titulo'
+                    <textarea rows="1" cols="80" id="tituloInput" placeholder='Titulo'
                         required
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
