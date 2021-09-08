@@ -17,9 +17,9 @@ export default ({ match, history}) => {
     const [medicacoes, setMedicacoes] = useState({});
 
     useEffect(() => {
-        getEvento(match.params.id);
+        getMedicacao(match.params.id);
     }, [])
-    const getEvento = (id) => {
+    const getMedicacao = (id) => {
         fetch(`http://localhost:5000/api/medicacoes/${id}`)
             .then(response => response.json())
             .then((response) => {
@@ -30,10 +30,8 @@ export default ({ match, history}) => {
                 setObservacao(response.observacao)
                 setIntervalo(response.intervalo)
                 setUltimaDosagem(response.ultimaDosagem)
-                setPosologia(response.posologia)
-                
+                setPosologia(response.posologia)                
             })
-
     }
 
     const cadastrar = () => {
@@ -115,22 +113,11 @@ export default ({ match, history}) => {
                                 onChange={e => setUltimaDosagem(e.target.value)}
                             ></input>
                         </div>
-                        <div className='blocoEvento' name="posologia" id='posologia'>
-                            <textarea id="novoProjeto" placeholder='Posologia'
-                                value={posologia}
-                                onChange={e => setPosologia(e.target.value)}
-                            ></textarea>
-
-                        </div>
-
+                        
                         <button className='botao' id='salvar' onClick={cadastrar} >Salvar</button>
                     </div>
-
-
-
                 </div>
             </div>
-
         );
 
 

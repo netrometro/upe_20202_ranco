@@ -33,8 +33,8 @@ function App() {
             <Route path='/eventos/:id' exact component={EventoDetalhes} ></Route>
             <Route path='/eventos/update/:id' component={AtualizarEvento} ></Route>
             <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
-            <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
-            <Route path='/medicacoes/update/:id' component={AtualizarMedicacoes} ></Route>
+            <Route path='/medicacoes/:id' exact component={MedicacaoDetalhes} ></Route>
+            <Route path='/medicacoes/update/:id' exact component={AtualizarMedicacoes} ></Route>
             <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
             <Route path='/cadastrarmedicacoes' component={cadastrarMedicacoes} ></Route>
             <Route path='/perfil' component={Perfil} ></Route>
