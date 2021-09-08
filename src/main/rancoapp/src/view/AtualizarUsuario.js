@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/usuario.css"
 import ReactDOM from 'react-dom';
-import { useAuthDispatch, useAuthState } from "../context";
+import { loginUser, logout, useAuthDispatch, useAuthState } from "../context";
 
 function AtualizarUsuario() {
 
@@ -11,6 +11,7 @@ function AtualizarUsuario() {
     const [nome, setNome] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const dispatch = useAuthDispatch()
 
     useEffect(() => {
         setUser(JSON.parse(state.userDetails));
@@ -26,7 +27,7 @@ function AtualizarUsuario() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(usuario)
         };
-        console.log(usuario)        
+        console.log(usuario)
         fetch(`http://localhost:5000/api/pacientes/${JSON.parse(state.userDetails).id}`, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -40,13 +41,15 @@ function AtualizarUsuario() {
                     console.log(error);
                     return Promise.reject(error);
                 }
-
-                setUser(data)
-                setNome(data.nome)
-                setEmail(data.email)
-                setPassword(data.senha)
+                updateFront(data)
             })
     }
+
+    const updateFront = async (data) => {
+        localStorage.setItem('currentUser', JSON.stringify(data)); 
+        window.location.reload();     
+    }
+
     return (
         <div className='container'>
             <div id='usuario'>
