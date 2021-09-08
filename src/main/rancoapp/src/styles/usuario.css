@@ -20,6 +20,11 @@ textarea#perfil{
     color: white;
 }
 
+#alterar{
+    text-align: center;
+    color: white;
+}
+
 .botaoAlterar{
     margin-top: 10px;
     border-radius: 10px;

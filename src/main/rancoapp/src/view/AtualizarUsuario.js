@@ -4,23 +4,29 @@ import ReactDOM from 'react-dom';
 import { useAuthDispatch, useAuthState } from "../context";
 
 function AtualizarUsuario() {
-    
+
     const state = useAuthState();
 
     const [user, setUser] = useState()
+    const [nome, setNome] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
     useEffect(() => {
         setUser(JSON.parse(state.userDetails));
+        setNome(JSON.parse(state.userDetails).nome)
+        setEmail(JSON.parse(state.userDetails).email)
+        setPassword(JSON.parse(state.userDetails).senha)
     }, [])
 
-    const handleCreation = () => {
-        
+    const handleUpdate = () => {
+        const usuario = { nome: nome, email: email, senha: password }
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user)
+            body: JSON.stringify(usuario)
         };
-        console.log(user)
-        // console.log(JSON.parse(event).id)
+        console.log(usuario)        
         fetch(`http://localhost:5000/api/pacientes/${JSON.parse(state.userDetails).id}`, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
@@ -36,42 +42,28 @@ function AtualizarUsuario() {
                 }
 
                 setUser(data)
-                handleLogin(user)
+                setNome(data.nome)
+                setEmail(data.email)
+                setPassword(data.senha)
             })
     }
-
-    const returnName = () =>{
-        let name = JSON.parse(state.userDetails).nome? JSON.parse(state.userDetails).nome : " "
-        return name
-    }
-
-    const returnEmail = () =>{
-        let email = JSON.parse(state.userDetails).email? JSON.parse(state.userDetails).email : " "
-        return email
-    }
-
-    const returnSenha = () =>{
-        let email = JSON.parse(state.userDetails).email? JSON.parse(state.userDetails).senha : " "
-        return email
-    }
-
     return (
         <div className='container'>
             <div id='usuario'>
                 <h1 id='titulo'>Informações</h1>
                 <legend>Nome</legend>
-                <textarea id='perfil' value={returnName()} ></textarea>
+                <textarea id='perfil' value={nome} onChange={e => setNome(e.target.value)}></textarea>
 
                 <legend>Email</legend>
-                <textarea id='perfil' value={returnEmail()} ></textarea>
-                
+                <textarea id='perfil' value={email} onChange={e => setEmail(e.target.value)}></textarea>
+
                 <legend>Senha</legend>
-                <input type='password' id='perfil' ></input>
-                <a className='botaoAlterar'>
+                <input type='password' id='perfil' value={password} onChange={e => setPassword(e.target.value)}></input>
+                <button className='botaoAlterar' id='alterar' onClick={handleUpdate}>
                     Alterar
-                </a>
+                </button>
             </div>
-            
+
         </div>
     );
 };
