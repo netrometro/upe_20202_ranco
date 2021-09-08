@@ -16,6 +16,7 @@ import Dashboard from './view/Dashboard';
 import AtualizarEvento from './view/AtualizarEvento';
 import Perfil from './view/Perfil';
 import AtualizarUsuario from './view/AtualizarUsuario';
+import AtualizarMedicacoes from './view/AtualizarMedicacoes';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path='/eventos/update/:id' component={AtualizarEvento} ></Route>
             <Route path='/medicacoes' exact component={MedicacaoLista} ></Route>
             <Route path='/medicacoes/:id' component={MedicacaoDetalhes} ></Route>
+            <Route path='/medicacoes/update/:id' component={AtualizarMedicacoes} ></Route>
             <Route path='/adicionarEvento' component={adicionarEvento} ></Route>
             <Route path='/cadastrarmedicacoes' component={cadastrarMedicacoes} ></Route>
             <Route path='/perfil' component={Perfil} ></Route>
