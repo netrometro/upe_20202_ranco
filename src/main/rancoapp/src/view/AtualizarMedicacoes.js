@@ -36,7 +36,7 @@ export default ({ match, history}) => {
 
     const cadastrar = () => {
         console.log()
-        const medicacoes = {
+        const medicacoes = {            
             nome: nome,
             descricao: descricao,
             observacao: observacao,
@@ -46,13 +46,13 @@ export default ({ match, history}) => {
         }
 
         const requestOptions = {
-            method: 'POST',
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(medicacoes)
         };
 
         console.log(medicacoes)
-        fetch(`http://localhost:5000/api/medicacoes/${JSON.parse(state.userDetails).id}`, requestOptions)
+        fetch(`http://localhost:5000/api/medicacoes/${id}`, requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();
@@ -65,7 +65,7 @@ export default ({ match, history}) => {
                     return Promise.reject(error);
                 }
                 setMedicacoesResponse(data)
-                //props.history.push("/cadastromedicacoes")
+                window.location.href= '/medicacoes'
             })
 
     }
@@ -109,7 +109,7 @@ export default ({ match, history}) => {
                         <div className='blocoEvento' name="ultimaDosagem">
                             <h3>Última Dosagem</h3>
                             <input type="date" id="data" name="ultimaDosagem" placeholder="Ultima Dosagem"
-                                value={ultimaDosagem}
+                                value={ultimaDosagem.slice(0, 10)}
                                 onChange={e => setUltimaDosagem(e.target.value)}
                             ></input>
                         </div>
