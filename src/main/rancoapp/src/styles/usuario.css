@@ -27,3 +27,10 @@ textarea#perfil{
     padding: 10px;
     background: #271D24;
 }
+
+input#perfil {
+    border-radius: 10px;
+    border: none;
+    background-color: #cbfacbe3;
+    padding: 20px;
+}

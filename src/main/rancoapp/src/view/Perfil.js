@@ -33,7 +33,7 @@ function Perfil() {
 
                 <legend>Email</legend>
                 <textarea id='perfil' readOnly value={returnEmail()} ></textarea>
-                <a className='botaoAlterar'>
+                <a className='botaoAlterar' href='/AtualizarPerfil'>
                     Alterar
                 </a>
             </div>

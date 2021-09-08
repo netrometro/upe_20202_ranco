@@ -83,9 +83,9 @@ public class EventoCRUDService {
     if (!(eventoParam.getFeedback() == null)) {
       evento.get().setFeedback(eventoParam.getFeedback());
     }
-    if (!(eventoParam.isStatus() == false)) {
+    //if (!(eventoParam.isStatus() == null)) {
       evento.get().setStatus(eventoParam.isStatus());
-    }
+    //}
     if (!(eventoParam.getMotivo() == null)) {
         evento.get().setMotivo(eventoParam.getMotivo());
     }
@@ -95,8 +95,10 @@ public class EventoCRUDService {
     
     evento.get().setDataModificacao(LocalDateTime.now());
     Evento e = eventos.save(evento.get());
-    for(Sentimento s : eventoParam.getSentimentos()) {    	
-    	sentimentoService.update(e.getId(), s);
+    if(eventoParam.getSentimentos() != null) {
+    	for(Sentimento s : eventoParam.getSentimentos()) {    	
+    		sentimentoService.update(e.getId(), s);
+    	}
     }
     return e;
 

@@ -42,6 +42,9 @@ textarea#descricaoDetalhes{
     border: none;
     align-self: center;
 }
+a.sentimentoButton:hover{
+    color: #cbfacbe3;
+}
 .sentimentoButtonG {
     padding: 10px;
     font-size: medium;
@@ -138,5 +141,5 @@ input#data {
 
 .status{
     display: flex;
-    
+
 }

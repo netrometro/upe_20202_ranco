@@ -91,10 +91,13 @@ public class PacienteCRUDService {
 			paciente.get().setTipoUsuario(pacienteParam.getTipoUsuario());
 		}
 		paciente.get().setDataModificacao(LocalDateTime.now());
+		pacientes.save(paciente.get());
 		PacienteDTO pacientedto = new PacienteDTO(paciente.get().getId(), paciente.get().getNome(),
 				paciente.get().getEmail(), paciente.get().getTipoUsuario(), paciente.get().getEventos(),
 				paciente.get().getMedicacoes());
 		return pacientedto;
+		
+		
 
 	}
 

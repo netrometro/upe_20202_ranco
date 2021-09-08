@@ -99,11 +99,11 @@ export default () => {
                     <div className='header'>
                         <h1>DashBoard</h1>
                     </div>
-                        <div className='legendas'>
+                    <div className='legendas'>
                         <legend>Evento status</legend>
                         <legend>Evento Motivo</legend>
                         <legend>Evento Categoria</legend>
-                        </div>
+                    </div>
                     <div className='graficos'>
                         <div className='grafico'>
                             <Pie
@@ -116,8 +116,8 @@ export default () => {
                                             backgroundColor: [
                                                 'rgba(54, 162, 235, 1)',
                                                 'rgba(255, 99, 132, 1)',
-                                                
-                                               
+
+
                                             ],
                                             borderColor: [
                                                 'rgba(255, 255, 255, 1)',
@@ -248,15 +248,17 @@ export default () => {
                     <div id='listas'>
 
 
-                            <div className='header'>
-                                <h1 id='eventos'>Meus Eventos</h1>
-                            </div>
+                        <div className='header'>
+                            <h1 id='eventos'>Meus Eventos</h1>
+                        </div>
                         <div className='listaEvento' id='dashboard'>
                             {eventos.map((evento, i) => (
                                 <Link to={`/eventos/${evento.id}`} key={evento.id}>
                                     <div className='blocoEvento'>
-                                        <h3>{evento.titulo}</h3>
-                                        <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                        <div className='header'>
+                                            <h3>{evento.titulo}</h3>
+                                            <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                            </div>
                                         </div>
                                         <h3>Categoria : {evento.categoria}</h3>
                                         {/* se o status for false bloco vermelho, se for true, verde */}
@@ -265,8 +267,8 @@ export default () => {
                             ))}
                         </div>
                         <div className='header'>
-                                <h1 id='eventos'>Minhas Medicações</h1>
-                            </div>
+                            <h1 id='eventos'>Minhas Medicações</h1>
+                        </div>
                         <div className="listaEvento" id='dashboard'>
                             {medicacoes.map((medicacao) => (
                                 <Link to={`/medicacoes/${medicacao.id}`} key={medicacao.id}>

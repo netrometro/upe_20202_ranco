@@ -41,8 +41,10 @@ export default (props) => {
                     {eventos.map((evento, i) => (
                         <Link to={`/eventos/${evento.id}`} key={evento.id}>
                             <div className='blocoEvento'>
-                                <h3>{evento.titulo}</h3>
-                                <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                <div className='header'>
+                                    <h3>{evento.titulo}</h3>
+                                    <div className='blocoEvento' name="status" id={evento.status ? 'statusTRUE' : 'statusFALSE'}>
+                                    </div>
                                 </div>
                                 <h3>Categoria : {evento.categoria}</h3>
                                 {/* se o status for false bloco vermelho, se for true, verde */}
