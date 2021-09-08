@@ -23,6 +23,16 @@ export const Navigation = (props) => {
             state.userDetails
               ?
               <li>
+                <a href='/' className='page'>
+                  Dashboard
+                </a>
+              </li>
+              : <></>
+          }
+          {
+            state.userDetails
+              ?
+              <li>
                 <a href='/eventos' className='page'>
                   Eventos
                 </a>
