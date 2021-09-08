@@ -21,7 +21,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className='back'>
+        <div  >
           <Navigation />
           <Switch>
             {/* <Route path='/' exact component={Login} ></Route> */}

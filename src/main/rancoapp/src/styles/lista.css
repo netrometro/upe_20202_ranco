@@ -72,7 +72,9 @@ h1#eventos{
 }
 
 .back{
-    padding-bottom: 200px;
+    display: flex;
+    /* padding-bottom: 100vh; */
+    align-items: stretch;
     display: flex;
     flex-direction: column;
     height: 100%;
