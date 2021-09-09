@@ -1,0 +1,109 @@
+Readme:
+se der problema de módulo com o chart js:
+1. Remover as duas depêndencias chart do package.json
+2. Executar:
+npm install --save react-chartjs-2 chart.js
+npm i chart.js
+
+
+Paciente api:
+Listar pacientes : http://localhost:5000/api/pacientes
+recuperar um paciente específico: http://localhost:5000/api/pacientes/120
+Criar paciente: http://localhost:5000/api/pacientes
+Body: 
+{
+    "nome": "Maria",
+    "email": "ouitro@email",
+    "senha": "123456",
+    "tipoUsuario": "PACIENTE"
+}
+Atualizar paciente: http://localhost:5000/api/pacientes/10
+{
+    "nome": "De verdade",
+    "email": email@email.com,
+    "senha": "123456",
+    "tipoUsuario": PACIENTE,
+}
+delete paciente: http://localhost:5000/api/pacientes/120
+
+
+API de medicações:
+listar: http://localhost:5000/api/medicacoes
+recuperar uma medicação : http://localhost:5000/api/medicacoes/9
+criar medicação: http://localhost:5000/api/medicacoes/{id_usuario}
+    {        
+        
+        "descricao": "Remédio top",
+        "observacao": "Remedio forte",
+        "intervalo": 2,
+        "ultimaDosagem": "2021-08-22T17:55:13.847095"
+    }
+update medicação: http://localhost:5000/api/medicacoes/{id_medicacao}
+{    
+    "observacao": "Não beber muito"
+}
+
+API EVENTOS
+Listar eventos : http://localhost:5000/api/eventos
+criar evento: http://localhost:5000/api/eventos/{id_paciente}}
+{
+    "titulo": "MEU TITULO",
+    "local": "MEU local",
+    "data": "2021-08-24",
+    "pessoaEnvolvida": "Pessoa muito envolvida",
+    "expectativa": "Ser feliz",
+    "descricao": "descricao",
+    "pontoMelhoria": "Beber mais agua",
+    "feedback": "Ainda tá ruim",
+    "status": true,
+    "categoria": "TRABALHO",
+    "motivo": "VERGONHA",
+    "sentimentos": []
+}
+Recuperar um evento: http://localhost:5000/api/eventos/{id_evento}
+update evento: http://localhost:5000/api/eventos/{id_evento}
+{
+    "titulo": "MEU TITULO",
+    "local": "MEU local",
+    "data": "2021-08-24",
+    "pessoaEnvolvida": "Pessoa muito envolvida",
+    "expectativa": "Ser feliz",
+    "descricao": "descricao",
+    "pontoMelhoria": "Beber mais agua",
+    "feedback": "Ainda tá ruim",
+    "status": true,
+    "categoria": "TRABALHO",
+    "motivo": "VERGONHA",
+    "sentimentos": []
+}
+
+
+API de sentimentos: 
+Criar sentimento:
+http://localhost:5000/api/sentimentos/{id_evento)
+{    
+    "dataInclusao": null,
+    "dataModificacao": null,
+    "data": "2021-09-05",
+    "descarrego": "muita raiva",
+    "tipoSentimento": "VERGONHA",
+    "grauSentimento": "INTENSO"
+}
+Get sentimentos: http://localhost:5000/api/sentimentos
+Delete: http://localhost:5000/api/sentimentos/{id_sentimento}
+Update :http://localhost:5000/api/sentimentos/37
+{    
+    "dataInclusao": null,
+    "dataModificacao": null,
+    "data": "2021-09-05",
+    "descarrego": "muita raiva",
+    "tipoSentimento": "VERGONHA",
+    "grauSentimento": "INTENSO"
+}
+
+Login api: 
+http://localhost:5000/api/login
+{
+    "email": "nathan@email.com",
+    "password": "12345"
+}
